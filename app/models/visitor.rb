@@ -18,7 +18,7 @@ class Visitor < ActiveRecord::Base
   def set_pass_id
     current = Time.now
     pass_id = current.year.to_s + current.month.to_s + current.hour.to_s + current.min.to_s
-    rand_num = rand(10000..99999)
+    rand_num = Random.rand(10000..99999)
     pass_id += rand_num.to_s
     self.pass_id = pass_id
   end

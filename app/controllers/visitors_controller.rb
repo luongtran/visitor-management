@@ -61,7 +61,6 @@ class VisitorsController < ApplicationController
   # PUT /visitors/1.json
   def update
     @visitor = Visitor.find(params[:id])
-
     respond_to do |format|
       if @visitor.update_attributes(params[:visitor])
         format.html { redirect_to @visitor, notice: 'Visitor was successfully updated.' }
