@@ -1,0 +1,87 @@
+<%= form_for @visitor, :html => { :class => 'form-horizontal' } do |f| %>
+  <% if @visitor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@visitor.errors.count, "error") %> prohibited this apt from being saved:</h2>
+
+      <ul>
+      <% @visitor.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="control-group">
+    <%= f.label :visitor_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :visitor_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :visitor_company_name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :visitor_company_name, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :visitor_mobile_number, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :visitor_mobile_number, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :reason_to_visit, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :reason_to_visit, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :here_to_meet, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :here_to_meet, :class => 'text_field' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :photo, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.file_field :photo, :class => 'file_field' %>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <%= f.label :location, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :location, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :visitor_vehicle_number, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :visitor_vehicle_number, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :storage_device_detail, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :storage_device_detail, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :authorized_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :authorized_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :comment, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :comment, :class => 'text_area large-input', :rows => 10, :cols => 60 %>
+    </div>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                visitors_path, :class => 'btn' %>
+  </div>
+<% end %>

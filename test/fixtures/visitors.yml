@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  visitor_name: "My name"
+  visitor_company_name: "My company name"
+  visitor_mobile_number: "My mobile num"
+  reason_to_visit: "Lookup beautiful girl"
+  here_to_meet: 'Hotel'
+  location: "Holiwood"
+  visitor_vehicle_number: "123456"
+  storage_device_detail: "dvd"
+  authorized_id: "0123456789"
+  comment: "I am a man"
+  user_id: 1
+
+two:
+  visitor_name: "My name 2"
+  visitor_company_name: "My company name 2"
+  visitor_mobile_number: "My mobile num 2"
+  reason_to_visit: "Lookup beautiful girl"
+  here_to_meet: 'Hotel'
+  location: "Holiwood"
+  visitor_vehicle_number: "123456"
+  storage_device_detail: "dvd"
+  authorized_id: "0123456798"
+  comment: "I am a man"
+  user_id: 1
