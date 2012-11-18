@@ -4,6 +4,10 @@ VisitorManagement::Application.routes.draw do
   #devise_for :users
   
   devise_for :user,:path => '' ,:path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :sign_up => 'register' }
+  
+  resources :photos, :only => [:index, :show, :new, :create] do
+    post 'upload', :on => :collection
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
