@@ -1,5 +1,10 @@
 VisitorManagement::Application.routes.draw do
+  
+  root :to => 'users#sign_in'
+  
   resources :visitors
+  
+  match '/visitors/search' => 'visitors#search', :as => 'visitor_search'
 
   #devise_for :users
   

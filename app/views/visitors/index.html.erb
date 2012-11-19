@@ -2,6 +2,13 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize %></h1>
 </div>
+<div class="search">
+	<h3>Search visitors</h3>
+	<%= form_tag visitor_search_path do %>
+	<%= text_field_tag 'search_key', '',:class => 'left-input' %>
+	<%= submit_tag 'Search', :class => 'btn right-input' %>
+	<% end %>
+</div>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -26,7 +33,7 @@
     <% @visitors.each do |visitor| %>
       <tr>
         <td><%= link_to visitor.id, visitor_path(visitor) %></td>
-        <td><%= visitor.visitor_name %></td>
+        <td><%= link_to visitor.visitor_name, visitor_path(visitor) %></td>
         <td><%= visitor.visitor_company_name %></td>
         <td><%= visitor.visitor_mobile_number %></td>
         <td><%= visitor.reason_to_visit %></td>

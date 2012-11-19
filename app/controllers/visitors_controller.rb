@@ -85,6 +85,15 @@ class VisitorsController < ApplicationController
     end
   end
   
+  
+  def search
+    key = params[:search_key]
+    @visitors = Visitor.find(:all, :conditions => ['user_id = ? AND (visitor_name like ? OR visitor_company_name like ? OR pass_id like ?)', 
+                              current_user.id, "%#{key}%", "%#{key}%", "%#{key}%" ]) 
+                              
+    render 'index'
+  end
+  
   private
   
   def upload_path # is used in upload and create
