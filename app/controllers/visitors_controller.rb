@@ -45,6 +45,7 @@ class VisitorsController < ApplicationController
   def create
     @visitor = Visitor.new(params[:visitor])
     @visitor.user_id = current_user.id
+    @visitor.photo = File.new(upload_path)
 
     respond_to do |format|
       if @visitor.save
@@ -83,4 +84,12 @@ class VisitorsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  private
+  
+  def upload_path # is used in upload and create
+    file_name = session[:session_id].to_s + '.jpg'
+    File.join(Rails.root, 'public', 'uploads', file_name)
+  end
+  
 end

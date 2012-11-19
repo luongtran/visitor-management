@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :type, :user_id, :image
+  attr_accessible :im_type, :user_id, :image
   
   has_attached_file :image, :styles => { :small => "150x150>" },
                   :url  => "/assets/photos/:id/:style/:basename.:extension",

@@ -12,7 +12,7 @@
     function upload_complete(msg) {
         if (msg == 'ok') {
             $('#new_photo').show();
-            $('#photo_description').focus();
+            $('#photo_type').focus();
         } else {
             alert('An error occured');
             webcam.reset();
@@ -33,8 +33,8 @@
 
 <%= form_for Photo.new, :html => {:style => "display: none;"} do |f| %>
     <p>
-      <%= f.label :type %><br/>
-      <%= f.text_field :type %>
+      <%= f.label :im_type %><br/>
+      <%= f.text_field :im_type %>
     </p>
     <p>
       <%= f.submit "Save the photo" %>

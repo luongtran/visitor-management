@@ -1,3 +1,12 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#bt-optional-field').click(function() {
+			$(this).hide();
+			$('.optional-fields').show();
+		});
+	});
+</script>
+
 <%= form_for @visitor, :html => { :class => 'form-horizontal' } do |f| %>
   <% if @visitor.errors.any? %>
     <div id="error_explanation">
@@ -40,45 +49,78 @@
       <%= f.text_field :here_to_meet, :class => 'text_field' %>
     </div>
   </div>
-  
-  <div class="control-group">
-    <%= f.label :photo, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.file_field :photo, :class => 'file_field' %>
-    </div>
+  <%= button_tag "Optional fields", :class => 'btn', :id => "bt-optional-field", :type => "button" %>
+  <div class="optional-fields">
+	  <div class="control-group">
+	    <%= f.label :photo, :class => 'control-label' %>
+	    <div class="controls">
+	      <div id="webcam"></div>
+			<script type="text/javascript">
+			   function onload_complete(msg) {
+			        // fetch the CSRF meta tag data
+			        var csrf_param = $('meta[name=csrf-param]').attr('content');
+			        var csrf_token = $('meta[name=csrf-token]').attr('content');
+			
+			        // reset the api URL appending the auth token parameter
+			        webcam.set_api_url('<%= upload_photos_path %>' + '?' + csrf_param + "=" + encodeURI(encodeURI(csrf_token)));
+			    }
+			
+			    function upload_complete(msg) {
+			        if (msg == 'ok') {
+			            $('#new_photo').show();
+			            $('#visitor_location').focus();
+			        } else {
+			            alert('An error occured');
+			            webcam.reset();
+			        }
+			    }
+			
+			    webcam.set_swf_url('/webcam.swf');
+			    webcam.set_api_url('<%= upload_photos_path %>');
+			    webcam.set_quality(90);
+			    webcam.set_shutter_sound(true, '/shutter.mp3');
+			    webcam.set_hook('onLoad', 'onload_complete');
+			    webcam.set_hook('onComplete', 'upload_complete');
+			    $('#webcam').html(webcam.get_html(640, 480));
+			    
+			</script>
+			
+			<input type="button" value="Take picture" onclick="webcam.snap();"/>
+
+	    </div>
+	  </div>
+	  
+	  <div class="control-group">
+	    <%= f.label :location, :class => 'control-label' %>
+	    <div class="controls">
+	      <%= f.text_field :location, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :visitor_vehicle_number, :class => 'control-label' %>
+	    <div class="controls">
+	      <%= f.text_field :visitor_vehicle_number, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :storage_device_detail, :class => 'control-label' %>
+	    <div class="controls">
+	      <%= f.text_field :storage_device_detail, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :authorized_id, :class => 'control-label' %>
+	    <div class="controls">
+	      <%= f.text_field :authorized_id, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :comment, :class => 'control-label' %>
+	    <div class="controls">
+	      <%= f.text_area :comment, :class => 'text_area large-input', :rows => 10, :cols => 60 %>
+	    </div>
+	  </div>
   </div>
-  
-  <div class="control-group">
-    <%= f.label :location, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :location, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :visitor_vehicle_number, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :visitor_vehicle_number, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :storage_device_detail, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :storage_device_detail, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :authorized_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :authorized_id, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :comment, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :comment, :class => 'text_area large-input', :rows => 10, :cols => 60 %>
-    </div>
-  </div>
-  
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
