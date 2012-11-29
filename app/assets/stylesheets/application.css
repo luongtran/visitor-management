@@ -19,3 +19,31 @@
 .large-input {
 	width:500px;
 }
+
+.invalid {
+	color:red;
+	
+}
+ .valid {
+ 	color:green;
+ }
+
+.left-content {
+	width:20%;
+	float:left;
+}
+
+.right-content {
+	width: 80%;
+	float:left;
+}
+
+.notification {
+	text-align: center;
+	
+}
+
+.twelve-link {
+	float:left;
+	margin-top:50px;
+}

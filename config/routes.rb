@@ -2,17 +2,32 @@ VisitorManagement::Application.routes.draw do
   
   root :to => 'users#sign_in'
   
+  match '/visitors/checkout' => 'visitors#visitor_checkout', :as => 'visitor_checkout'
+  match '/visitors/twelve-plus' => 'visitors#twelve_plus', :as => 'twelve_plus'
+  
   resources :visitors
   
   match '/visitors/search' => 'visitors#search', :as => 'visitor_search'
+  
+  match '/dashboard' => 'dashboard#index', :as => :dashboard_index
+  match '/dashboard/view-options' => 'dashboard#view_options', :as => :dashboard_option_view
 
   #devise_for :users
   
-  devise_for :user,:path => '' ,:path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :sign_up => 'register' }
+  devise_for :user,:path => '',
+             :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :sign_up => 'register' }
+
   
   resources :photos, :only => [:index, :show, :new, :create] do
     post 'upload', :on => :collection
   end
+  
+  resources :me, :only => [:index, :edit] 
+  
+  match 'me/upload-logo' => 'me#upload_logo', :as => :upload_logo
+  match 'me/change-password' => 'me#change_password', :as => 'change_password'
+  match 'me/update' => "me#update", :as => 'me_update'
+  match 'me/update-organisation' => "me#update_organisation", :as => 'update_organisation'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121118030951) do
+ActiveRecord::Schema.define(:version => 20121123203332) do
+
+  create_table "list_team_members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "list_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "photos", :force => true do |t|
     t.string   "im_type"
@@ -38,6 +45,10 @@ ActiveRecord::Schema.define(:version => 20121118030951) do
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "organisation_name"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
@@ -62,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20121118030951) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.datetime "check_out_time"
   end
 
 end

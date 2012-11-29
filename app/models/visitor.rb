@@ -11,7 +11,7 @@ class Visitor < ActiveRecord::Base
 
   
   attr_accessible :authorized_id, :comment, :here_to_meet, :location, :reason_to_visit, :storage_device_detail, 
-                  :user_id, :visitor_company_name, :visitor_mobile_number, :visitor_name, :visitor_vehicle_number, :pass_id, :photo
+                  :user_id, :visitor_company_name, :visitor_mobile_number, :visitor_name, :visitor_vehicle_number, :pass_id, :photo, :check_out_time
   
   before_create :set_pass_id
   
@@ -26,6 +26,19 @@ class Visitor < ActiveRecord::Base
     # end
     
     self.pass_id = pass_id
+  end
+  
+  def self.get_visitors(user_id)
+    where('user_id = ?', user_id)
+  end
+  
+  def self.search(key, user_id)
+    if key
+      where('user_id = ? AND (visitor_name like ? OR visitor_company_name like ? OR pass_id like ?)', 
+                              user_id, "%#{key}%", "%#{key}%", "%#{key}%")
+    else
+      where('user_id = ?', user_id)
+    end
   end
   
 end

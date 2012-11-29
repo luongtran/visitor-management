@@ -34,6 +34,8 @@ gem "twitter-bootstrap-rails"
 gem "paperclip", "~> 3.3.1"
 gem "mini_magick", "~> 3.4"
 
+gem "will_paginate", "~>3.0.3"
+
 
 group :production do
   gem 'pg'

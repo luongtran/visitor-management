@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1><%=t '.title', :default => 'Me' %></h1>
+</div>
+
+<div class="container">
+	<div class="left-content">
+		<%= render 'me_menu' %>
+	</div>
+	<div class="right-content">
+		<div class='notification'>
+			<% if flash[:notice] %>
+			<%= flash[:notice] %>
+			<% end %>
+		</div>
+		<dl class="dl-horizontal">
+		  <dt><strong>Logo:</strong></dt>
+		  <dd><%= image_tag current_user.logo.url(:small) %></dd>
+		  <dt><strong>Email:</strong></dt>
+		  <dd><%= current_user.email %></dd>
+		  <dt><strong>Organisation:</strong></dt>
+		  <dd><%= current_user.organisation_name %></dd>
+		</dl>
+	</div>
+</div>

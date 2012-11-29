@@ -1,11 +1,13 @@
 class VisitorsController < ApplicationController
   
+  PER_PAGE = 5
+  
   before_filter :authenticate_user!
   
   # GET /visitors
   # GET /visitors.json
   def index
-    @visitors = Visitor.all
+    @visitors = Visitor.get_visitors(current_user.id).paginate(:per_page => 3, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,12 +87,45 @@ class VisitorsController < ApplicationController
     end
   end
   
+  def visitor_checkout
+    if request.post?
+      visitor = Visitor.find(:first, :conditions => ['pass_id = ?', params[:pass_id]])
+      @success = 0
+      if !visitor.nil?
+        visitor.check_out_time = Time.now
+        if visitor.save
+          @success = 1
+        end
+      end
+      if @success
+        flash[:notice] = 'The visitor ' + visitor.visitor_name + ' checked out successfully'
+      else
+        flash[:notice] = 'The visitor ' + visitor.visitor_name + ' checked out unsuccessfully. Please check and try again'
+      end
+      if request.xhr?
+        render :json => {'success' => @success, 'id' => visitor.id, 'message' => flash[:notice]}
+        return
+      end
+      
+    end
+  end
   
   def search
     key = params[:search_key]
-    @visitors = Visitor.find(:all, :conditions => ['user_id = ? AND (visitor_name like ? OR visitor_company_name like ? OR pass_id like ?)', 
-                              current_user.id, "%#{key}%", "%#{key}%", "%#{key}%" ]) 
-                              
+    @visitors = Visitor.search(key, current_user.id).paginate(:per_page => 3, :page => params[:page])
+    
+    respond_to do |format|
+      format.js
+      format.html {
+        render 'index' 
+      }
+      format.json { render json: @visitors }
+    end
+     
+  end
+  
+  def twelve_plus
+    @visitors = Visitor.where('(created_at <= NOW() - INTERVAL 12 HOUR) AND check_out_time is null').paginate(:per_page => 3, :page => params[:page])
     render 'index'
   end
   
