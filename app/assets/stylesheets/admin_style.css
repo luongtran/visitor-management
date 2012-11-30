@@ -1,0 +1,343 @@
+body{
+    background-color: #5492BB;
+    color: #333333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    height: 100%;
+    margin: 0;
+    min-height: 100%;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+#visitorBody {
+    background-color: #FFFFFF;
+    border-top: 5px solid #E5E5E5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    padding-top: 0;
+    position: relative;
+    width: 1000px;
+    min-height: 1500px;
+    height: 100%;
+    -moz-border-radius: 0 0 10px 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+   /* background: #E5E5E5 !important; */
+}
+
+.background-menubar{
+  background: #5492BB !important;
+  color: #FFFFFF !important;
+  /* background: #E5E5E5 !important; */
+}
+
+.white-color{
+  color: #FFFFFF !important;
+}
+.nav_top{
+    /*background: url("/assets/nav_top_bg.jpg") repeat-x top #FFF;*/
+   /* background-color: #E3E3E3; #DCD9D3;*/
+    height: 21px !important;
+    position: relative;
+    left: 0;
+    right: 0;
+    min-width: 1000px;
+    z-index: 999;
+}
+.nav_top img{
+    margin-top: 3px;
+    margin-left: 10px;
+}
+
+.navbar{
+    margin: 0 !important;
+    position: relative !important;
+    z-index: 999999;
+    top: 41px;
+}
+.active_menu_tab{
+    font-weight: bold !important;
+}
+.active_menu_tab li a.hover{
+    font-weight: bold !important;
+}
+.navbar a{
+    font-size: 14px;
+}
+
+.main_container{
+    position: absolute;
+    top:  120px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+}
+.main_container h2.title{
+    border-bottom: 1px solid #CCC;
+}
+.main_container .nav{
+    margin-bottom: 0 !important;
+}
+.main_container .nav-tabs li i{
+    margin-right: 5px;
+}
+.main_container .tab-content{
+    border: 1px solid #DDDDDD;
+    border-top: none;
+    padding: 10px;
+    -moz-border-radius: 0 0 7px 7px ;
+    -webkit-border-radius: 0 0 7px 7px;
+    border-radius: 0 0 7px 7px;
+}
+.container {
+    width: 990px !important;
+}
+.boxContent {
+    border: 1px solid #999999;
+    /*border-right: 1px solid #999999;
+    border-top: 1px solid #999999;*/
+    margin-top: 0;
+    padding: 5px 5px 10px 10px;
+    text-align: center;
+    -moz-border-radius: 7px ;
+    -webkit-border-radius: 7px;
+    border-radius: 7px;
+}
+.logo{
+  font-family: Ubuntu;
+  font-size: 30px;
+}
+.logo a{
+  color: #00668F;
+  text-decoration: none;
+}
+.logo a span{
+  color: #F8981D;
+}
+.td_align_right{
+  text-align: right !important;
+}
+.td_align_center{
+  text-align: center !important;
+}
+
+.new_icon_asset{
+  width: 85px;
+  height: 105px;
+  background: url("/assets/left_panel_buttons.png") no-repeat;
+}
+.sync_email_icon_asset{
+  width: 110px;
+  height: 110px;
+  background: url("/assets/sync_email.png") no-repeat;
+}
+.customer_icon_asset{
+  width: 110px;
+  height: 110px;
+  background: url("/assets/customer_icon.png") no-repeat;
+}
+.lead_icon_asset{
+  width: 110px;
+  height: 110px;
+  background: url("/assets/leads_icon.png") no-repeat;
+}
+.property_icon_asset{
+  width: 110px;
+  height: 110px;
+  background: url("/assets/property_icon.png") no-repeat;
+}
+
+.visitor_checkout_icon {
+	width:50px;
+	height:50px;
+	margin-left:30px;
+	margin-top:20px;
+	background: url("/assets/Log-Out-icon.png") no-repeat;
+}
+
+.twelve_icon {
+	width:50px;
+	height:50px;
+	margin-left:30px;
+	margin-top:20px;
+	background: url("/assets/icon12.gif") no-repeat;
+}
+
+.sync_icon_asset{
+  width: 83px;
+  height: 98px;
+  margin-top: -6px;
+  background-image:  url("/assets/left_panel_buttons.png");
+  background-position: -83px 0;
+  background-repeat: no-repeat;
+}
+.leads_nav{
+  margin-top: -26px;
+}
+.properties_nav{
+  margin-top: -60px;
+}
+.customers_nav{
+  margin-top: -100px;
+}
+.email_templates_nav{
+  margin-top: -82px;
+}
+.email_sync_nav{
+  margin-top: 2px;
+}
+.content-left-panel{
+  float:left;
+  width: 150px;
+  position: absolute;
+  margin-top:140px;
+}
+.content-right-panel{
+  float:left;
+  margin-left: 151px;
+  min-width: 800px;
+}
+
+.workspace{
+  text-align: center;
+}
+div.sheet {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    min-height: 480px;
+}
+div.panel {
+    position: relative;
+    text-align: left;
+}
+div.sheet {
+    margin: 30px 30px 20px;
+}
+div.sheinet_body {
+    border-top: 1px solid #E5E5E5;
+    margin: 0;
+    padding: 20px 0 10px;
+}
+.person {
+	margin: 0;
+	padding: 20px 30px 10px !important;
+	background: rgba(0, 0, 0, 0.04);
+	text-shadow: 1px 1px white;
+	border: 0 !important;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.04) !important;
+	-webkit-border-radius: 3px 3px 0 0;
+	-moz-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0;
+	zoom: 1;
+}
+
+div.sheet_body > section {
+    border-top: 1px solid #E5E5E5;
+    margin: 0;
+    padding: 20px 0 10px;
+    margin: 30px 30px 20px;
+}
+div.sheet_body > header h2 {
+    color: #000000;
+    font-size: 20px;
+    line-height: 1.1em;
+    margin-bottom: 3px;
+}
+
+#popup_message{
+    position: fixed;
+    top: 5px;
+    left: 30%;
+    right: 30%;
+    z-index: 99999;
+}
+.div-divider{
+  border-bottom: 2px solid #E5E5E5;
+}
+.no-margin-top {
+    margin-top:20px;
+}
+
+.summary {
+    width:100%;
+    margin-top:20px;
+    border-bottom: solid #DDD 1px;
+    padding-bottom: 10px;
+}
+
+.icon {
+    width:15px;
+    height:10px;
+    float:left;
+    margin-top:5px;
+}
+
+.collapse-ic {
+    background-image:  url("/assets/rightArrow.png");
+/*    background-position: -80px -190px; */
+    background-repeat: no-repeat;
+}
+
+.expand-ic {
+    background-image:  url("/assets/arrowDown.png");
+    background-repeat: no-repeat;
+}
+
+
+.accordion-toggle {
+    float:left;
+    font-size:16px;
+    font-weight:bold;
+    
+}
+
+.note {
+    margin-top:10px;
+    margin-left:20px;
+    font-style:italic;
+    font-size:14px;
+}
+
+div.clear {
+  
+  width:100%;
+  clear: left;
+  }
+  
+  #email_message {
+      
+  }
+
+.table-striped-row{
+    background-color: #efefef;
+}
+
+/*invoice payment*/
+.invoice {
+    clear: both;
+    padding-top: 20px;
+}
+table.invoice-info {
+    background-color: #EFEFEF;
+    border: 1px solid #D3CBC6;
+    font-size: 13px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+table.invoice-info th {
+    font-weight: bold;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 5px;
+    text-align: right;
+    width: 130px;
+    background-color: #EFEFEF;
+    /*#EAE4E0;*/
+}
+table.invoice-info th, table.invoice-info td {
+    padding: 3px 10px;
+    vertical-align: top;
+}

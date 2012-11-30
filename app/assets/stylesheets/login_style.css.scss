@@ -1,0 +1,89 @@
+body{
+    background-color: #5492BB;
+    color: #333333;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    height: 100%;
+    margin: 0;
+    min-height: 100%;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    z-index: 1;
+}
+#header {
+	background-color: #FFFFFF;
+	margin: 0 auto;
+	width: 965px;
+}
+	
+#vcsubscriptionBody {
+    background-color: #FFFFFF;
+    border-top: 5px solid #E5E5E5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin: auto;
+    padding-top: 0;
+    width: 1000px;
+    height: 98%;
+    -moz-border-radius: 0 0 10px 10px;
+    -webkit-border-radius: 0 0 10px 10px;
+     border-radius: 0 0 10px 10px;
+   /* background: #E5E5E5 !important; */
+}
+
+.auto_height{
+    height: inherit;
+    min-height: inherit;
+}
+
+.custom_container{
+    /*min-width: 1024px;*/
+    margin: 0 auto;
+    position: relative;
+}
+
+/*----------------------------------------------------------------------------------------*/
+.login{
+    padding: 10px 0;
+    min-height: 300px;
+    color: #505153 !important;
+}
+.login .or{
+    text-align: center;
+    text-transform: uppercase;
+}
+.login_pnl{
+    width: 415px;
+    padding: 0 17px;
+    margin: 0 auto;
+    background: #EFEFEF;
+    border: 1px solid #ADC7D9; /*#6A7176;*/
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.login_pnl form input[type=email],
+.login_pnl form input[type=text],
+.login_pnl form input[type=password]{
+    border: 1px solid #6A7176;
+    padding: 7px;
+    font-size: 20px;
+    width: 293px;
+}
+.login_pnl form input[type=checkbox]{
+    margin: 0;
+}
+
+.login_pnl form input[type=checkbox]{
+    margin: -2px 0 0 0;
+}
+.login_pnl a{
+    text-decoration: underline;
+    color: #505153;
+}
+
+.login_pnl table{
+    font-size: 14px;
+}

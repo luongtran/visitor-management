@@ -1,15 +1,58 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>VisitorManagement</title>
+  <title>Visitor Management</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= javascript_include_tag 'webcam' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div id="visitorBody">
+  <%= render partial: "layouts/flash_message", flash: flash %>
+  <div class="nav_top">
+    <div class="custom_container auto_height">
+      <%#= link_to(image_tag("VR_large.png", class: "logo"), root_path) %>
+      <h1 class="logo">
+      <a href="/">
+            &nbsp;Sixteen<span>columns.com</span>
+          </a></h1>
+    </div>
+    
+  </div>
+  <div class="nav_top">
+    <%if current_user %>
+    <div class="container">
+        <div class="navbar">
+          <div class="navbar-inner background-menubar" style="position: relative !important;">
+          <ul class="nav">
+            <li class="<%= (params[:controller]=='dashboard') ? "active" : "" %>"><%= link_to "Dashboard", dashboard_index_path %></li>
+            <li class="<%= (params[:controller]=='visitors') ? "active" : "" %>"><%= link_to "Visitors", visitors_path %></li>
+            
+            <li class="" style="width:10px;">&nbsp;</li>
+          </ul>
+            <ul class="nav pull-right">
+              <!--<li class="divider-vertical"></li>-->
+              <li>
+                <div class="dropdown" style="float: right;margin-right: -0px; margin-top: 0px; ">
+                  <a class="dropdown-toggle btn btn-link white-color"  id="myAccount" role="button" data-toggle="dropdown" data-target="#" href="#"><%= current_user.email %><b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="myAccount">
+                    <li><a href="#"><%= link_to "My Account", me_index_path %></a></li>
+                    <li class="divider"></li>
+                    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div><!-- /.nav-collapse -->
+    </div>
+    <%end%>
+  </div>
+  <div class="container main_container flat_container">
+    <div id="notification" class="notification"></div>
+    <%= yield %>
+  </div>
+ </div>
 </body>
 </html>
