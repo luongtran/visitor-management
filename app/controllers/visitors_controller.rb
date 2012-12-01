@@ -47,8 +47,10 @@ class VisitorsController < ApplicationController
   def create
     @visitor = Visitor.new(params[:visitor])
     @visitor.user_id = current_user.id
-    @visitor.photo = File.new(upload_path)
-
+    if FileTest.exist?(upload_path)
+      @visitor.photo = File.new(upload_path)
+    end
+    
     respond_to do |format|
       if @visitor.save
         format.html { redirect_to @visitor, notice: 'Visitor was successfully created.' }
