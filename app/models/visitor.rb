@@ -33,8 +33,9 @@ class Visitor < ActiveRecord::Base
   end
   
   def self.search(key, user_id)
+    key = key.downcase
     if key
-      where('user_id = ? AND (visitor_name like ? OR visitor_company_name like ? OR pass_id like ?)', 
+      where('user_id = ? AND (LOWER(visitor_name) like ? OR LOWER(visitor_company_name) like ? OR pass_id like ?)', 
                               user_id, "%#{key}%", "%#{key}%", "%#{key}%")
     else
       where('user_id = ?', user_id)
