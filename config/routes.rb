@@ -18,7 +18,7 @@ VisitorManagement::Application.routes.draw do
              :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :sign_up => 'register' }
 
   
-  resources :photos, :only => [:index, :show, :new, :create] do
+  resources :photos do
     post 'upload', :on => :collection
   end
   

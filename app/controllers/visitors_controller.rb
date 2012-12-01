@@ -2,7 +2,7 @@ class VisitorsController < ApplicationController
   
   PER_PAGE = 5
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => :created
   
   # GET /visitors
   # GET /visitors.json
