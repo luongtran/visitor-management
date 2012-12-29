@@ -1,58 +1,118 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Visitor Management</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag 'webcam' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <div id="visitorBody">
-  <%= render partial: "layouts/flash_message", flash: flash %>
-  <div class="nav_top">
-    <div class="custom_container auto_height">
-      <%#= link_to(image_tag("VR_large.png", class: "logo"), root_path) %>
-      <h1 class="logo">
-      <a href="/">
-            &nbsp;Sixteen<span>columns.com</span>
-          </a></h1>
-    </div>
-    
-  </div>
-  <div class="nav_top">
-    <%if current_user %>
-    <div class="container">
-        <div class="navbar">
-          <div class="navbar-inner background-menubar" style="position: relative !important;">
-          <ul class="nav">
-            <li class="<%= (params[:controller]=='dashboard') ? "active" : "" %>"><%= link_to "Dashboard", dashboard_index_path %></li>
-            <li class="<%= (params[:controller]=='visitors') ? "active" : "" %>"><%= link_to "Visitors", visitors_path %></li>
-            
-            <li class="" style="width:10px;">&nbsp;</li>
-          </ul>
-            <ul class="nav pull-right">
-              <!--<li class="divider-vertical"></li>-->
-              <li>
-                <div class="dropdown" style="float: right;margin-right: -0px; margin-top: 0px; ">
-                  <a class="dropdown-toggle btn btn-link white-color"  id="myAccount" role="button" data-toggle="dropdown" data-target="#" href="#"><%= current_user.email %><b class="caret"></b></a>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="myAccount">
-                    <li><a href="#"><%= link_to "My Account", me_index_path %></a></li>
-                    <li class="divider"></li>
-                    <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div><!-- /.nav-collapse -->
-    </div>
-    <%end%>
-  </div>
-  <div class="container main_container flat_container">
-    <div id="notification" class="notification"></div>
-    <%= yield %>
-  </div>
- </div>
-</body>
+	<head>
+		<title>Visitor Management</title>
+		
+		<%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
+		<%= stylesheet_link_tag    "custom", :media => "all" %>
+		<%= stylesheet_link_tag "webfontkit-20130104-144010/stylesheet", :media => "all" %>
+		
+  		<%= javascript_include_tag "application" %>
+	  	<%= javascript_include_tag 'webcam' %>
+	  	<%= javascript_include_tag "custom" %>
+	  	<%= csrf_meta_tags %>
+	  	
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!--BODY PAGE-->
+		<div class="body-sub">
+			<!--SECTION : HEADER-->
+			<div id="cabin-header" class="sub">
+				<div class="shadow">
+					<div class="row-fluid">
+						<div class="span2" id="logo2">
+							<%= image_tag "logo-main.png" %>
+						</div>
+						<div class="span10 sub" id="break-line">
+
+							<div class="pull-right top-tool">
+								<!--Account name-->
+								<div class="account-name pull-left">
+									<div class="dropdown">
+										<a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">tranducluong@gmail.com <b class="caret"></b></a>
+										<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
+											<li><a tabindex="-1" href="#">Edit Information</a></li>
+											<li>
+												<%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :tabindex => -1 %>
+											</li>
+										</ul>
+									</div>
+								</div>
+
+								<!--Quick Search-->
+								<div class="quick-search pull-right">
+									<div class="input-prepend">
+										<%= form_tag visitor_search_path do %>
+										<div class="btn-group">
+											<button class="btn place">Action</button>
+											<button class="btn dropdown-toggle" data-toggle="dropdown">
+												<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a href="#">Name</a></li>
+												<li><a href="#">Pass ID</a></li>
+												<li><a href="#">My Pass ID</a></li>
+											</ul>
+										</div>
+										<%= text_field_tag 'search_key' %>
+										<%= submit_tag 'Search', :class => 'lup' %>
+										
+										<% end %>
+									</div>
+								</div>
+							</div>
+
+							<div class="menuroot">
+								<ul class="nav nav-tabs">
+									<li class="<%= (params[:controller] == "visitors" && params[:action] == "new") ? "active" : "" %>">
+										<%= link_to "Check In", new_visitor_path %>
+									</li>
+									<li class="<%= (params[:controller] == "visitors" && params[:action] == "checkout") ? "active" : "" %>">
+										<%= link_to "Checkout", visitor_checkout_path %>
+									</li>
+									<li class="<%= (params[:controller] == "visitors" && params[:action] == "twelve_plus") ? "active" : "" %>">
+										<%= link_to "12+", twelve_plus_path %>
+									</li>
+									<li class="<%= (params[:controller] == "dashboard") ? "active" : "" %>">
+										<%= link_to "Dashboard", dashboard_index_path %>
+									</li>
+									<li class="<%= (params[:controller] == "me") ? "active" : "" %>">
+										<%= link_to "My Account", me_index_path %>
+									</li>
+									<li class="<%= (params[:controller] == "visitors" && params[:action] == "search") ? "active" : "" %>">
+										<%= link_to "Search Visitor", visitor_search_path %>
+										
+									</li>
+									<li>
+										<a href="#">Upgrade</a>
+									</li>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="cabin-body">
+				<div class="body-bg">
+					<%= yield %>
+				</div>
+			</div>
+			<div id="cabin-footer" class="clearfix like-table text-shadow-white">
+				<div id="appname" class="pull-left">
+					<a href="#">
+						<%= image_tag "icon-nameapp.png", :class => "img" %>
+					</a>
+					<small>OneGate Visitor Manager Application</small>
+				</div>
+				<div id="copyright" class="pull-left">
+					<small>Copyright 2012 by <strong>Sixteencolumns.com</strong></small>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>
+

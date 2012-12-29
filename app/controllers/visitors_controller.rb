@@ -113,17 +113,17 @@ class VisitorsController < ApplicationController
   end
   
   def search
-    key = params[:search_key]
-    @visitors = Visitor.search(key, current_user.id).paginate(:per_page => 3, :page => params[:page])
-    
-    respond_to do |format|
-      format.js
-      format.html {
-        render 'index' 
-      }
-      format.json { render json: @visitors }
+    if (!params[:search_key].nil? && !params[:search_key].empty?)
+       key = params[:search_key]
+      @visitors = Visitor.search(key, current_user.id).paginate(:per_page => 3, :page => params[:page])
+      
+      respond_to do |format|
+        format.js
+        format.html
+        format.json { render json: @visitors }
+      end
     end
-     
+    
   end
   
   def twelve_plus

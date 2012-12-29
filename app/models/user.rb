@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
-  has_attached_file :logo, :styles => { :small => "150x150>" },
+  has_attached_file :logo, :styles => { :small => "120x90>" },
                   :url  => "/assets/logo/:id/:style/:basename.:extension",
                   :path => ":rails_root/public/assets/logo/:id/:style/:basename.:extension"
                   

@@ -1,13 +1,13 @@
 VisitorManagement::Application.routes.draw do
   
-  root :to => 'users#sign_in'
+  root :to => 'dashboard#index'
   
   match '/visitors/checkout' => 'visitors#visitor_checkout', :as => 'visitor_checkout'
   match '/visitors/twelve-plus' => 'visitors#twelve_plus', :as => 'twelve_plus'
   
-  resources :visitors
-  
   match '/visitors/search' => 'visitors#search', :as => 'visitor_search'
+  
+  resources :visitors
   
   match '/dashboard' => 'dashboard#index', :as => :dashboard_index
   match '/dashboard/view-options' => 'dashboard#view_options', :as => :dashboard_option_view

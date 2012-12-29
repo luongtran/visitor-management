@@ -6,124 +6,127 @@
 		});
 	});
 </script>
-
 <%= form_for @visitor, :html => { :class => 'form-horizontal' } do |f| %>
-  <% if @visitor.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@visitor.errors.count, "error") %> prohibited this apt from being saved:</h2>
-
-      <ul>
-      <% @visitor.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="control-group">
-    <%= f.label :visitor_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :visitor_name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :visitor_company_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :visitor_company_name, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :visitor_mobile_number, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :visitor_mobile_number, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :reason_to_visit, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :reason_to_visit, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :here_to_meet, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :here_to_meet, :class => 'text_field' %>
-    </div>
-  </div>
-  <%= button_tag "Optional fields", :class => 'btn', :id => "bt-optional-field", :type => "button" %>
-  <div class="optional-fields">
-	  <div class="control-group">
-	    <%= f.label :photo, :class => 'control-label' %>
-	    <div class="controls">
-	      <div id="webcam"></div>
-			<script type="text/javascript">
-			   function onload_complete(msg) {
-			        // fetch the CSRF meta tag data
-			        var csrf_param = $('meta[name=csrf-param]').attr('content');
-			        var csrf_token = $('meta[name=csrf-token]').attr('content');
+<div class="twocol-bg-left pull-left">
+	<div class="twocol-bg-left-ext">
+		<div class="twocol-bg-left-ext-col">
+			<div id="newvisitor">
+				
+				<h2 class="newvisitor-title cham-regular">New Visitor</h2>
+				  <% if @visitor.errors.any? %>
+				    <div id="error_explanation">
+				      <h2><%= pluralize(@visitor.errors.count, "error") %> prohibited this apt from being saved:</h2>
+				
+				      <ul>
+				      <% @visitor.errors.full_messages.each do |msg| %>
+				        <li><%= msg %></li>
+				      <% end %>
+				      </ul>
+				    </div>
+				  <% end %>
+				  <div class="newvisitor-body">
+				  	<div class="newvisitor-row row-fluid">
+				  		<%= f.text_field :visitor_name, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Visitor Name" %>
+					</div>
+					<div class="newvisitor-row row-fluid">
+				  		<%= f.text_field :visitor_company_name, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "From Organization" %>
+					</div>
+					<div class="newvisitor-row row-fluid">
+				  		<%= f.text_field :visitor_mobile_number, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Visitor mobile number" %>
+					</div>
+					<div class="newvisitor-row row-fluid">
+				  		<%= f.text_field :reason_to_visit, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Reason to visit" %>
+					</div>
+					<div class="newvisitor-row row-fluid">
+				  		<%= f.text_field :here_to_meet, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Here to meet" %>
+					</div>
+					<div class="visitor-opt">
+						<a href="#" class="visitor-opt-bt lucida-sans export btn btn-mini">More Details</a>
+					</div>
 					
-			        // reset the api URL appending the auth token parameter
-			        webcam.set_api_url('<%= upload_photos_path %>' + '?' + csrf_param + "=" + encodeURI(encodeURI(csrf_token)));
-			    }
-			
-			    function upload_complete(msg) {
-			        if (msg == 'ok') {
-			            $('#new_photo').show();
-			            $('#visitor_location').focus();
-			        } else {
-			            alert('An error occured');
-			            webcam.reset();
-			        }
-			    }
-			
-			    webcam.set_swf_url('/webcam.swf');
-			    webcam.set_api_url('<%= upload_photos_path %>');
-			    webcam.set_quality(90);
-			    webcam.set_shutter_sound(true, '/shutter.mp3');
-			    webcam.set_hook('onLoad', 'onload_complete');
-			    webcam.set_hook('onComplete', 'upload_complete');
-			    $('#webcam').html(webcam.get_html(640, 480));
-			    
-			</script>
-			
-			<input type="button" value="Take picture" onclick="webcam.snap();"/>
-
-	    </div>
-	  </div>
-	  
-	  <div class="control-group">
-	    <%= f.label :location, :class => 'control-label' %>
-	    <div class="controls">
-	      <%= f.text_field :location, :class => 'text_field' %>
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <%= f.label :visitor_vehicle_number, :class => 'control-label' %>
-	    <div class="controls">
-	      <%= f.text_field :visitor_vehicle_number, :class => 'text_field' %>
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <%= f.label :storage_device_detail, :class => 'control-label' %>
-	    <div class="controls">
-	      <%= f.text_field :storage_device_detail, :class => 'text_field' %>
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <%= f.label :authorized_id, :class => 'control-label' %>
-	    <div class="controls">
-	      <%= f.text_field :authorized_id, :class => 'text_field' %>
-	    </div>
-	  </div>
-	  <div class="control-group">
-	    <%= f.label :comment, :class => 'control-label' %>
-	    <div class="controls">
-	      <%= f.text_area :comment, :class => 'text_area large-input', :rows => 10, :cols => 60 %>
-	    </div>
+				  </div>
+			  </div>
+			  
+		  </div>
 	  </div>
   </div>
-  <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
+  
+  <div class="twocol-bg-right pull-right">
+	<div class="twocol-bg-right-ext">
+		<div class="twocol-bg-right-ext-col">
+
+			<div id="dailycounter">
+				<span>Daily visitor Count: <strong>194 peoples</strong></span>
+			</div>
+
+			<div class="wellcome">
+				<h2 class="cham-regular">Help with this page</h2>
+				<ul class="arial">
+					<li>Please fill information of visitor into New Visitor form.</li>
+					<li>With advance visitor need more optional, please click on Optional information link.</li>
+				</ul>
+			</div>
+
+			<div class="more-detail" style="opacity: 0;">
+				<h4 class="more-detail-title cham-regular">More Detail</h4>
+				<div class="cap-picture">
+					<small>Upload image for visitor</small>
+					<div class="avatar">
+						<%= image_tag "checkin-pic.png" %>
+					</div>
+					
+				      <div id="webcam"></div>
+						<script type="text/javascript">
+						   function onload_complete(msg) {
+						        // fetch the CSRF meta tag data
+						        var csrf_param = $('meta[name=csrf-param]').attr('content');
+						        var csrf_token = $('meta[name=csrf-token]').attr('content');
+								
+						        // reset the api URL appending the auth token parameter
+						        webcam.set_api_url('<%= upload_photos_path %>' + '?' + csrf_param + "=" + encodeURI(encodeURI(csrf_token)));
+						    }
+						
+						    function upload_complete(msg) {
+						        if (msg == 'ok') {
+						            $('#new_photo').show();
+						            $('#visitor_location').focus();
+						        } else {
+						            alert('An error occured');
+						            webcam.reset();
+						        }
+						    }
+						
+						    webcam.set_swf_url('/webcam.swf');
+						    webcam.set_api_url('<%= upload_photos_path %>');
+						    webcam.set_quality(90);
+						    webcam.set_shutter_sound(true, '/shutter.mp3');
+						    webcam.set_hook('onLoad', 'onload_complete');
+						    webcam.set_hook('onComplete', 'upload_complete');
+						    $('#webcam').html(webcam.get_html(300, 200));
+						    
+						</script>
+						<input type="button" value="Capture Picture" class="btn" onclick="webcam.snap();"/>
+						
+				   
+				</div>
+
+				<div class="more-info row-fluid">
+					<%= f.text_field :location, :class => 'input-text textbox-big2 span12', :placeholder => "Location" %>
+					<%= f.text_field :visitor_vehicle_number, :class => 'input-text textbox-big2 span12', :placeholder => "Visitor vehicle number" %>
+					<%= f.text_field :storage_device_detail, :class => 'input-text textbox-big2 span12', :placeholder => "Storage device detail" %>
+					<%= f.text_field :authorized_id, :class => 'input-text textbox-big2 span12', :placeholder => "Authorized identity Card number" %>
+					<!-- <input type="text" class="input-text textbox-big2 span12" placeholder="My visitor ID"/> -->
+					<%= f.text_area :comment, :class => 'text_area large-input', :rows => 10, :cols => 60, :placeholder => "Comment" %>
+					<!-- <input type="text" class="input-text textbox-big2 span12" placeholder="Comment"/> -->
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+	<%= f.submit nil, :class => 'btn btn-large btn-success newvisitor-bt' %>
+	<input type="button" value="Print" class="btn btn-large newvisitor-bt">
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 visitors_path, :class => 'btn' %>
-  </div>
 <% end %>
+  

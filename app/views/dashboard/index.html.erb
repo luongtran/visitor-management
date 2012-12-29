@@ -1,34 +1,83 @@
-<div class="page-header">
-  <h1><%=t '.title', :default => 'Dashboard' %></h1>
-</div>
-<div class="container">
-	<div id="options" class="options">
-		<div id="option-control">
-			<%= form_tag dashboard_option_view_path, {:id => "frm_view_option"} do %>
-			<%= label_tag "View options" %>
-			<%= select_tag('option_view' , options_for_select(["daily", "weekly", "monthly", "yearly"], @view_option), :onchange => ("$('#frm_view_option').submit()")) %>
-			<% end %>
-		</div>
-		<div class="results" id="dashboard-results">
-			<%= render :partial => 'visitors/visitors_list', :locals => {:ajax => false} %>
-		</div>
+<div class="dashboard">
+	<div class="board">
+		<table class="table">
+								<thead>
+									<tr class="justus-roman">
+										<th class="choose"></th>
+										<th>No of Visitor</th>
+										<th>Unique visitor</th>
+										<th>Passes expired</th>
+										<th class="mostvisitedtd">Most Visited</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="choose">
+											<div class="btn-group dash-tab">
+												<button class="btn place">Action</button>
+												<button class="btn dropdown-toggle" data-toggle="dropdown">
+													<span class="caret"></span>
+												</button>
+												<ul class="dropdown-menu">
+													<li><a href="#today" class="dash-filter" rel="today">Today</a></li>
+													<li><a href="#this-week" class="dash-filter" rel="week">This Week</a></li>
+													<li><a href="#this-month" class="dash-filter" rel="month">This Month</a></li>
+													<li><a href="#this-year" class="dash-filter" rel="Year">This Year</a></li>
+													<li><a href="#" class="dash-filter" rel="range">Custom Range</a></li>
+												</ul>
+											</div>
+										</td>
+										<td>
+											<div class="dash-num">
+												<span class="num justus-roman">
+													<%= @all_visitors.length %>
+												</span>
+											</div>
+										</td>
+										<% group_count = @all_visitors.group_by{ |item| item.send('pass_id')} %>
+										<td>
+											<div class="dash-num green">
+												<span class="num green justus-roman">
+													<%= group_count.length %>
+												</span>
+											</div>
+										</td>
+										<% expired = @all_visitors.select { |visitor| ((visitor.check_out_time.nil? && ((Time.now - visitor.created_at) > (12 * 3600))) || (!visitor.check_out_time.nil? && (visitor.check_out_time - visitor.created_at > (12 * 3600))) )} %>
+										<td>
+											<div class="dash-num red">
+												<span class="num red justus-roman">
+													<%= expired.length %>
+												</span>
+											</div>
+										</td>
+										<td class="mostvisitedtd">
+											<div class="mostvisited">
+												<div class="node rank1 lucida-sans clearfix">
+													<h4 class="pull-left">John dynamo</h4>
+													<span class="pull-right">(10)</span>
+												</div>
+												<div class="node rank2 lucida-sans clearfix">
+													<h4 class="pull-left">John dynamo</h4>
+													<span class="pull-right">(10)</span>
+												</div>
+												<div class="node rank3 lucida-sans clearfix">
+													<h4 class="pull-left">John dynamo</h4>
+													<span class="pull-right">(10)</span>
+												</div>
+												<div class="node rank4 lucida-sans clearfix">
+													<h4 class="pull-left">John dynamo</h4>
+													<span class="pull-right">(10)</span>
+												</div>
+												<div class="node rank5 lucida-sans clearfix">
+													<h4 class="pull-left">John dynamo</h4>
+													<span class="pull-right">(10)</span>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
 	</div>
-	<hr />
-	<div class="summary">
-		<h3>Summary</h3>
-		<table class="table table-striped">
-			<tr>
-				<th>No of visitors</th>
-				<th>No of unique visitors</th>
-				<th>Expired passes</th>
-			</tr>
-			<tr>
-				<td><%= @all_visitors.length %></td>
-				<% group_count = @all_visitors.group_by{ |item| item.send('pass_id')} %>
-				<td><%= group_count.length %></td>
-				<% expired = @all_visitors.select { |visitor| ((visitor.check_out_time.nil? && ((Time.now - visitor.created_at) > (12 * 3600))) || (!visitor.check_out_time.nil? && (visitor.check_out_time - visitor.created_at > (12 * 3600))) )} %>
-				<td><%= expired.length %></td>
-			</tr>
-		</table>
-	</div>
 </div>
+
+
