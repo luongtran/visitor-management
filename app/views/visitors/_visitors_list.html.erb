@@ -28,12 +28,12 @@
 				<tr class="justus-oldstyle">
 					<th>No</th>
 					<th>Pass ID</th>
-					<th>My Pass ID</th>
+					<!-- <th>My Pass ID</th> -->
 					<th>Visitor name</th>
 					<th>Company</th>
 					<th>Mobile</th>
 					<th>Check In</th>
-					<th>In Time</th>
+					<th>Photo</th>
 					<th>Here to meet</th>
 					<th>Checkout</th>
 					<% if params[:controller] == 'visitors' %>
@@ -42,22 +42,24 @@
 				</tr>
 			</thead>
 			<tbody class="lucida-sans">
+				<% i = 1%>
 				<% @visitors.each do |visitor| %>
 				<tr>
-					<td><%= link_to visitor.id, visitor_path(visitor) %></td>
+					<td><%= !params[:page].nil? ? (params[:page].to_i - 1) * 5 + i : i %></td>
+					<td><%= link_to visitor.pass_id, visitor_path(visitor) %></td>
 			        <td><%= link_to visitor.visitor_name, visitor_path(visitor) %></td>
-			        <!-- <td><%= visitor.visitor_company_name %></td> -->
+			       <td><%= visitor.visitor_company_name %></td>
 			        <td><%= visitor.visitor_mobile_number %></td>
-			        <td><%= visitor.reason_to_visit %></td>
-			        <td><%= visitor.here_to_meet %></td>
+			        <!-- <td><%= visitor.reason_to_visit %></td> -->
+			        <td><%=l visitor.created_at %></td>
 			        <td><%= image_tag visitor.photo.url(:small) %></td>
-			        <td><%= visitor.location %></td>
+			        <td><%= visitor.here_to_meet %></td>
 			        <!-- <td><%= visitor.visitor_vehicle_number %></td> -->
 			        <!-- <td><%= visitor.storage_device_detail %></td> -->
 			        <!-- <td><%= visitor.authorized_id %></td>
 			        <td><%= visitor.comment %></td> -->
-			        <td><%=l visitor.created_at %></td>
-			        <td><%= visitor.pass_id %></td>
+			        
+			        <!-- <td><%= visitor.pass_id %></td> -->
 			        <td>
 			        	<%
 			        	if visitor.check_out_time.nil? %>
@@ -85,6 +87,7 @@
 			        </td>
 			        <% end %>
 				</tr>
+				<% i+= 1 %>
 				<% end %>
 			</tbody>
 			<tfoot>

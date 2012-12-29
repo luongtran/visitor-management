@@ -7,7 +7,7 @@ class VisitorsController < ApplicationController
   # GET /visitors
   # GET /visitors.json
   def index
-    @visitors = Visitor.get_visitors(current_user.id).paginate(:per_page => 3, :page => params[:page])
+    @visitors = Visitor.get_visitors(current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
