@@ -45,7 +45,7 @@
 				<% i = 1%>
 				<% @visitors.each do |visitor| %>
 				<tr>
-					<td><%= !params[:page].nil? ? (params[:page].to_i - 1) * 5 + i : i %></td>
+					<td><%= !params[:page].nil? ? (params[:page].to_i - 1) * 5  + i : i %></td>
 					<td><%= link_to visitor.pass_id, visitor_path(visitor) %></td>
 			        <td><%= link_to visitor.visitor_name, visitor_path(visitor) %></td>
 			       <td><%= visitor.visitor_company_name %></td>

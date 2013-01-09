@@ -43,26 +43,7 @@
 								</div>
 
 								<!--Quick Search-->
-								<div class="quick-search pull-right">
-									<div class="input-prepend">
-										<%= form_tag visitor_search_path do %>
-										<div class="btn-group">
-											<button class="btn place">Action</button>
-											<button class="btn dropdown-toggle" data-toggle="dropdown">
-												<span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu">
-												<li><a href="#">Name</a></li>
-												<li><a href="#">Pass ID</a></li>
-												<li><a href="#">My Pass ID</a></li>
-											</ul>
-										</div>
-										<%= text_field_tag 'search_key' %>
-										<%= submit_tag 'Search', :class => 'lup' %>
-										
-										<% end %>
-									</div>
-								</div>
+								
 							</div>
 
 							<div class="menuroot">
@@ -90,6 +71,26 @@
 										<a href="#">Upgrade</a>
 									</li>
 								</ul>
+								<div class="quick-search pull-right">
+									<div class="input-prepend">
+										<%= form_tag visitor_search_path do %>
+										<div class="btn-group">
+											<button class="btn place">Action</button>
+											<button class="btn dropdown-toggle" data-toggle="dropdown">
+												<span class="caret"></span>
+											</button>
+											<ul class="dropdown-menu">
+												<li><a href="#">Name</a></li>
+												<li><a href="#">Pass ID</a></li>
+												<li><a href="#">My Pass ID</a></li>
+											</ul>
+										</div>
+										<%= text_field_tag 'search_key' %>
+										<%= submit_tag '', :class => 'lup' %>
+										
+										<% end %>
+									</div>
+								</div>
 							</div>
 
 						</div>

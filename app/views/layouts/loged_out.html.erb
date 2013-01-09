@@ -42,7 +42,10 @@
 				<div class="container">
 					<div class="row">
 						<div class="span8 offset2">
-							<h1 class="hattori" id="bigtip">Give it a shot for 60 days</h1>
+							<% if ((params[:controller] == "devise/sessions") && (params[:action] == "new")) %>
+							<% else %>
+							<h1 class="hattori" id="bingtip">Use free for 60 Days</h1>
+							<% end %>
 						</div>
 					</div>
 				</div>

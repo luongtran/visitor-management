@@ -5,9 +5,9 @@
 				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 					<fieldset>
 						<legend>
-							<span class="hattori">Please sign in</span>
+							<span class="hattori">Sign in</span>
 							<span class="pull-right lock"></span>
-							<a href="<%= new_registration_path(resource_name) %>" class="btn btn-primary pull-right"><i class="sp"></i>Sign up</a>
+							<!-- <a href="<%= new_registration_path(resource_name) %>" class="btn btn-primary pull-right"><i class="sp"></i>Sign up</a> -->
 						</legend>
 						<div class="wrap-form">
 							<div class="row-fluid">
@@ -19,13 +19,11 @@
 							<div class="checkbox">
 								<%= f.check_box :remember_me %> <%= f.label :remember_me %>
 							</div>
-
 							<hr class="divider" />
 							<div class="wrap-form-bt row-fluid">
 								<%= f.submit "Sign in", :class => "btn btn-success btn-large span4" %>
 								<div class="span8">
-									<p>You lost your password?</p>
-									<a href="<%= new_password_path(resource_name) %>" class="recovery">Recovery password</a>
+									<a href="<%= new_password_path(resource_name) %>" class="recovery">Recover Password</a>
 								</div>
 							</div>
 						</div>

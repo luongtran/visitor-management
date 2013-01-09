@@ -326,12 +326,13 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d3d3d3',GradientType=0 ); /* IE6-8 */
 	margin-right: 10px;
 	margin-left: 15px;
+	width: 280px;
 }
 .quick-search select {
 	width: 62px;
 }
 .quick-search input {
-	width:196px;
+	width:180px;
 	margin: 0;
 	font-size: 12px;
 }
@@ -354,13 +355,15 @@ body {
 }
 .sub .menuroot .nav {
 	margin-bottom: 0;
+	float:left;
 }
 .sub .menuroot .nav a {
 	font-family: "champagne__limousinesbold";
-	font-size: 20px;
-	padding-left: 30px;
-	padding-right: 30px;
+	font-size: 18px;
+	padding-left: 20px;
+	padding-right: 20px;
 	color: #575757;
+	
 }
 .sub .menuroot .nav > li:hover a,
 .sub .menuroot .nav > li.active a {
