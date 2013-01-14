@@ -31,15 +31,17 @@
 							<div class="pull-right top-tool">
 								<!--Account name-->
 								<div class="account-name pull-left">
-									<div class="dropdown">
-										<a class="dropdown-toggle" id="drop4" role="button" data-toggle="dropdown" href="#">tranducluong@gmail.com <b class="caret"></b></a>
+									<a class="dropdown-toggle" id="" role="button" data-toggle="dropdown" href="<%= me_index_path %>">tranducluong@gmail.com</a>
+									<!-- <div class="dropdown">
+										
 										<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
 											<li><a tabindex="-1" href="<%= me_index_path %>">Edit Information</a></li>
-											<li>
-												<%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :tabindex => -1 %>
-											</li>
 										</ul>
-									</div>
+									</div> -->
+								</div>
+								
+								<div class="account-name pull-left">
+									&nbsp;| <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :tabindex => -1 %>
 								</div>
 
 								<!--Quick Search-->
@@ -74,7 +76,7 @@
 								<div class="quick-search pull-right">
 									<div class="input-prepend">
 										<%= form_tag visitor_search_path do %>
-										<div class="btn-group">
+										<!-- <div class="btn-group">
 											<button class="btn place">Action</button>
 											<button class="btn dropdown-toggle" data-toggle="dropdown">
 												<span class="caret"></span>
@@ -84,7 +86,7 @@
 												<li><a href="#">Pass ID</a></li>
 												<li><a href="#">My Pass ID</a></li>
 											</ul>
-										</div>
+										</div> -->
 										<%= text_field_tag 'search_key' %>
 										<%= submit_tag '', :class => 'lup' %>
 										

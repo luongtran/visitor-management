@@ -127,7 +127,7 @@ class VisitorsController < ApplicationController
   end
   
   def twelve_plus
-    @visitors = Visitor.where('(created_at <= NOW() - INTERVAL 12 HOUR) AND check_out_time is null').paginate(:per_page => 3, :page => params[:page])
+    @visitors = Visitor.where('(created_at <= NOW() - interval 12 \'hours\') AND check_out_time is null').paginate(:per_page => 3, :page => params[:page])
     render 'index'
   end
   
