@@ -6,6 +6,7 @@
 			var visitor_id = data.id;
 			var message = data.message
 			if(success == 1) {
+				alert('success');
 				var parent = $('#form-' + visitor_id).parent('td');
 				$('#form-' + visitor_id).remove();
 				$(parent).text('Checked out');
@@ -65,7 +66,7 @@
 			        	if visitor.check_out_time.nil? %>
 					        <%= form_tag visitor_checkout_path, {:remote => true, :class => 'frm-checkout', :id => 'form-' + visitor.id.to_s } do %>
 					        <%= hidden_field_tag 'pass_id', visitor.pass_id %>
-					        <%= submit_tag 'Checkout', :class => 'btn btn-primary'  %>
+					        <%= submit_tag 'Checkout', :class => 'frm-checkout btn btn-primary'  %>
 					        <% end %>
 			        	<% else %>
 			        	Checked out
