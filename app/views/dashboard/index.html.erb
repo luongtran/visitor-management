@@ -53,11 +53,16 @@
 										<td class="mostvisitedtd">
 											
 											<div class="mostvisited">
-												<div class="node rank1 lucida-sans clearfix">
-													<h4 class="pull-left">John dynamo</h4>
-													<span class="pull-right">(10)</span>
+												<% 
+												i = 0
+												@most_visitors.each do |visitor|
+													i += 1
+												 %>
+												<div class="node rank<%= i %> lucida-sans clearfix">
+													<h4 class="pull-left"><%= visitor.visitor_name %></h4>
+													<span class="pull-right">(<%= visitor.num_visitors %>)</span>
 												</div>
-												<div class="node rank2 lucida-sans clearfix">
+												<!-- <div class="node rank2 lucida-sans clearfix">
 													<h4 class="pull-left">John dynamo</h4>
 													<span class="pull-right">(10)</span>
 												</div>
@@ -72,7 +77,8 @@
 												<div class="node rank5 lucida-sans clearfix">
 													<h4 class="pull-left">John dynamo</h4>
 													<span class="pull-right">(10)</span>
-												</div>
+												</div> -->
+												<% end %>
 											</div>
 										</td>
 									</tr>

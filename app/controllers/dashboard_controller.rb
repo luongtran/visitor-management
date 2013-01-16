@@ -47,6 +47,7 @@ class DashboardController < ApplicationController
     @all_visitors = Visitor.where('user_id = ? AND created_at >= ? AND created_at <= ?', current_user.id, start, end_t)
     @visitors = Visitor.where('user_id = ? AND created_at >= ? AND created_at <= ?', current_user.id, start, end_t).paginate(:per_page => 3, :page => page)
     #@unique_visitors = Visitor.where('user_id = ? AND created_at >= ? AND created_at <= ?', current_user.id, start, end_t).group_by('pass_id')
+    @most_visitors = Visitor.select('*, count(id) as num_visitors').where('user_id = ?', current_user.id).group('pass_id').order('count(id)').limit(5) #Visitor.where('user_id = ?', current_user.id).group_by('pass_id').order_by('count(id)')
   end
   
 end

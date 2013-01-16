@@ -692,7 +692,7 @@ body .textbox-big {
 	border: solid 2px white;
 }
 body .textbox-big2 {
-	background-color: #656565;
+	background-color: #EEEEEE;
 	border: solid 1px #444444;
 	box-shadow: 0 1px 1px rgba(255,255,255,0.11);
 	height: 47px;
@@ -750,4 +750,9 @@ body .textbox-big2 {
 	margin: 0 auto;
 	padding-left: 30px;
 	padding-right: 30px;
+}
+
+#visitor_comment {
+	width:280px;
+	margin-bottom: 20px;
 }

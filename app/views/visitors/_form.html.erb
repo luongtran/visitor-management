@@ -56,7 +56,7 @@
 		<div class="twocol-bg-right-ext-col">
 
 			<div id="dailycounter">
-				<span>Daily visitor Count: <strong>194 peoples</strong></span>
+				<span>Daily visitor Count: <strong><%= @daily_visitors %> <%= @daily_visitors > 1 ? 'peoples' : '' %></strong></span>
 			</div>
 
 			<div class="wellcome">
@@ -102,7 +102,7 @@
 						    webcam.set_shutter_sound(true, '/shutter.mp3');
 						    webcam.set_hook('onLoad', 'onload_complete');
 						    webcam.set_hook('onComplete', 'upload_complete');
-						    $('#webcam').html(webcam.get_html(300, 200));
+						    $('#webcam').html(webcam.get_html(400, 300));
 						    
 						</script>
 						<input type="button" value="Capture Picture" class="btn" onclick="webcam.snap();"/>
@@ -116,7 +116,7 @@
 					<%= f.text_field :storage_device_detail, :class => 'input-text textbox-big2 span12', :placeholder => "Storage device detail" %>
 					<%= f.text_field :authorized_id, :class => 'input-text textbox-big2 span12', :placeholder => "Authorized identity Card number" %>
 					<!-- <input type="text" class="input-text textbox-big2 span12" placeholder="My visitor ID"/> -->
-					<%= f.text_area :comment, :class => 'text_area large-input', :rows => 10, :cols => 60, :placeholder => "Comment" %>
+					<%= f.text_area :comment, :class => 'text_area large-input', :rows => 7, :cols => 60, :placeholder => "Comment" %>
 					<!-- <input type="text" class="input-text textbox-big2 span12" placeholder="Comment"/> -->
 				</div>
 			</div>

@@ -30,6 +30,9 @@ class VisitorsController < ApplicationController
   # GET /visitors/new.json
   def new
     @visitor = Visitor.new
+    
+    visitors = Visitor.find(:all, :conditions => ['DATE(created_at) = DATE(?)', Time.now])
+    @daily_visitors = visitors.length
 
     respond_to do |format|
       format.html # new.html.erb
@@ -127,7 +130,11 @@ class VisitorsController < ApplicationController
   end
   
   def twelve_plus
-    @visitors = Visitor.where('(created_at <= NOW() - interval 12 \'hours\') AND check_out_time is null').paginate(:per_page => 3, :page => params[:page])
+    #logger = Logger.new('log/debug.log')
+    #logger.info('---Log for twelve plus----')
+    twelve_ago = Time.now - 12.minutes
+    #logger.info(twelve_ago)
+    @visitors = Visitor.where('(created_at <= ?) AND check_out_time is null', twelve_ago).paginate(:per_page => 3, :page => params[:page])
     render 'index'
   end
   
