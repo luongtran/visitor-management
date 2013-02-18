@@ -756,3 +756,11 @@ body .textbox-big2 {
 	width:280px;
 	margin-bottom: 20px;
 }
+
+#newvisitor .newvisitor-row {
+	margin-bottom: 20px;
+}
+
+.input-text {
+	margin-bottom:10px;
+}

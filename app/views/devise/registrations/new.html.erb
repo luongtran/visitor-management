@@ -16,9 +16,9 @@
 							<!-- <input type="text" placeholder="Organisation name" class="span5 input-text"> -->
 							<%= f.text_field :email, {:class => "span5 input-text", :placeholder => "Email"} %>
 							<!-- <input type="text" placeholder="Email" class="span5 input-text"> -->
-							<%= f.text_field :password, {:class => "span5 input-text", :placeholder => "Password"} %>
+							<%= f.password_field :password, {:class => "span5 input-text", :placeholder => "Password"} %>
 							<!-- <input type="text" placeholder="Password" class="span5 input-text"> -->
-							<%= f.text_field :password_confirmation, {:class => "span5 input-text", :placeholder => "Password confirmation"} %>
+							<%= f.password_field :password_confirmation, {:class => "span5 input-text", :placeholder => "Password confirmation"} %>
 							<!-- <input type="text" placeholder="Password confirmation" class="span5 input-text"> -->
 							<%= f.submit "Sign up", :class => "btn btn-primary btn-large" %>
 							<!-- <button type="submit" class="btn btn-primary btn-large">Submit</button> -->
@@ -42,11 +42,11 @@
 			</div>
 		</div>
 		
-		<div class="guard">
+		<!-- <div class="guard">
 			<span class="guard-talk hattori">
 				Help me manager my visitor
 			</span>
-		</div>
+		</div> -->
 		<div class="smalltip">
 			<span class="hattori-em">Sign up in less than <strong>60sec</strong>.</span>
 			<br/>

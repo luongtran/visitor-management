@@ -12,7 +12,7 @@
 		<div class="twocol-bg-left-ext-col">
 			<div id="newvisitor">
 				
-				<h2 class="newvisitor-title cham-regular">New Visitor</h2>
+				<!-- <h2 class="newvisitor-title cham-regular">New Visitor</h2> -->
 				  <% if @visitor.errors.any? %>
 				    <div id="error_explanation">
 				      <h2><%= pluralize(@visitor.errors.count, "error") %> prohibited this apt from being saved:</h2>
@@ -127,6 +127,6 @@
 	<%= f.submit nil, :class => 'btn btn-large btn-success newvisitor-bt' %>
 	<input type="button" value="Print" class="btn btn-large newvisitor-bt">
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                visitors_path, :class => 'btn' %>
+                visitors_path, :class => 'btn btn-large newvisitor-bt' %>
 <% end %>
   
