@@ -3,6 +3,7 @@ class VisitorsController < ApplicationController
   PER_PAGE = 5
   
   before_filter :authenticate_user!, :except => :created
+  before_filter :get_daily_visitors, :only => [:new, :create]
   
   # GET /visitors
   # GET /visitors.json
@@ -31,9 +32,6 @@ class VisitorsController < ApplicationController
   def new
     @visitor = Visitor.new
     
-    visitors = Visitor.find(:all, :conditions => ['DATE(created_at) = DATE(?)', Time.now])
-    @daily_visitors = visitors.length
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @visitor }
@@ -56,7 +54,7 @@ class VisitorsController < ApplicationController
     
     respond_to do |format|
       if @visitor.save
-        format.html { redirect_to @visitor, notice: 'Visitor was successfully created.' }
+        format.html { redirect_to new_visitor_path, notice: 'Visitor was successfully created.' }
         format.json { render json: @visitor, status: :created, location: @visitor }
       else
         format.html { render action: "new" }
@@ -143,6 +141,11 @@ class VisitorsController < ApplicationController
   def upload_path # is used in upload and create
     file_name = session[:session_id].to_s + '.jpg'
     File.join(Rails.root, 'public', 'uploads', file_name)
+  end
+  
+  def get_daily_visitors
+    visitors = Visitor.find(:all, :conditions => ['DATE(created_at) = DATE(?)', Time.now])
+    @daily_visitors = visitors.length
   end
   
 end

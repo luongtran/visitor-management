@@ -24,25 +24,30 @@
 				      </ul>
 				    </div>
 				  <% end %>
+				  
 				  <div class="newvisitor-body">
+				  	<div class="newvisitor-row row-fluid">
+				  		<%= f.text_field :visitor_mobile_number, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Visitor mobile number" %>
+				  </div>
 				  	<div class="newvisitor-row row-fluid">
 				  		<%= f.text_field :visitor_name, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Visitor Name" %>
 					</div>
 					<div class="newvisitor-row row-fluid">
 				  		<%= f.text_field :visitor_company_name, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "From Organization" %>
 					</div>
-					<div class="newvisitor-row row-fluid">
-				  		<%= f.text_field :visitor_mobile_number, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Visitor mobile number" %>
-					</div>
+					
 					<div class="newvisitor-row row-fluid">
 				  		<%= f.text_field :reason_to_visit, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Reason to visit" %>
 					</div>
 					<div class="newvisitor-row row-fluid">
 				  		<%= f.text_field :here_to_meet, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Here to meet" %>
 					</div>
-					<div class="visitor-opt">
+					<div class="newvisitor-row row-fluid">
+				  		<%= f.text_field :badge_number, :class => 'span12 textbox-big input-large input-text justus-roman', :placeholder => "Badge number" %>
+				  	</div>
+					<!-- <div class="visitor-opt">
 						<a href="#" class="visitor-opt-bt lucida-sans export btn btn-mini">More Details</a>
-					</div>
+					</div> -->
 					
 				  </div>
 			  </div>
@@ -67,13 +72,13 @@
 				</ul>
 			</div>
 
-			<div class="more-detail" style="opacity: 0;">
+			<div class="more-detail" style="opacity: 1;">
 				<h4 class="more-detail-title cham-regular">More Detail</h4>
 				<div class="cap-picture">
 					<small>Upload image for visitor</small>
-					<div class="avatar">
+					<!-- <div class="avatar">
 						<%= image_tag "checkin-pic.png" %>
-					</div>
+					</div> -->
 					
 				      <div id="webcam"></div>
 						<script type="text/javascript">
@@ -110,7 +115,7 @@
 				   
 				</div>
 
-				<div class="more-info row-fluid">
+				<div class="row-fluid more-info">
 					<%= f.text_field :location, :class => 'input-text textbox-big2 span12', :placeholder => "Location" %>
 					<%= f.text_field :visitor_vehicle_number, :class => 'input-text textbox-big2 span12', :placeholder => "Visitor vehicle number" %>
 					<%= f.text_field :storage_device_detail, :class => 'input-text textbox-big2 span12', :placeholder => "Storage device detail" %>
@@ -125,7 +130,7 @@
 	</div>
 </div>
 	<%= f.submit nil, :class => 'btn btn-large btn-success newvisitor-bt' %>
-	<input type="button" value="Print" class="btn btn-large newvisitor-bt">
+	<!-- <input type="button" value="Print" class="btn btn-large newvisitor-bt"> -->
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 visitors_path, :class => 'btn btn-large newvisitor-bt' %>
 <% end %>

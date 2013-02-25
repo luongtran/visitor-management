@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121123203332) do
+ActiveRecord::Schema.define(:version => 20130220102608) do
 
   create_table "list_team_members", :force => true do |t|
     t.integer  "user_id"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20121123203332) do
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
     t.datetime "check_out_time"
+    t.string   "badge_number"
   end
 
 end

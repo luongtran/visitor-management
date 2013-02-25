@@ -636,7 +636,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fdfeff', end
 body .textbox-big {
 	border: solid 1px #c9c6c6;
 	background-color: #eeeeee;
-	height: 45px;
+	height: 30px;
 	font-size: 23px;
 	text-shadow: 0 1px 1px white;
 	font-weight: normal;
@@ -695,7 +695,7 @@ body .textbox-big2 {
 	background-color: #EEEEEE;
 	border: solid 1px #444444;
 	box-shadow: 0 1px 1px rgba(255,255,255,0.11);
-	height: 47px;
+	height: 30px;
 	color: #afafaf;
 }
 
@@ -763,4 +763,26 @@ body .textbox-big2 {
 
 .input-text {
 	margin-bottom:10px;
+}
+.row-fluid .span12 {
+    width: 50%;
+}
+
+.more-info .span12 {
+	width:100%;
+}
+
+.more-info .input-text {
+	margin-bottom:10px;
+}
+
+#error_explanation {
+	color:red;
+}
+
+#user_email {
+	width:100%;
+}
+#user_password {
+	width:100%;
 }
