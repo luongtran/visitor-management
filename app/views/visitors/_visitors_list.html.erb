@@ -10,7 +10,7 @@
 			<thead>
 				<tr class="justus-oldstyle">
 					<th>No</th>
-					<th>Pass ID</th>
+					<th>Badge number</th>
 					<!-- <th>My Pass ID</th> -->
 					<th>Visitor name</th>
 					<th>Company</th>
@@ -29,7 +29,7 @@
 				<% @visitors.each do |visitor| %>
 				<tr>
 					<td><%= !params[:page].nil? ? (params[:page].to_i - 1) * 5  + i : i %></td>
-					<td><%= link_to visitor.pass_id, visitor_path(visitor) %></td>
+					<td><%= link_to visitor.badge_number.nil? ? "" : visitor.badge_number, visitor_path(visitor) %></td>
 			        <td><%= link_to visitor.visitor_name, visitor_path(visitor) %></td>
 			       <td><%= visitor.visitor_company_name %></td>
 			        <td><%= visitor.visitor_mobile_number %></td>
