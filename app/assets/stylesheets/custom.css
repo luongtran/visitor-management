@@ -326,13 +326,13 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#d3d3d3',GradientType=0 ); /* IE6-8 */
 	margin-right: 10px;
 	margin-left: 15px;
-	width: 280px;
+	width: 270px;
 }
 .quick-search select {
 	width: 62px;
 }
 .quick-search input {
-	width:260px;
+	width:250px;
 	margin: 0;
 	font-size: 12px;
 }
