@@ -1,0 +1,11 @@
+
+@font-face {
+  font-family: 'Lucida Console';
+  src: url('Lucida%20Console.eot'); /* IE9 Compat Modes */
+  src: url('Lucida%20Console.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('Lucida%20Console.woff') format('woff'), /* Modern Browsers */
+       url('Lucida%20Console.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('Lucida%20Console.svg#svgFontName') format('svg'); /* Legacy iOS */
+  font-weight: normal;
+  font-style: normal;
+}

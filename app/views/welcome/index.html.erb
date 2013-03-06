@@ -1,0 +1,29 @@
+<div class="row-fluid">
+	<span class="span6">
+		<div class="formbox" id="register">
+			<h1 class="headtext text-left">Register within <strong class="special">20</strong> secs</h1>
+
+			<form action="" method="POST" name="register">
+				<label><input type="text" name="email" placeholder="Your email address" class="input-block-level"/></label>
+				<label><input type="text" name="company" placeholder="Your company name" class="input-block-level"/></label>
+				<label><input type="text" name="pass" placeholder="Enter password" class="input-block-level"/></label>
+				<label><input type="text" name="repass" placeholder="re-enter password" class="input-block-level"/></label>
+				<label>
+					<span class="row-fluid">
+						<button class="btn btn-large btn-success span8 offset2" name="registerbt">Digitalize people movement</button>
+					</span>
+				</label>
+			</form>
+		</div>
+	</span>
+	<span class="span1 breakvertical">
+	</span>
+	
+	<!--right col-->
+	<span class="span5">
+		<div class="formbox" id="login">
+			<h1 class="headtext text-center">Login</h1>
+			<%= render :partial => 'devise/sessions/new' %>
+		</div>
+	</span>
+</div>

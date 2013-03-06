@@ -4,11 +4,13 @@
 		<title>Visitor Management</title>
 		
 		<%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
-		<%= stylesheet_link_tag    "custom", :media => "all" %>
+		<%= stylesheet_link_tag    "fontkit-lucidaconsole/stylesheet", :media => "all" %>
+		<%= stylesheet_link_tag    "style", :media => "all" %>
 		
   		<%= javascript_include_tag "application" %>
 	  	<%= javascript_include_tag 'webcam' %>
 	  	<%= javascript_include_tag "custom" %>
+	  	<%= javascript_include_tag "bootstrap.min" %>
 	  	<%= csrf_meta_tags %>
 	  	
 		<!--[if lt IE 9]>
@@ -17,60 +19,29 @@
 	</head>
 	<body>
 		<!--BODY PAGE-->
-
-		<!--SECTION : HEADER-->
-		<div id="cabin-header">
-			<div class="row-fluid">
-				<div class="span5" id="break-line">
-				</div>
-				<div class="span5">
-					<div class="pull-left" id="logo">
-						<%= image_tag "34_2pass.png", :class => "img" %>
-						
-					</div>
-					<div class="hattori-em like-table" id="comment-hot">
-						<p class="lead text-shadow-white cell-center">"I keep track of project discussions, files, and events from beginning to end"</p>
-					</div>
+		
+		<div class="canvas">
+			<div class="canvas-header">
+				<div class="logo text-center clearfix">
+					<%= image_tag "logo.png", :alt => "34pass.com" %>
+					<br/>
+					<h2 class="bigheadline">The only cloud based visitor management solution</h2>	
 				</div>
 			</div>
-		</div>
-		
-		<div id="cabin-body">
-
-			<!--BANNER SLIDE-->
-			<div id="banner-slide">
+			
+			<div class="canvas-body">
 				<div class="container">
-					<div class="row">
-						<div class="span8 offset2">
-							<% if ((params[:controller] == "devise/sessions") && (params[:action] == "new")) %>
-							<% else %>
-							<h1 class="hattori" id="bingtip">Use free for 60 Days</h1>
-							<% end %>
-						</div>
+					<div class="row-fluid">
+						<%= yield %>
 					</div>
 				</div>
-				<div id="banner-shadow-bot"></div>
 			</div>
-			
-			<%= yield %>
 			
 		</div>
 		
-		<div id="cabin-footer" class="clearfix like-table text-shadow-white">
-			<div id="appname" class="pull-left">
-				<a href="#">
-					<%= image_tag "icon-nameapp.png", :class => "img" %>
-				</a>
-				<small>OneGate Visitor Manager Application</small>
-			</div>
-			<div id="copyright" class="pull-left">
-				<small>Copyright 2012 by <strong>Sixteencolumns.com</strong></small>
-			</div>
-			<div id="contact" class="pull-right">
-				<a href="#">
-					<%= image_tag "icon-contact.png", :class => "img pull-right" %>
-				</a>
-				<small class="pull-right">Contact</small>
+		<div class="canvas-footer">
+			<div class="copyright">
+				<strong>34pass.com</strong> by <a href=''><strong>16columns</strong></a>
 			</div>
 		</div>
 		

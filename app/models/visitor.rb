@@ -15,6 +15,14 @@ class Visitor < ActiveRecord::Base
   
   before_create :set_pass_id
   
+  phony_normalize :visitor_mobile_number, :default_country_code => 'IN'
+  
+  validates_plausible_phone :visitor_mobile_number, :presence => true
+  validates_plausible_phone :visitor_mobile_number, :with => /^\+\d+/
+  validates_plausible_phone :visitor_mobile_number, :without => /^\+\d+/
+  validates_plausible_phone :visitor_mobile_number, :presence => true, :with => /^\+\d+/
+
+  
   def set_pass_id
     current = Time.now
     pass_id = current.year.to_s + current.month.to_s + current.hour.to_s + current.min.to_s + current.sec.to_s

@@ -2,6 +2,8 @@ VisitorManagement::Application.routes.draw do
   
   root :to => 'dashboard#index'
   
+  match '/welcome' => 'welcome#index', :as => 'welcome'
+  
   match '/visitors/checkout' => 'visitors#visitor_checkout', :as => 'visitor_checkout'
   match '/visitors/twelve-plus' => 'visitors#twelve_plus', :as => 'twelve_plus'
   
