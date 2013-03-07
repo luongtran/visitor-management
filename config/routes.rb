@@ -16,10 +16,12 @@ VisitorManagement::Application.routes.draw do
 
   #devise_for :users
   
-  devise_for :user,:path => '',
-             :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock', :sign_up => 'register' }
-
-  
+   devise_for :user,:path => '',
+              :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock'}
+             
+   
+   match "registrations" => "registrations#create", :as => "user_registration"
+ 
   resources :photos do
     post 'upload', :on => :collection
   end

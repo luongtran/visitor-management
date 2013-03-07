@@ -2,6 +2,7 @@
 	<div class="formbox" id="register">
 		<h1 class="headtext text-left"><strong class="special">60</strong> days no obligation trial</h1>
 		<h3 class="semi-headtext">Registration in less than 25 seconds</h3>
+		<% @user = User.new %>
 		<%= render :partial => 'devise/registrations/new' %>
 	</div>
 </span>
