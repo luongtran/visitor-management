@@ -20,25 +20,30 @@
 		
 		<div class="header">
 	      <div class="container">
-	        <div class="row-fluid"><span class="span2">
-	            <div class="logoheader">
-	            	<%= image_tag "logo.png", :alt => "34pass.com" %>
-	            	
-            	</div></span><span class="span7">
-	            <div class="mainmenu">
-	              <ul class="unstyled">
-	                <li><%= link_to "Check In", new_visitor_path %></li>
-	                <li><%= link_to "Checkout", visitor_checkout_path %></li>
-	                <li><%= link_to "12+", twelve_plus_path %></li>
-	                <li><%= link_to "Dashboard", dashboard_index_path %></li>
-	                <li><%= link_to "Me", me_index_path %></li>
-	              </ul>
-	            </div></span><span class="span3">
+	        <div class="row-fluid">
+	        	<span class="span2">
+		            <div class="logoheader">
+		            	<%= image_tag "logo.png", :alt => "34pass.com" %>
+		            	
+	            	</div>
+            	</span>
+            	<span class="span7">
+		            <div class="mainmenu">
+		              <ul class="unstyled">
+		                <li><%= link_to "Check In", new_visitor_path %></li>
+		                <li><%= link_to "Checkout", visitor_checkout_path %></li>
+		                <li><%= link_to "12+", twelve_plus_path %></li>
+		                <li><%= link_to "Dashboard", dashboard_index_path %></li>
+		                <li><%= link_to "Me", me_index_path %></li>
+		              </ul>
+		            </div>
+	            </span>
+	            <span class="span3">
 	            <div class="quicksearch">
 	              <%= form_tag visitor_search_path do %>
 										
 					<%= text_field_tag 'search_key', "", {:class => "quicksearchbar input-block-level", :placeholder => "Search.."} %>
-					<%= submit_tag '', :class => 'lup' %>
+					<%= submit_tag '', :class => 'visible', :style => "display:none;" %>
 					
 				  <% end %>	
 	              
