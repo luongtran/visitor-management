@@ -10,7 +10,7 @@ class Visitor < ActiveRecord::Base
   validates :visitor_name, :visitor_company_name, :here_to_meet, :visitor_mobile_number, :reason_to_visit, :badge_number, :presence => true
 
   
-  attr_accessible :authorized_id, :comment, :here_to_meet, :location, :reason_to_visit, :storage_device_detail, 
+  attr_accessible :authorized_id, :comment, :here_to_meet, :location, :reason_to_visit, :storage_device_detail, :coming_from,
                   :user_id, :visitor_company_name, :visitor_mobile_number, :visitor_name, :visitor_vehicle_number, :pass_id, :photo, :check_out_time, :badge_number
   
   before_create :set_pass_id
