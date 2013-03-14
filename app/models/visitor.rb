@@ -7,7 +7,7 @@ class Visitor < ActiveRecord::Base
   validates_attachment_size :photo, :less_than => 5.megabytes
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']
   
-  validates :visitor_name, :visitor_company_name, :here_to_meet, :visitor_mobile_number, :reason_to_visit, :badge_number, :presence => true
+  validates :visitor_name, :here_to_meet, :visitor_mobile_number, :presence => true
 
   
   attr_accessible :authorized_id, :comment, :here_to_meet, :location, :reason_to_visit, :storage_device_detail, :coming_from,
@@ -15,12 +15,12 @@ class Visitor < ActiveRecord::Base
   
   before_create :set_pass_id
   
-  phony_normalize :visitor_mobile_number, :default_country_code => 'IN'
+  #phony_normalize :visitor_mobile_number, :default_country_code => 'IN'
   
-  validates_plausible_phone :visitor_mobile_number, :presence => true
-  validates_plausible_phone :visitor_mobile_number, :with => /^\+\d+/
-  validates_plausible_phone :visitor_mobile_number, :without => /^\+\d+/
-  validates_plausible_phone :visitor_mobile_number, :presence => true, :with => /^\+\d+/
+  # validates_plausible_phone :visitor_mobile_number, :presence => true
+  # validates_plausible_phone :visitor_mobile_number, :with => /^\+\d+/
+  # validates_plausible_phone :visitor_mobile_number, :without => /^\+\d+/
+  # validates_plausible_phone :visitor_mobile_number, :presence => true, :with => /^\+\d+/
 
   
   def set_pass_id
