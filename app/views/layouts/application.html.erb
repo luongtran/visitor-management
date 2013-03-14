@@ -4,9 +4,9 @@
 		<title>Visitor Management</title>
 		
 		<%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
-		<%= stylesheet_link_tag    "custom", :media => "all" %>
-		<%= stylesheet_link_tag "webfontkit-20130104-144010/stylesheet", :media => "all" %>
+		<%= stylesheet_link_tag    "style", :media => "all" %>
 		
+  		<%= javascript_include_tag "bootstrap.min" %>
   		<%= javascript_include_tag "application" %>
 	  	<%= javascript_include_tag 'webcam' %>
 	  	<%= javascript_include_tag "custom" %>
@@ -17,105 +17,41 @@
 		<![endif]-->
 	</head>
 	<body>
-		<!--BODY PAGE-->
-		<div class="body-sub">
-			<!--SECTION : HEADER-->
-			<div id="cabin-header" class="sub">
-				<div class="shadow">
-					<div class="row-fluid">
-						<div class="span2" id="logo2">
-							<%= image_tag "34_2pass.png" %>
-						</div>
-						<div class="span10 sub" id="break-line">
-
-							<div class="pull-right top-tool">
-								<!--Account name-->
-								<div class="account-name pull-left">
-									<a class="dropdown-toggle" id="" role="button" href="<%= me_index_path %>"><%= current_user.email %></a>
-									<!-- <div class="dropdown">
+		
+		<div class="header">
+	      <div class="container">
+	        <div class="row-fluid"><span class="span2">
+	            <div class="logoheader">
+	            	<%= image_tag "logo.png", :alt => "34pass.com" %>
+	            	
+            	</div></span><span class="span7">
+	            <div class="mainmenu">
+	              <ul class="unstyled">
+	                <li><%= link_to "Check In", new_visitor_path %></li>
+	                <li><%= link_to "Checkout", visitor_checkout_path %></li>
+	                <li><%= link_to "12+", twelve_plus_path %></li>
+	                <li><%= link_to "Dashboard", dashboard_index_path %></li>
+	                <li><%= link_to "Me", me_index_path %></li>
+	              </ul>
+	            </div></span><span class="span3">
+	            <div class="quicksearch">
+	              <%= form_tag visitor_search_path do %>
 										
-										<ul id="menu1" class="dropdown-menu" role="menu" aria-labelledby="drop4">
-											<li><a tabindex="-1" href="<%= me_index_path %>">Edit Information</a></li>
-										</ul>
-									</div> -->
-								</div>
-								
-								<div class="account-name pull-left">
-									&nbsp;| <%= link_to "Sign Out", destroy_user_session_path, :method => :delete, :tabindex => -1 %>
-								</div>
-
-								<!--Quick Search-->
-								
-							</div>
-
-							<div class="menuroot">
-								<ul class="nav nav-tabs">
-									<li class="<%= (params[:controller] == "visitors" && params[:action] == "new") ? "active" : "" %>">
-										<%= link_to "Check In", new_visitor_path %>
-									</li>
-									<li class="<%= (params[:controller] == "visitors" && params[:action] == "checkout") ? "active" : "" %>">
-										<%= link_to "Checkout", visitor_checkout_path %>
-									</li>
-									<li class="<%= (params[:controller] == "visitors" && params[:action] == "twelve_plus") ? "active" : "" %>">
-										<%= link_to "12+", twelve_plus_path %>
-									</li>
-									<li class="<%= (params[:controller] == "dashboard") ? "active" : "" %>">
-										<%= link_to "Dashboard", dashboard_index_path %>
-									</li>
-									<li class="<%= (params[:controller] == "me") ? "active" : "" %>">
-										<%= link_to "My Account", me_index_path %>
-									</li>
-									<li class="<%= (params[:controller] == "visitors" && params[:action] == "search") ? "active" : "" %>">
-										<%= link_to "Search Visitor", visitor_search_path %>
-										
-									</li>
-									<li>
-										<a href="#">Upgrade</a>
-									</li>
-								</ul>
-								<div class="quick-search pull-right">
-									<div class="input-prepend">
-										<%= form_tag visitor_search_path do %>
-										<!-- <div class="btn-group">
-											<button class="btn place">Action</button>
-											<button class="btn dropdown-toggle" data-toggle="dropdown">
-												<span class="caret"></span>
-											</button>
-											<ul class="dropdown-menu">
-												<li><a href="#">Name</a></li>
-												<li><a href="#">Pass ID</a></li>
-												<li><a href="#">My Pass ID</a></li>
-											</ul>
-										</div> -->
-										<%= text_field_tag 'search_key' %>
-										<%= submit_tag '', :class => 'lup' %>
-										
-										<% end %>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<div id="cabin-body">
-				<div class="body-bg">
-					<%= yield %>
-				</div>
-			</div>
-			<div id="cabin-footer" class="clearfix like-table text-shadow-white">
-				<div id="appname" class="pull-left">
-					<a href="#">
-						<%= image_tag "icon-nameapp.png", :class => "img" %>
-					</a>
-					<small>OneGate Visitor Manager Application</small>
-				</div>
-				<div id="copyright" class="pull-left">
-					<small>Copyright 2012 by <strong>Sixteencolumns.com</strong></small>
-				</div>
-			</div>
-		</div>
+					<%= text_field_tag 'search_key', "", {:class => "quicksearchbar input-block-level", :placeholder => "Search.."} %>
+					<%= submit_tag '', :class => 'lup' %>
+					
+				  <% end %>	
+	              
+	            </div></span></div>
+	      </div>
+	    </div>
+	    
+	    <div class="bodier">
+	    	<div class="container">
+	    		<%= yield %>
+	    	</div>
+    	</div>
+		
 	</body>
 </html>
 

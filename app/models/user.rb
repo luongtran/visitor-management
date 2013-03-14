@@ -13,6 +13,6 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :organisation_name, :logo
+  attr_accessible :email, :password, :remember_me, :organisation_name, :logo
   # attr_accessible :title, :body
 end

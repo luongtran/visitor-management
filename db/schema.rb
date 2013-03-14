@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220102608) do
+ActiveRecord::Schema.define(:version => 20130314180337) do
 
   create_table "list_team_members", :force => true do |t|
     t.integer  "user_id"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20130220102608) do
     t.datetime "photo_updated_at"
     t.datetime "check_out_time"
     t.string   "badge_number"
+    t.string   "coming_from"
   end
 
 end

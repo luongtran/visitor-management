@@ -25,6 +25,9 @@
 	padding-bottom: 15px;
 	margin-bottom: 0;
 }
+.aeffect {
+	.drop-shadow(1px 1px 0 rgba(255,255,255,0.5));
+}
 .semi-headtext {
 	font-size: 17px;
 }
@@ -60,12 +63,16 @@ html, body {
 	background-color: rgba(0, 0, 0, 0.2);
 }
 
+.backgroundtop {
+	background: url('/assets/top-shadow.png') repeat-x top left;
+}
+
 .canvas {
 	.page-fullheight;
 	.canvas-header {
 		padding-top: 15px;
 		padding-bottom: 10px;
-		background: url('../img/top-shadow.png') repeat-x top left;
+		.backgroundtop;
 		.logo {
 //			height: 155px;
 			text-align: center;
@@ -85,7 +92,7 @@ html, body {
 	}
 	.canvas-body {
 		padding-bottom: 100px;
-		background: url('../img/vertical-shadow.png') no-repeat center center;
+		background: url('/assets/vertical-shadow.png') no-repeat center center;
 		#register {
 			.headtext {
 				color: #000000;
@@ -115,4 +122,85 @@ html, body {
 	font-weight: 700;
 	color: #000000;
 	display: inline-block;
+}
+
+.header {
+	.backgroundtop;
+	padding-top: 20px;
+	margin-bottom: 60px;
+}
+
+//checkin page
+.mainmenu {
+	ul {
+		> li {
+			float: left;
+			margin-right: 10px;
+			a {
+				font-family: 'museo';
+				font-size: @font-size + 6;
+				font-weight: normal;
+				color: #808080;
+				.aeffect;
+				padding: 5px 10px;
+			}
+			a:hover {
+				background-color: #e9e9e9;
+				.border-radius(4px);
+				text-decoration: none;
+				color: #000000;
+			}
+		}
+	}
+}
+.checkinpage {
+	.break {
+//		background:url('/assets/vertical-shadow.png') no-repeat center center;
+		min-height: 438px;
+	}
+	label {
+		position:relative;
+	}
+	.label {
+		position: absolute;
+		top: 5px;
+		right: 5px;
+	}
+	input {
+		.input-large;
+	}
+}
+.avatarinput {
+//	width: 200px;
+//	height: 190px;
+	max-height: 126px;
+}
+
+.quicksearch {
+	.gradient(#fefefe, #e7e7e7);
+	border: solid 1px #c9c6c6;
+	.border-radius(5px);
+	padding: 5px;
+	> input {
+		padding:0;
+		margin: 0;
+		background: url('/assets/kinhlup.png') no-repeat right center white;
+	}
+}
+
+.capturebt {
+	.span6 {
+		position: relative;
+		a.capture {
+			position: absolute;
+			bottom: 0;
+			right: -70px;
+		}
+	}
+}
+
+.checkinpage {
+	background: url('/assets/paper.jpg');
+	.border-radius(5px);
+	padding: 10px;
 }
