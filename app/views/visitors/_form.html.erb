@@ -109,7 +109,7 @@
 	    function upload_complete(msg) {
 	        if (msg == 'ok') {
 	            $('#new_photo').show();
-	            $('#visitor_location').focus();
+	            $('#visitor_visitor_vehicle_number').focus();
 	        } else {
 	            alert('An error occured');
 	            webcam.reset();
@@ -117,12 +117,14 @@
 	    }
 	
 	    webcam.set_swf_url('/webcam.swf');
+	    //webcam.configure('camera');
+	    //webcam.set_stealth(true)
 	    webcam.set_api_url('<%= upload_photos_path %>');
 	    webcam.set_quality(90);
 	    webcam.set_shutter_sound(true, '/shutter.mp3');
 	    webcam.set_hook('onLoad', 'onload_complete');
 	    webcam.set_hook('onComplete', 'upload_complete');
-	    $('#webcam').html(webcam.get_html(150, 150));
+	    $('#webcam').html(webcam.get_html(320, 240));
 	    
 </script>
   
