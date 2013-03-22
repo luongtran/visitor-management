@@ -7,7 +7,7 @@
 	});
 </script>
 <%= form_for @visitor, :html => { :class => 'form-horizontal' } do |f| %>
-	<% if @visitor.errors.any? %>
+	<!-- <% if @visitor.errors.any? %>
 		<div id="error_explanation">
 		  <h2><%= pluralize(@visitor.errors.count, "error") %> prohibited this apt from being saved:</h2>
 		
@@ -17,7 +17,7 @@
 		  <% end %>
 		  </ul>
 		</div>
-    <% end %>
+    <% end %> -->
 	<div class="row-fluid">
 		<span class="span5">
 			<label>
@@ -101,7 +101,8 @@
 	        // fetch the CSRF meta tag data
 	        var csrf_param = $('meta[name=csrf-param]').attr('content');
 	        var csrf_token = $('meta[name=csrf-token]').attr('content');
-			
+	        //alert(csrf_param + ", " + csrf_token);
+	        
 	        // reset the api URL appending the auth token parameter
 	        webcam.set_api_url('<%= upload_photos_path %>' + '?' + csrf_param + "=" + encodeURI(encodeURI(csrf_token)));
 	    }

@@ -43,7 +43,7 @@
 	              <%= form_tag visitor_search_path do %>
 										
 					<%= text_field_tag 'search_key', "", {:class => "quicksearchbar input-block-level", :placeholder => "Search.."} %>
-					<%= submit_tag '', :class => 'visible', :style => "display:none;" %>
+					<%= submit_tag '', :class => 'searchbt' %>
 					
 				  <% end %>	
 	              
@@ -53,7 +53,8 @@
 	    
 	    <div class="bodier">
 	    	<div class="container">
-	    		<%= render partial: "layouts/flash_message", flash: flash %>
+	    		<%= render partial: "layouts/flash_messages", flash: flash %>
+	    		
 	    		<%= yield %>
 	    	</div>
     	</div>

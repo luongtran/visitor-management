@@ -57,7 +57,15 @@ class VisitorsController < ApplicationController
         format.html { redirect_to new_visitor_path, notice: 'Visitor was successfully created.' }
         format.json { render json: @visitor, status: :created, location: @visitor }
       else
-        format.html { render action: "new" }
+        format.html { 
+          #flash[:error] = Array.new
+          i = 0
+          @visitor.errors.full_messages.each do |er|
+            flash["error" + i.to_s] = er
+            i+=1
+          end
+          render action: "new" 
+        }
         format.json { render json: @visitor.errors, status: :unprocessable_entity }
       end
     end
