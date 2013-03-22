@@ -8,11 +8,11 @@
 	   <!-- registration_path(resource_name) -->
 	  	<% if @user.errors.any? %>
 		    <div id="error_explanation">
-		      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this apt from being saved:</h2>
+		      <h3 class="semi-headtext"><%= pluralize(@user.errors.count, "error") %> prohibited this apt from being saved:</h3>
 		
 		      <ul>
 		      <% @user.errors.full_messages.each do |msg| %>
-		        <li><%= msg %></li>
+		        <li class="semi-headtext"><%= msg %></li>
 		      <% end %>
 		      </ul>
 		    </div>

@@ -9,7 +9,7 @@
 @color-green: #5dbc1d;
 
 .input-large {
-	font-size: @font-size + 6; //20px
+	font-size: @font-size + 3; //20px
 	height: 48px;
 	line-height: 48px;
 	font-family: @font-rack;
@@ -30,6 +30,8 @@
 }
 .semi-headtext {
 	font-size: 17px;
+	font-weight: normal;
+	color: red;
 }
 .btn-large {
 	font-size: @font-size;
@@ -38,11 +40,11 @@
 	.headtext {
 		margin-bottom: 1px;
 		padding-bottom: 0;
+		font-size: 25px;
 	}
 	form {
 		input.input-block-level {
 			.input-large;
-
 		}
 	}
 }
@@ -96,7 +98,7 @@ html, body {
 		#register {
 			.headtext {
 				color: #000000;
-				font-family: 'museo';
+				font-family: 'helvetica neue', helvetica, arial;
 				font-weight: 500;
 				.special {
 					color: lighten(#000000, 20%);
@@ -139,7 +141,7 @@ html, body {
 			a {
 				font-family: 'museo';
 				font-size: @font-size + 6;
-				font-weight: normal;
+				font-weight: 300;
 				color: #808080;
 				.aeffect;
 				padding: 5px 10px;
@@ -169,22 +171,42 @@ html, body {
 	input {
 		.input-large;
 	}
+	textarea {
+		.input-large;
+		line-height: 1.4;
+		height: 170px;
+	}
 }
 .avatarinput {
 //	width: 200px;
 //	height: 190px;
-	max-height: 126px;
+	img {
+		width: 150px;
+		height: 150px;
+		max-width: 150px;
+	}
+	a {
+		margin-top: 124px;
+		margin-left: 20px;
+	}
 }
 
 .quicksearch {
-	.gradient(#fefefe, #e7e7e7);
-	border: solid 1px #c9c6c6;
+	background-color: #ffffff;
+	.box-shadow(0 0 5px rgba(0,0,0,0.1));
 	.border-radius(5px);
-	padding: 5px;
-	> input {
+	> input.quicksearchbar {
 		padding:0;
 		margin: 0;
+		padding: 5px;
+	}
+	.searchbt {
 		background: url('/assets/kinhlup.png') no-repeat right center white;
+		border: none;
+		padding: 0px;
+		margin-left: -31px;
+		width:26px;
+		height: 26px;
 	}
 }
 
@@ -199,8 +221,35 @@ html, body {
 	}
 }
 
-.checkinpage {
+.pagerbg {
 	background: url('/assets/paper.jpg');
 	.border-radius(5px);
 	padding: 10px;
+}
+
+.checkoutpage {
+	.passid {
+		.input-large;
+	}
+}
+
+.expiredpage {
+	.table {
+		.box-shadow(0 0 5px rgba(0,0,0,0.1));
+		font-size: 12px;
+		thead {
+			background: url('/assets/tableheader.png') repeat-x left top #ffffff;
+		}
+		tbody {
+			background-color: #ffffff;
+		}
+	}
+}
+
+.companyname {
+	font-size: 12px !important;
+}
+
+#error_explanation {
+  color:red;
 }

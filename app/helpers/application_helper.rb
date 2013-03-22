@@ -10,5 +10,18 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+  
+  def bootstrap_class_for flash_type
+    case flash_type
+    when :success
+      "alert-success"
+    when :error
+      "alert-error"
+    when :alert
+      "alert-error"
+    # else
+      # "alert-success"
+    end
+  end
 
 end

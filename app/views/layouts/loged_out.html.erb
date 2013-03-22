@@ -8,7 +8,6 @@
 		<%= stylesheet_link_tag    "style", :media => "all" %>
 		
   		<%= javascript_include_tag "application" %>
-	  	<%= javascript_include_tag 'webcam' %>
 	  	<%= javascript_include_tag "custom" %>
 	  	<%= javascript_include_tag "bootstrap.min" %>
 	  	
@@ -26,12 +25,13 @@
 				<div class="logo text-center clearfix">
 					<%= image_tag "logo.png", :alt => "34pass.com" %>
 					<br/>
-					<h2 class="bigheadline">The only cloud based visitor management solution</h2>	
+					<h2 class="bigheadline">Cloud Enabled Visitor Management Solution</h2>
 				</div>
 			</div>
 			
 			<div class="canvas-body">
 				<div class="container">
+					<%= render partial: "layouts/flash_messages", flash: flash %>
 					<div class="row-fluid">
 						<%= yield %>
 					</div>
