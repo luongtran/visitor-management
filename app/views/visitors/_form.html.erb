@@ -6,18 +6,7 @@
 		});
 	});
 </script>
-<%= form_for @visitor, :html => { :class => 'form-horizontal' } do |f| %>
-	<!-- <% if @visitor.errors.any? %>
-		<div id="error_explanation">
-		  <h2><%= pluralize(@visitor.errors.count, "error") %> prohibited this apt from being saved:</h2>
-		
-		  <ul>
-		  <% @visitor.errors.full_messages.each do |msg| %>
-		    <li><%= msg %></li>
-		  <% end %>
-		  </ul>
-		</div>
-    <% end %> -->
+<%= form_for @visitor, :html => { :class => 'form-horizontal', :name => "checkinform" } do |f| %>
 	<div class="row-fluid">
 		<span class="span5">
 			<label>
@@ -53,6 +42,8 @@
               <%= f.submit "Save", :class => 'save btn btn-large btn-success' %>	
               
               <!-- <button name="print" class="save btn btn-large btn-success">Print</button> -->
+              <%= f.submit "Save and print", :class => "save btn btn-large btn-success" %>
+              
               <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 new_visitor_path, :class => 'save btn btn-large btn-success' %>
               

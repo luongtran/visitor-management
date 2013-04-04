@@ -63,5 +63,7 @@ module VisitorManagement
       Devise::SessionsController.layout "loged_out"
     end
     
+    config.autoload_paths += %W(#{config.root}/lib)
+    
   end
 end

@@ -5,7 +5,13 @@ class RegistrationsController < ApplicationController
       sign_in :user, @user
       redirect_to({:controller => 'visitors', :action => "new"}, :notice => "Register successfully")
     else
-      flash[:error] = "Oops! unexpected errors occurs"
+      i = 0
+      @user.errors.full_messages.each do |er|
+        flash["error" + i.to_s] = er
+        i+=1
+      end
+      #flash[:error] = "Oops! unexpected errors occurs"
+      redirect_to "/login"
     end
   end
 end

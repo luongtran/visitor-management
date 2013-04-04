@@ -54,7 +54,7 @@ class VisitorsController < ApplicationController
     
     respond_to do |format|
       if @visitor.save
-        format.html { redirect_to new_visitor_path, notice: 'Visitor was successfully created.' }
+        format.html { redirect_to new_visitor_path, notice: 'Visitor has checked in.' }
         format.json { render json: @visitor, status: :created, location: @visitor }
       else
         format.html { 
@@ -100,7 +100,7 @@ class VisitorsController < ApplicationController
   
   def visitor_checkout
     if request.post?
-      visitor = Visitor.find(:first, :conditions => ['pass_id = ?', params[:pass_id]])
+      visitor = Visitor.find(:first, :conditions => ['pass_id = ? OR badge_number = ?', params[:pass_id], params[:badge_number]])
       @success = 0
       if !visitor.nil?
         visitor.check_out_time = Time.now
@@ -108,14 +108,14 @@ class VisitorsController < ApplicationController
           @success = 1
         end
       end
-      if @success
-        flash[:notice] = 'The visitor ' + visitor.visitor_name + ' checked out successfully'
-      else
-        flash[:notice] = 'The visitor ' + visitor.visitor_name + ' checked out unsuccessfully. Please check and try again'
-      end
       if request.xhr?
-        render :json => {'success' => @success, 'id' => visitor.id, 'message' => flash[:notice]}
+        render :json => {'success' => @success, 'id' => visitor.id, flash => flash}
         return
+      end
+      if @success
+        flash[:success] = 'The visitor ' + visitor.visitor_name + ' checked out successfully'
+      else
+        flash[:error] = 'The visitor ' + visitor.visitor_name + ' checked out unsuccessfully. Please check and try again'
       end
       
     end

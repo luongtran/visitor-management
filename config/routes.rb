@@ -5,7 +5,7 @@ VisitorManagement::Application.routes.draw do
   match '/welcome' => 'welcome#index', :as => 'welcome'
   
   match '/visitors/checkout' => 'visitors#visitor_checkout', :as => 'visitor_checkout'
-  match '/visitors/twelve-plus' => 'visitors#twelve_plus', :as => 'twelve_plus'
+  match '/visitors/expired' => 'visitors#twelve_plus', :as => 'twelve_plus'
   
   match '/visitors/search' => 'visitors#search', :as => 'visitor_search'
   

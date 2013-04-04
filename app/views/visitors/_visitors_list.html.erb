@@ -1,42 +1,48 @@
 <%- model_class = Visitor -%>
 
-<div id="result-table">
-	<div class="shadow-top"></div>
-
-	<div class="wrap-content">
-
-		<hr class="divider"/>
-		<table class="table table-condensed table-bordered table-hover visitor-content">
+<!-- <div id="result-table"> -->
+	
+	<!-- <div class="wrap-content"> -->
+		<div class="pagination pagination-right">
+			<%= will_paginate(@visitors) %> 
+			
+		</div>
+		
+		<table class="table table table-bordered">
 			<thead>
-				<tr class="justus-oldstyle">
+				<tr>
 					<th>No</th>
+					<th>34passid</th>
 					<th>Badge number</th>
 					<!-- <th>My Pass ID</th> -->
 					<th>Visitor name</th>
-					<th>Company</th>
-					<th>Mobile</th>
+					<th>Organization</th>
+					<!-- <th>Mobile</th> -->
 					<th>Check In</th>
-					<th>Photo</th>
 					<th>Here to meet</th>
+					<th>Location to Visit</th>
+					<th>Photo</th>
 					<th>Checkout</th>
-					<% if params[:controller] == 'visitors' %>
+					<% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus") %>
 				      <th><%=t '.actions', :default => t("helpers.actions") %></th>
 			        <% end %>
 				</tr>
 			</thead>
-			<tbody class="lucida-sans">
+			<tbody>
 				<% i = 1%>
 				<% @visitors.each do |visitor| %>
 				<tr>
 					<td><%= !params[:page].nil? ? (params[:page].to_i - 1) * 5  + i : i %></td>
+					<td><%= visitor.pass_id %></td>
 					<td><%= link_to visitor.badge_number.nil? ? "" : visitor.badge_number, visitor_path(visitor) %></td>
 			        <td><%= link_to visitor.visitor_name, visitor_path(visitor) %></td>
 			       <td><%= visitor.visitor_company_name %></td>
-			        <td><%= visitor.visitor_mobile_number %></td>
+			        <td><%= l visitor.created_at  %></td>
 			        <!-- <td><%= visitor.reason_to_visit %></td> -->
-			        <td><%=l visitor.created_at %></td>
-			        <td><%= image_tag visitor.photo.url(:small) %></td>
 			        <td><%= visitor.here_to_meet %></td>
+			        <td><%= visitor.location %></td>
+			        <td><%= image_tag visitor.photo.url(:small) %></td>
+			        <!-- <td><%= visitor.here_to_meet %></td> -->
 			        <!-- <td><%= visitor.visitor_vehicle_number %></td> -->
 			        <!-- <td><%= visitor.storage_device_detail %></td> -->
 			        <!-- <td><%= visitor.authorized_id %></td>
@@ -55,7 +61,7 @@
 			        	<% end %>
 			        	
 			        </td>
-			        <% if params[:controller] == 'visitors' %>
+			        <% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus") %>
 			        <td>
 			        <% if !ajax %>
 			          <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -73,16 +79,20 @@
 				<% i+= 1 %>
 				<% end %>
 			</tbody>
-			<tfoot>
+			<!-- <tfoot>
 			    <tr>
 			    	<td colspan="11" style="text-align: right; height: 5px;"><%= will_paginate @visitors %></td>
 			    </tr>
-		    </tfoot>
+		    </tfoot> -->
 		</table>
+		
+		<div class="pagination pagination-right">
+			<%= will_paginate(@visitors) %>
+		</div>
 
-	</div>
+	<!-- </div> -->
 
-</div>
+<!-- </div> -->
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -97,9 +107,9 @@
 				var parent = $('#form-' + visitor_id).parent('td');
 				$('#form-' + visitor_id).remove();
 				$(parent).text('Checked out');
-				$('#checkout-notification').text(message).removeClass('invalid').addClass('valid').fadeIn(300).delay(2000).fadeOut(300)
+				$('.notification').text(message).removeClass('invalid').addClass('valid').fadeIn(300).delay(2000).fadeOut(300)
 			} else {
-				$('#checkout-notification').text(message).removeClass('valid').addClass('invalid').fadeIn(300).delay(2000).fadeOut(300)
+				$('.notification').text(message).removeClass('valid').addClass('invalid').fadeIn(300).delay(2000).fadeOut(300)
 			}
 		});
 	});

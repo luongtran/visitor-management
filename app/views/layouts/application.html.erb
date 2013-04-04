@@ -5,8 +5,10 @@
 		
 		<%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
 		<%= stylesheet_link_tag    "style", :media => "all" %>
+		<%= stylesheet_link_tag "fixcss" %>
 		
-  		<%= javascript_include_tag "bootstrap.min" %>
+  		<%#= javascript_include_tag "bootstrap.min" %>
+  		<%#= javascript_include_tag "jquery-1-1.9.1.min" %>
   		<%= javascript_include_tag "application" %>
 	  	<%= javascript_include_tag 'webcam' %>
 	  	<%= javascript_include_tag "custom" %>
@@ -32,22 +34,23 @@
 		              <ul class="unstyled">
 		                <li><%= link_to "Check In", new_visitor_path %></li>
 		                <li><%= link_to "Checkout", visitor_checkout_path %></li>
-		                <li><%= link_to "12+", twelve_plus_path %></li>
+		                <li><%= link_to "Expired", twelve_plus_path %></li>
 		                <li><%= link_to "Dashboard", dashboard_index_path %></li>
 		                <li><%= link_to "Me", me_index_path %></li>
 		              </ul>
 		            </div>
 	            </span>
 	            <span class="span3">
-	            <div class="quicksearch">
-	              <%= form_tag visitor_search_path do %>
-										
-					<%= text_field_tag 'search_key', "", {:class => "quicksearchbar input-block-level", :placeholder => "Search.."} %>
-					<%= submit_tag '', :class => 'searchbt' %>
-					
-				  <% end %>	
-	              
-	            </div></span></div>
+		            <div class="quicksearch">
+		              <%= form_tag visitor_search_path do %>
+											
+						<%= text_field_tag 'search_key', "", {:class => "quicksearchbar input-block-level", :placeholder => "Search.."} %>
+						<%= submit_tag '', :class => 'searchbt' %>
+						
+					  <% end %>
+		            </div>
+	            </span>
+            </div>
 	      </div>
 	    </div>
 	    
