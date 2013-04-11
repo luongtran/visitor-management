@@ -1,6 +1,6 @@
 <%- model_class = Visitor -%>
 
-<div id="result-table">
+<div id="result-table pagerbg expiredpage">
 	<div class="shadow-top"></div>
 
 	<div class="wrap-content">
@@ -8,7 +8,7 @@
 		<hr class="divider"/>
 		<table class="table table table-bordered visitor-content">
 			<thead>
-				<tr class="justus-oldstyle">
+				<tr>
 					<th>No</th>
 					<th>Badge number</th>
 					<!-- <th>My Pass ID</th> -->
@@ -24,7 +24,7 @@
 			        <% end %>
 				</tr>
 			</thead>
-			<tbody class="lucida-sans">
+			<tbody>
 				<% i = 1%>
 				<% @visitors.each do |visitor| %>
 				<tr>
