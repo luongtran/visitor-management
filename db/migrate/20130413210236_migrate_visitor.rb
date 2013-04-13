@@ -5,7 +5,7 @@ class MigrateVisitor < ActiveRecord::Migration
                   :reason_to_visit => visitor.reason_to_visit, :storage_device_detail => visitor.storage_device_detail, :coming_from => visitor.coming_from,
                   :user_id => 6, :visitor_company_name => visitor.visitor_company_name, :visitor_mobile_number => visitor.visitor_mobile_number,
                   :visitor_name => visitor.visitor_name, :visitor_vehicle_number => visitor.visitor_vehicle_number, :pass_id => visitor.pass_id,
-                  :photo => visitor.photo, :badge_number => visitor.badge_number).save
+                  :badge_number => visitor.badge_number).save
     end
   end
 
