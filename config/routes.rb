@@ -13,6 +13,7 @@ VisitorManagement::Application.routes.draw do
   
   match '/dashboard' => 'dashboard#index', :as => :dashboard_index
   match '/dashboard/view-options' => 'dashboard#view_options', :as => :dashboard_option_view
+  match 'dashboard/view-mode' => 'dashboard#view_mode', :as => :dashboard_view_mode
 
   #devise_for :users
   

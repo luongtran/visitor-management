@@ -108,14 +108,18 @@ class VisitorsController < ApplicationController
           @success = 1
         end
       end
-      if request.xhr?
-        render :json => {'success' => @success, 'id' => visitor.id, flash => flash}
-        return
-      end
+      
       if @success
         flash[:success] = 'The visitor ' + visitor.visitor_name + ' checked out successfully'
+        message = flash[:success]
       else
         flash[:error] = 'The visitor ' + visitor.visitor_name + ' checked out unsuccessfully. Please check and try again'
+        message = flash[:error]
+      end
+      
+      respond_to do |format|
+        format.json { render :json => {'success' => @success, 'id' => visitor.id, 'message' => message}}
+        format.html
       end
       
     end
@@ -138,7 +142,7 @@ class VisitorsController < ApplicationController
   def twelve_plus
     #logger = Logger.new('log/debug.log')
     #logger.info('---Log for twelve plus----')
-    twelve_ago = Time.now - 12.minutes
+    twelve_ago = Time.now - 12.hours
     #logger.info(twelve_ago)
     @visitors = Visitor.where('(created_at <= ?) AND check_out_time is null', twelve_ago).paginate(:per_page => 3, :page => params[:page])
     render 'index'

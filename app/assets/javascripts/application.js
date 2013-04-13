@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+
+$(function() {
+	
+	$('.frm-checkout').bind('ajax:success', function(evt, data, status, xhr) {
+			
+		});
+});

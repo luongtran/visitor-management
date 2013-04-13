@@ -9,7 +9,7 @@
 </script>
 
 <div class="checkoutpage pagerbg">
-	<%= form_tag visitor_checkout_path, {:class => 'form-horizontal', :remote => true, :name => "checkoutform"} do %>
+	<%= form_tag visitor_checkout_path, {:class => 'form-horizontal', :name => "checkoutform"} do %>
 		<div class="row-fluid">
 			<div class="span4 offset4 text-center">
 				<label>
@@ -22,7 +22,7 @@
                 </label><br>
                 
                 <label>
-                	<%= text_field_tag 'badge_number', '', :class => 'input-block-level passid companyname', :placeholder => "Enter pass id displayed on &lt;company name&gt; badge" %>
+                	<%= text_field_tag 'badge_number', '', :class => 'input-block-level passid companyname', :placeholder => "Enter badge number" %>
                   
                 </label><br>
                 

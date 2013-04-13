@@ -1,5 +1,28 @@
 <%- model_class = Visitor -%>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.frm-checkout').submit(function() {
+			var data = $(this).serialize();
+			
+			$.post( "<%= visitor_checkout_path %>", data, function(response) {
+				var success = response.success;
+				var visitor_id = response.id;
+				var message = response.message
+				if(success == 1) {
+					
+					var parent = $('#form-' + visitor_id).parent('td');
+					$('#form-' + visitor_id).remove();
+					$(parent).text('Checked out');
+					$('.notification').text(message).removeClass('alert-error').addClass('alert-success').fadeIn(300).delay(2000).fadeOut(300)
+				} else {
+					$('.notification').text(message).removeClass('alert-success').addClass('alert-error').fadeIn(300).delay(2000).fadeOut(300)
+				}
+            }, "json"); 
+		});
+	});
+</script>
+
 <!-- <div id="result-table"> -->
 	
 	<!-- <div class="wrap-content"> -->
@@ -98,20 +121,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		
-		$('.frm-checkout').bind('ajax:success', function(evt, data, status, xhr) {
-			alert('ajax');
-			var success = data.success;
-			var visitor_id = data.id;
-			var message = data.message
-			if(success == 1) {
-				alert('success');
-				var parent = $('#form-' + visitor_id).parent('td');
-				$('#form-' + visitor_id).remove();
-				$(parent).text('Checked out');
-				$('.notification').text(message).removeClass('invalid').addClass('valid').fadeIn(300).delay(2000).fadeOut(300)
-			} else {
-				$('.notification').text(message).removeClass('valid').addClass('invalid').fadeIn(300).delay(2000).fadeOut(300)
-			}
-		});
+		
 	});
 </script>

@@ -16,28 +16,41 @@ class DashboardController < ApplicationController
   end
   
   def view_options
+    logger = Logger.new('log/debug.log')
+    logger.info('-----------Log for Dashboard-------------')
     @view_option = params[:option_view]
     if (@view_option.nil? || @view_option.empty?)
       @view_option = session[:option_view]
     end
-    session[:option_view] = @view_option
-    case @view_option
-    when 'daily'
-      start = Time.now.end_of_day - 1.day
-      end_t = Time.now.beginning_of_day + 1.day
-    when 'weekly'
-      start = Time.now.beginning_of_week
-      end_t = Time.now.end_of_week
-    when 'monthly'
-      start = Time.now.beginning_of_month
-      end_t = Time.now.end_of_month
-    when 'yearly'
-      start = Time.now.beginning_of_year
-      end_t = Time.now.end_of_year
+    
+    if(!params[:from].nil? && !params[:to].nil?)
+      logger.info('start: ' + params[:from])
+      start = DateTime.strptime(params[:from], '%m/%d/%Y')
+      end_t = DateTime.strptime(params[:to], '%m/%d/%Y')
+    else
+      session[:option_view] = @view_option
+      case @view_option
+      when 'daily'
+        start = Time.now.end_of_day - 1.day
+        end_t = Time.now.beginning_of_day + 1.day
+      when 'weekly'
+        start = Time.now.beginning_of_week
+        end_t = Time.now.end_of_week
+      when 'monthly'
+        start = Time.now.beginning_of_month
+        end_t = Time.now.end_of_month
+      when 'yearly'
+        start = Time.now.beginning_of_year
+        end_t = Time.now.end_of_year
+      end
     end
     
     get_visitors(start.to_datetime, end_t.to_datetime, params[:page])
     render 'index'
+  end
+  
+  def view_mode
+    @view_mode = params[:option_view]
   end
   
   
