@@ -10,16 +10,16 @@
 	<div class="filterbar clearfix">
 		<div class="row-fluid">
 			<div class="span9">
-				<%= form_tag dashboard_option_view_path do %>
+				<%= form_tag dashboard_option_view_path, {:id => "view_mode_frm"} do %>
 				<div class="kind pull-left">
 					<div class="btn-group">
-						<a href="#" class="btn">Daily</a>
+						<a href="#" class="btn view_option">Daily</a>
 						<a href="#" data-toggle="dropdown" class="btn dropdown-toggle">
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-	                      <li><a href="">Weekly</a></li>
-	                      <li><a href="">year</a></li>
+	                      <li><a href="" class="view_option">Weekly</a></li>
+	                      <li><a href="" class="view_option">year</a></li>
 	                    </ul>
 					</div>
 					<%= hidden_field_tag :option_view %>
