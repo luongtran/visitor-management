@@ -30,16 +30,16 @@ class DashboardController < ApplicationController
     else
       session[:option_view] = @view_option
       case @view_option
-      when 'daily'
+      when 'Daily'
         start = Time.now.end_of_day - 1.day
         end_t = Time.now.beginning_of_day + 1.day
-      when 'weekly'
+      when 'Weekly'
         start = Time.now.beginning_of_week
         end_t = Time.now.end_of_week
-      when 'monthly'
+      when 'Monthly'
         start = Time.now.beginning_of_month
         end_t = Time.now.end_of_month
-      when 'yearly'
+      when 'Year'
         start = Time.now.beginning_of_year
         end_t = Time.now.end_of_year
       end
