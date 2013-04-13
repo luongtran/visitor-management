@@ -1,5 +1,5 @@
 class MigrateVisitor < ActiveRecord::Migration
-  def up
+  def change
     Visitor.find(:all, :conditions => ["user_id = 1"]).each do |visitor|
       Visitor.new(:authorized_id => visitor.authorized_id, :comment => visitor.comment, :here_to_meet => visitor.here_to_meet, :location => visitor.location,
                   :reason_to_visit => visitor.reason_to_visit, :storage_device_detail => visitor.storage_device_detail, :coming_from => visitor.coming_from,
@@ -9,6 +9,4 @@ class MigrateVisitor < ActiveRecord::Migration
     end
   end
 
-  def down
-  end
 end
