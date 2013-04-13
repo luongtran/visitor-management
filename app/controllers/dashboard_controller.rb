@@ -23,7 +23,7 @@ class DashboardController < ApplicationController
       @view_option = session[:option_view]
     end
     
-    if(!params[:from].nil? && !params[:to].nil?)
+    if(params[:from].present? && params[:to].present?)
       logger.info('start: ' + params[:from])
       start = DateTime.strptime(params[:from], '%m/%d/%Y')
       end_t = DateTime.strptime(params[:to], '%m/%d/%Y')
