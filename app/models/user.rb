@@ -15,4 +15,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :remember_me, :organisation_name, :logo
   # attr_accessible :title, :body
+  
+  validate :organisation_name_cannot_blank
+  
+  def organisation_name_cannot_blank
+    if organisation_name.blank?
+      errors.add(:organisation_name, "Will need Organization name to print on badge!")
+    end
+  end
 end
