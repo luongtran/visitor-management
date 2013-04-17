@@ -40,3 +40,45 @@ input.capture {
 .companyname {
 	font-size: 18px!important;
 }
+
+.pagination .previous_page {
+	background:white;
+	padding: 4px;
+	border: solid 1px #ccc;
+	border-right: none;
+	border-radius: 5px 0 0 5px;
+	margin: 0;
+}
+.pagination .current {
+	background: white;
+	padding: 4px;
+	border: solid 1px #ccc;
+	border-right: none;
+	margin: 0;
+	margin-left: -4px;
+}
+.pagination a {
+	background: white;
+	padding: 4px;
+	border: solid 1px #ccc;
+	border-right: none;
+	margin: 0;
+	margin-left: -4px;
+}
+
+.pagination .next_page {
+	background:white;
+	padding: 4px;
+	border: solid 1px #ccc;
+	border-radius: 0 5px 5px 0;
+	margin-left: -4px;
+}
+.To {
+	margin-right: 10px;
+}
+
+.table th {
+	font-size: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
