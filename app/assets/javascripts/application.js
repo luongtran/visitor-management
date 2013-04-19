@@ -24,9 +24,9 @@ $(function() {
 			return false;
 		}
 		
-		$.post('/dashboard/view-options', $('#view_mode_frm').serialize());
+		//$.post('/dashboard/view-options', $('#view_mode_frm').serialize());
 		//alert($('#view_mode_frm').serialize());
-		//$('#view_mode_frm').submit();
+		$('#view_mode_frm').ajaxSubmit();
 	});
 });
 
