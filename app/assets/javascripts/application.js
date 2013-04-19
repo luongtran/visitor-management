@@ -39,6 +39,6 @@ function change_name_selectbox() {
 	var group = $('.filterselectebox');
 	var dropbox = $('.view_option.current', group) 
 	view_mode = $('#option_view').val();
-	alert(view_mode);
+	
 	if(view_mode != "") dropbox.text(view_mode);
 }
