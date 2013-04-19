@@ -9,6 +9,8 @@ VisitorManagement::Application.routes.draw do
   
   match '/visitors/search' => 'visitors#search', :as => 'visitor_search'
   
+  match 'visitors/get-by-phone' => "visitors#ajax_get_customer_by_phone", :as => "visitor_get_by_phone"
+  
   resources :visitors
   
   match '/dashboard' => 'dashboard#index', :as => :dashboard_index
@@ -33,7 +35,7 @@ VisitorManagement::Application.routes.draw do
   match 'me/change-password' => 'me#change_password', :as => 'change_password'
   match 'me/update' => "me#update", :as => 'me_update'
   match 'me/update-organisation' => "me#update_organisation", :as => 'update_organisation'
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

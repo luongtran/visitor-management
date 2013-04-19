@@ -21,15 +21,17 @@
 	                      <li><a href="" class="view_option">Weekly</a></li>
 	                      <li><a href="" class="view_option">Monthly</a></li>
 	                      <li><a href="" class="view_option">Year</a></li>
+	                      <li><a href="" class="view_option">Custom</a></li>
 	                    </ul>
 					</div>
 					<%= hidden_field_tag :option_view %>
 				</div>
-				<div class="calendar pull-left">
+				<div class="calendar pull-left" style="display: none;">
 					<%= text_field_tag :from, "", {:class => "From", :id => "From", :placeholder => "From"} %>
 					<%= text_field_tag :to, "", {:class => "To", :id => "To", :placeholder => "To"} %>
+					<%= button_tag "Submit", :type => "submit", :class => "filter-submit btn btn-success" %>
 				</div>
-				<%= button_tag "Submit", :type => "submit", :class => "filter-submit btn btn-success" %>
+				
 				<% end %>
 			</div>
 			<div class="span3"></div>

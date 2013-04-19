@@ -1,8 +1,8 @@
 class VisitorsController < ApplicationController
   
-  PER_PAGE = 5
+  PER_PAGE = 10
   
-  before_filter :authenticate_user!, :except => :created
+  before_filter :authenticate_user!
   before_filter :get_daily_visitors, :only => [:new, :create]
   
   # GET /visitors
@@ -100,20 +100,30 @@ class VisitorsController < ApplicationController
   
   def visitor_checkout
     if request.post?
-      visitor = Visitor.find(:first, :conditions => ['pass_id = ? OR badge_number = ?', params[:pass_id], params[:badge_number]])
+      if (!params[:pass_id].blank? && params[:badge_number].blank?)
+         conditions = ['pass_id = ? AND uesr_id = ?', params[:pass_id], current_user.id]
+      end
+      
+      if(!params[:badge_number].blank? && params[:pass_id].blank?)
+        conditions = ['badge_number = ? AND user_id = ?', params[:badge_number], current_user.id]
+      end
+      
+      if (!params[:pass_id].blank? && !params[:badge_number].blank?)
+        conditions = ['badge_number = ? AND pass_id = ? AND user_id = ?', params[:badge_number], params[:pass_id], current_user.id]
+      end
+      
+      visitor = Visitor.find(:first, :conditions => conditions)
       @success = 0
       if !visitor.nil?
         visitor.check_out_time = Time.now
         if visitor.save
           @success = 1
+          flash[:success] = 'The visitor ' + visitor.visitor_name + ' checked out successfully'
+          message = flash[:success]
         end
-      end
-      
-      if @success
-        flash[:success] = 'The visitor ' + visitor.visitor_name + ' checked out successfully'
-        message = flash[:success]
       else
-        flash[:error] = 'The visitor ' + visitor.visitor_name + ' checked out unsuccessfully. Please check and try again'
+        @success = 0
+        flash[:error] = 'The visitor not found. Please check and try again'
         message = flash[:error]
       end
       
@@ -128,7 +138,7 @@ class VisitorsController < ApplicationController
   def search
     if (!params[:search_key].nil? && !params[:search_key].empty?)
        key = params[:search_key]
-      @visitors = Visitor.search(key, current_user.id).paginate(:per_page => 3, :page => params[:page])
+      @visitors = Visitor.search(key, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
       
       respond_to do |format|
         format.js
@@ -144,8 +154,18 @@ class VisitorsController < ApplicationController
     #logger.info('---Log for twelve plus----')
     twelve_ago = Time.now - 12.hours
     #logger.info(twelve_ago)
-    @visitors = Visitor.where('(created_at <= ?) AND check_out_time is null', twelve_ago).paginate(:per_page => 3, :page => params[:page])
+    @visitors = Visitor.where('(created_at <= ?) AND (check_out_time is null) AND (user_id = ?)', twelve_ago, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
     render 'index'
+  end
+  
+  def ajax_get_customer_by_phone
+    @visitor = Visitor.find(:first, :conditions => ['visitor_mobile_number = ? AND user_id = ?', params[:visitor_mobile_number], current_user.id])
+    if !@visitor.nil?
+      @existed = 1
+    else
+      @existed = 0
+    end
+    render :json => {'existed' => @existed, 'visitor' => @visitor}
   end
   
   private

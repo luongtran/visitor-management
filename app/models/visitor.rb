@@ -15,6 +15,8 @@ class Visitor < ActiveRecord::Base
   
   before_create :set_pass_id
   
+  validate :validate_badge_number
+  
   #phony_normalize :visitor_mobile_number, :default_country_code => 'IN'
   
   # validates_plausible_phone :visitor_mobile_number, :presence => true
@@ -48,6 +50,13 @@ class Visitor < ActiveRecord::Base
                               user_id, "%#{key}%", "%#{key}%", "%#{key}%")
     else
       where('user_id = ?', user_id)
+    end
+  end
+  
+  def validate_badge_number
+    visitor = Visitor.find(:first, :conditions => ['badge_number = ? AND user_id = ? AND check_out_time is null', badge_number, user_id])
+    if !visitor.nil?
+      errors.add(:organisation_name, "The badge number already checked in and haven't checked out yet")
     end
   end
   

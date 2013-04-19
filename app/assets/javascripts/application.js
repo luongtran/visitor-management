@@ -18,6 +18,9 @@ $(function() {
 	$('.view_option').click(function() {
 		var view = $(this).text();
 		$('#option_view').val(view);
+		if(view == "Custom") {
+			$(".calendar").show();
+		}
 		alert($('#view_mode_frm').serialize());
 		$('#view_mode_frm').submit();
 	});
