@@ -27,7 +27,7 @@ $(function() {
 		//$.post('/dashboard/view-options', $('#view_mode_frm').serialize());
 		//alert($('#view_mode_frm').serialize());
 		$.post('/dashboard/view-options', $('#view_mode_frm').serialize(), function(data) {
-			$('#dashboard_content').html(response);
+			$('#dashboard_content').html(data);
 		});
 	});
 });
