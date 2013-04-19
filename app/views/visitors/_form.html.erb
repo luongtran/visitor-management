@@ -53,16 +53,15 @@
             	<%= f.text_field :badge_number, {:class => "input-block-level", :placeholder => "Unique number on your badge"} %>
               
             </label>
-            <label>
-              <%= f.submit "Save", :class => 'save btn btn-large btn-success' %>	
-              
-              <!-- <button name="print" class="save btn btn-large btn-success">Print</button> -->
-              <%= f.submit "Save and print", :class => "save btn btn-large btn-success" %>
-              
-              <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                new_visitor_path, :class => 'save btn btn-large btn-success' %>
-              
-            </label>
+            <div>
+	            <%= f.submit "Save", :class => 'save btn btn-large btn-success' %>
+
+	            <!-- <button name="print" class="save btn btn-large btn-success">Print</button> -->
+	            <%= f.submit "Save and print", :class => "save btn btn-large btn-success" %>
+
+	            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+	            new_visitor_path, :class => 'save btn btn-large btn-success' %>
+            </div>
 		</span>
 		<span class="span1">
 			<div class="break"></div>
@@ -70,12 +69,13 @@
 		<span class="span6">
 			<label>
 	            <div class="avatarinput row-fluid capturebt">
-	            	<span class="span6">
+	            	<span class="span7">
 		              	<div id="webcam"></div>
 		              	<!-- <img src="http://genk2.vcmedia.vn/N0WoyYblO3QdmZFKPMtKnadHAHTevz/Image/2012/Tran-Anh/1_original-(Copy)-58670.jpg" class="img-rounded"> -->
-	              		<input type="button" value="Capture" class="capture btn btn-small btn-success" onclick="webcam.snap();"/>
 	          		</span>
-	          		<span class="span6"></span>
+	          		<span class="span4">
+			            <input type="button" value="Capture" class="capture btn btn-small btn-success" onclick="webcam.snap();"/>
+	          		</span>
           		</div>
             </label>
 			<!-- <label>
