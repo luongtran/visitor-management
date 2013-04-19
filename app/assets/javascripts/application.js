@@ -18,7 +18,7 @@ $(function() {
 	$('.view_option').click(function() {
 		var view = $(this).text();
 		$('#option_view').val(view);
-		change_name_selectbox(view);
+		change_name_selectbox();
 		if(view == "Custom") {
 			$(".calendar").show();
 			return false;
@@ -34,8 +34,9 @@ $(function() {
 	});
 });
 
-function change_name_selectbox(view) {
+function change_name_selectbox() {
 	var group = $('.filterselectebox');
 	var dropbox = $('.view_option.current', group) 
-	if(view != "") dropbox.text(view);
+	view_mode = $('#option_view').val();
+	if(view_mode != "") dropbox.text(view_mode);
 }
