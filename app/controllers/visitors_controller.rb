@@ -159,7 +159,7 @@ class VisitorsController < ApplicationController
   end
   
   def ajax_get_customer_by_phone
-    @visitor = Visitor.find(:first, :conditions => ['visitor_mobile_number = ? AND user_id = ?', params[:visitor_mobile_number], current_user.id])
+    @visitor = Visitor.find(:last, :conditions => ['visitor_mobile_number = ? AND user_id = ?', params[:visitor_mobile_number], current_user.id])
     if !@visitor.nil?
       @existed = 1
     else

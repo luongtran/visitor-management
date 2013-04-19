@@ -18,10 +18,20 @@ $(function() {
 	$('.view_option').click(function() {
 		var view = $(this).text();
 		$('#option_view').val(view);
+		change_name_selectbox(view);
 		if(view == "Custom") {
 			$(".calendar").show();
+			return false;
 		}
+		
+		
 		//alert($('#view_mode_frm').serialize());
-		//$('#view_mode_frm').submit();
+		$('#view_mode_frm').submit();
 	});
 });
+
+function change_name_selectbox(view) {
+	var group = $('.filterselectebox');
+	var dropbox = $('.view_option.current', group) 
+	if(view != "") dropbox.text(view);
+}

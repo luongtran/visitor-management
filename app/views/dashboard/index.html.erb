@@ -10,7 +10,7 @@
 	<div class="filterbar clearfix">
 		<div class="row-fluid">
 			<div class="span9">
-				<%= form_tag dashboard_option_view_path, {:id => "view_mode_frm"} do %>
+				<%= form_tag dashboard_option_view_path, {:id => "view_mode_frm", :remote => true} do %>
 				<div class="kind pull-left">
 					<div class="btn-group filterselectebox">
 						<a href="#" class="btn view_option current">Daily</a>
@@ -38,47 +38,8 @@
 			<div class="span3"></div>
 		</div>
 	</div>
-	<div class="contentvisitor">
-		<div class="row-fluid">
-			<div class="span9">
-				<div class="row-fluid">
-			 		<div class="span4">
-	                    <div class="numberinfo"><span><%= @all_visitors.length %></span></div>
-	                    <div class="titleinfo">
-	                      <h4>Visitor Count</h4>
-	                    </div>
-                    </div>
-                    <% group_count = @all_visitors.group_by{ |item| item.send('pass_id')} %>
-	                <div class="span4">
-	                    <div class="numberinfo"><span><%= group_count.length %></span></div>
-	                    <div class="titleinfo">
-	                      <h4>Unique visitor count</h4>
-	                    </div>
-	                </div>
-	                <% expired = @all_visitors.select { |visitor| ((visitor.check_out_time.nil? && ((Time.now - visitor.created_at) > (12 * 3600))) || (!visitor.check_out_time.nil? && (visitor.check_out_time - visitor.created_at > (12 * 3600))) )} %>
-	                <div class="span4">
-	                    <div class="numberinfo"><span><%= expired.length %></span></div>
-	                    <div class="titleinfo">
-	                      <h4>Expired badges</h4>
-	                    </div>
-	                </div>
-				</div>
-			</div>
-			<div class="span3">
-				<div class="tablemost">
-					<h4>Most Visited</h4>
-					<ul class="nav nav-tabs nav-stacked">
-						<% 
-							i = 0
-							@most_visitors.each do |visitor|
-								i += 1
-						%>
-						<li><a href="#" class="name"><%= visitor.visitor_name %><span class="counter"><%= visitor.num_visitors %></span></a></li>
-						<% end %>
-					</ul>
-				</div>
-			</div>
-		</div>
+	<div class="contentvisitor" id="dashboard_content">
+		<%= render "dashboard" %>
 	</div>
 		<!-- <table class="table">
 								<thead>

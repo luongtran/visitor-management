@@ -46,6 +46,14 @@ class DashboardController < ApplicationController
     end
     
     get_visitors(start.to_datetime, end_t.to_datetime, params[:page])
+    
+    respond_to do |format|
+      format.html {
+        render "index"
+      }
+      format.js
+    end
+    
     render 'index'
   end
   
