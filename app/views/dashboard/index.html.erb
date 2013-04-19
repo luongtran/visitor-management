@@ -101,15 +101,14 @@
 							</table> -->
 	</div>
 
-<!-- RUeta : make change filter select box -->
-<!--<script type="text/javascript">-->
-	<!--(function($) {-->
-		<!--jQuery(document).ready(function() {-->
-			<!--changenameselectbox();-->
-			<!--jQuery('input#option_view').change(function() {-->
-				<!--changenameselectbox();-->
-			<!--});-->
-		<!--});-->
-		<!---->
-	<!--})(jQuery);-->
-<!--</script>-->
+ RUeta : make change filter select box
+<script type="text/javascript">
+	(function($) {
+		jQuery(document).ready(function() {
+			jQuery('.filterselectebox .dropdown-menu a').click(function() {
+				jQuery('.filterselectebox .dropdown-toggle').dropdown('toggle');
+			});
+		});
+
+	})(jQuery);
+</script>
