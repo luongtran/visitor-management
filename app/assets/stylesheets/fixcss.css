@@ -107,3 +107,8 @@ input.capture {
 	margin:0;
 	margin-top: 152px;
 }
+
+input.save {
+	padding: 11px 19px !important;
+	height: 43px !important;
+}
