@@ -15,6 +15,7 @@
 //= require twitter/bootstrap
 //= require_tree .
 $(function() {
+	change_name_selectbox();
 	$('.view_option').click(function() {
 		var view = $(this).text();
 		$('#option_view').val(view);
