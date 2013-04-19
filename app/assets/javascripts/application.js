@@ -21,7 +21,7 @@ $(function() {
 		if(view == "Custom") {
 			$(".calendar").show();
 		}
-		alert($('#view_mode_frm').serialize());
-		$('#view_mode_frm').submit();
+		//alert($('#view_mode_frm').serialize());
+		//$('#view_mode_frm').submit();
 	});
 });
