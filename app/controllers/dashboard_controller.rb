@@ -54,7 +54,6 @@ class DashboardController < ApplicationController
       format.js
     end
     
-    render 'index'
   end
   
   def view_mode
