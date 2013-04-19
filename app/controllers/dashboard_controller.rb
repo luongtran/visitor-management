@@ -23,6 +23,10 @@ class DashboardController < ApplicationController
       @view_option = session[:option_view]
     end
     
+    if @view_option.nil?
+      @view_option = "Daily"
+    end
+    
     if(params[:from].present? && params[:to].present?)
       logger.info('start: ' + params[:from])
       start = DateTime.strptime(params[:from], '%m/%d/%Y')
