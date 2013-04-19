@@ -21,8 +21,12 @@ $(function() {
 		$('#option_view').val(view);
 		change_name_selectbox();
 		if(view == "Custom") {
-			$(".calendar").show();
+			$("#calendar_area").show();
+			$("#view_mode_sb").show();
 			return false;
+		} else {
+			$("#calendar_area").hide();
+			$("#view_mode_sb").hide();
 		}
 		
 		$('form#view_mode_frm').trigger('submit.rails');

@@ -27,12 +27,11 @@
 					</div>
 					<%= hidden_field_tag :option_view, @view_option %>
 				</div>
-				<div class="calendar pull-left" style="display: none;">
+				<div class="calendar pull-left" style="display: none;", id="calendar_area">
 					<%= text_field_tag :from, "", {:class => "From", :id => "From", :placeholder => "From"} %>
 					<%= text_field_tag :to, "", {:class => "To", :id => "To", :placeholder => "To"} %>
-					<%= button_tag "Submit", :type => "submit", :class => "filter-submit btn btn-success" %>
 				</div>
-				
+				<%= button_tag "Submit", :type => "submit", :class => "filter-submit btn btn-success", :id => "view_mode_sb", :style => "display:none;" %>
 				<% end %>
 			</div>
 			<div class="span3"></div>
