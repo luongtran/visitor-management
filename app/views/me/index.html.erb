@@ -1,85 +1,69 @@
-<div class="twocol-bg pagerbg accountpage clearfix">
-	<div class="twocol-bg-wrap">
-		<div class="twocol-bg-left pull-left">
-			<div class="twocol-bg-left-ext">
-				<div class="twocol-bg-left-ext-col">
-					<div id="newvisitor" class="profile">
-						<% if flash[:notice] %>
-						<div class="result-notice"><%= flash[:notice] %></div>
-						<% end %>
-						<%= form_for current_user, :url => me_update_path, :class => 'form-horizontal'  do |f| %>
-							<div class="newvisitor-body">
-								<!-- <div class="newvisitor-row row-fluid">
-									
-									<input type="text" class="span12 textbox-big input-large input-text justus-roman" placeholder="Organization name"/>
-								</div> -->
-								
-								<div class="dividerform">
-									<h4><strong>Change password</strong></h4>
-								</div>
-								
-								<div class="newvisitor-row row-fluid">
-									<%= f.password_field :current_password, :class => 'span12 textbox-big justus-roman', :placeholder => "Old password" %>
-								</div>
-								<div class="newvisitor-row row-fluid">
-									<%= f.password_field :password, :class => 'span12 textbox-big justus-roman', :placeholder => "New password" %>
-								</div>
-								
-								<div class="newvisitor-row row-fluid">
-									<%= f.password_field :password_confirmation, :class => 'span12 textbox-big justus-roman', :placeholder => "Password confirmation" %>
-								</div>
-								
-								<div class="dividerform">
-									<h4><strong>Edit Company Logo</strong></h4>
-								</div>
-								
-								<div class="newvisitor-row row-fluid">
-									<%= f.file_field :logo, :class => 'file_field btn' %>
-									
-								</div>
-								
-								<hr class="divider"/>
-								
-							</div>
-
-							<input type="submit" value="Save" class="btn btn-large btn-success profile-bt span2">
-							<br/>
-							<br/>
-							<br/>
-							<a href="#" class=" lucida-sans export btn btn-mini">Export all your stuff</a>
-							<small>extension xsl</small>
-						<% end %>
-					</div>
+<script type="text/javascript">
+	$(document).ready(function() {
+		var organisation_name = $("input#user_organisation_name").val();
+		$('#change_organisation_name').click(function() {
+			if($(this).is(":checked")) {
+				$("input#user_organisation_name").val("");
+				$("input#user_organisation_name").focus();
+			} else {
+				$("input#user_organisation_name").val(organisation_name);
+			}
+		});
+		
+		$('#change_password').click(function() {
+			if($(this).is(":checked")) {
+				$("input#user_current_password").focus();
+			} 
+		});
+	});
+</script>
+<div class="pagerbg accountpage">
+	<div class="row-fluid">
+		<div class="span6">
+			<div class="accountpanel">
+				<%= form_for current_user, :url => me_update_path, :class => 'form-horizontal'  do |f| %>
+				<div class="row-fluid">
+					<div class="accountfield row-fluid">
+	                    <div class="span2 text-right">
+	                    	<%= check_box_tag :change_organisation_name %>
+	                    </div>
+	                    <div class="span10">
+	                    	<%= f.text_field :organisation_name, {:class => "input-block-level", :placeholder => "Edit company name"} %>
+	                    </div>
+                    </div>
+                    
+                    <div class="accountfield row-fluid">
+	                    <div class="span2 text-right">
+	                    	<%= check_box_tag :change_password %>
+	                    </div>
+	                    <div class="span10">
+	                    	<%= f.password_field :current_password, :class => 'span12 textbox-big justus-roman', :placeholder => "Current password" %>
+	                    	
+	                    </div>
+	                </div>
+	                
+	                <div class="accountfield row-fluid">
+	                    <div class="span2 text-right">
+	                    	&nbsp;
+	                    </div>
+	                    <div class="span10">
+	                    	<%= f.password_field :password, {:class => "input-block-level", :placeholder => "New password"}  %>
+	                    </div>
+	                </div>
+	                
+	                <div class="accountfield row-fluid">
+	                    <div class="span2"></div>
+	                    <div class="span10">
+	                      <div class="row-fluid">
+	                        <input type="submit" name="changeaccountbt" value="Modify" class="btn btn-success span4">
+	                      </div>
+	                    </div>
+                    </div>
+	                
 				</div>
+				<% end %>
 			</div>
 		</div>
-		
-		<div class="twocol-bg-right pull-right">
-			<div class="twocol-bg-right-ext">
-				<div class="twocol-bg-right-ext-col">
-
-					<div id="dailycounter" class="review">
-						<h4 class="cham-regular">Current Profile</h4>
-						
-						<div class="review">
-							<div class="review-row">
-								<p>Organization: <span><%= current_user.organisation_name %></span></p>
-							</div>
-							<div class="review-row">
-								<p>Organization logo: 
-									<span>
-										<%= image_tag current_user.logo.url(:small) %>
-										
-									</span>
-								</p>
-							</div>
-						</div>
-					</div>
-
-					
-				</div>
-			</div>
-		</div>
-		
 	</div>
 </div>
+
