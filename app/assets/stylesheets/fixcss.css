@@ -112,3 +112,8 @@ input.save {
 	padding: 11px 19px !important;
 	height: 43px !important;
 }
+
+#curr_image {
+	
+	display:none;
+}

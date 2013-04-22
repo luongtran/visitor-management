@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   
   def organisation_name_cannot_blank
     if organisation_name.blank?
-      errors.add(:organisation_name, "Will need Organization name to print on badge!")
+      errors.add(:organisation_name, "We require Organization name to print on your visitor badge")
     end
   end
 end
