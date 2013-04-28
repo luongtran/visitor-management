@@ -42,7 +42,7 @@ $(function() {
 	$('.frm-checkout').submit(function() {
 			var data = $(this).serialize();
 			
-			$.post( "<%= visitor_checkout_path %>", data, function(response) {
+			$.post( "/visitors/checkout", data, function(response) {
 				var success = response.success;
 				var visitor_id = response.id;
 				var message = response.message
