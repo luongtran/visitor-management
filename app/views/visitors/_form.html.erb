@@ -29,7 +29,7 @@
 		
 		$('#bt-save-print').click(function() {
 			$('#new_visitor').attr("action", "<%= save_print_path %>");
-			alert($('#new_visitor').attr("action"));
+			//alert($('#new_visitor').attr("action"));
 			//$('#new_visitor').submit();
 			$('form#new_visitor').trigger('submit.rails');
 		});
