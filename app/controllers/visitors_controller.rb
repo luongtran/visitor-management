@@ -102,8 +102,9 @@ class VisitorsController < ApplicationController
     logger = Logger.new('log/debug.log')
     logger.info('------Log for visitor checkout-----')
     if request.post?
+      logger.info("log")
       if (!params[:pass_id].blank? && params[:badge_number].blank?)
-         conditions = ['pass_id = ? AND uesr_id = ?', params[:pass_id], current_user.id]
+         conditions = ['pass_id = ? AND user_id = ?', params[:pass_id], current_user.id]
       end
       
       if(!params[:badge_number].blank? && params[:pass_id].blank?)
@@ -117,6 +118,7 @@ class VisitorsController < ApplicationController
       logger.info(conditions.to_s)
       
       visitor = Visitor.find(:first, :conditions => conditions)
+      
       @success = 0
       if !visitor.nil?
         logger.info('visitor not nil')
@@ -130,6 +132,7 @@ class VisitorsController < ApplicationController
           logger.info(visitor.errors.full_messages.join("\n"))
         end
       else
+        logger.info("visitor nil")
         @success = 0
         flash[:error] = 'The visitor not found. Please check and try again'
         message = flash[:error]

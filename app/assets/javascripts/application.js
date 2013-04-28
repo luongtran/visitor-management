@@ -37,6 +37,27 @@ $(function() {
 			// $('#dashboard_content').html(data);
 		// });
 	});
+	
+	
+	$('.frm-checkout').submit(function() {
+			var data = $(this).serialize();
+			
+			$.post( "<%= visitor_checkout_path %>", data, function(response) {
+				var success = response.success;
+				var visitor_id = response.id;
+				var message = response.message
+				if(success == 1) {
+					
+					var parent = $('#form-' + visitor_id).parent('td');
+					$('#form-' + visitor_id).remove();
+					$(parent).text('Checked out');
+					$('.notification').text(message).removeClass('alert-error').addClass('alert-success').fadeIn(300).delay(2000).fadeOut(300)
+				} else {
+					$('.notification').text(message).removeClass('alert-success').addClass('alert-error').fadeIn(300).delay(2000).fadeOut(300)
+				}
+            }, "json"); 
+		});
+	
 });
 
 function change_name_selectbox() {
