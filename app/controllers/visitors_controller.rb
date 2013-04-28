@@ -53,7 +53,7 @@ class VisitorsController < ApplicationController
     end
     
     respond_to do |format|
-      if @visitor.save
+      if @visitor.save_with_out_print
         format.html { redirect_to new_visitor_path, notice: 'Visitor has checked in.' }
         format.json { render json: @visitor, status: :created, location: @visitor }
       else
@@ -179,6 +179,30 @@ class VisitorsController < ApplicationController
     end
     render :json => {'existed' => @existed, 'visitor' => @visitor}
   end
+  
+  #POST /visitors/save-print
+  def save_and_print
+    @visitor = Visitor.new(params[:visitor])
+    @visitor.user_id = current_user.id
+    if FileTest.exist?(upload_path)
+      @visitor.photo = File.new(upload_path)
+    end
+    respond_to do |format|
+      if @visitor.save_print
+        format.html 
+      else
+        format.html {
+          i = 0
+          @visitor.errors.full_messages.each do |er|
+            flash["error" + i.to_s] = er
+            i+=1
+          end
+          render action: "new" 
+        }
+      end
+    end
+  end
+  
   
   private
   

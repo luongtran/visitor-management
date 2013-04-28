@@ -26,6 +26,14 @@
 				}
 			});
 		});
+		
+		$('#bt-save-print').click(function() {
+			$('#new_visitor').attr("action", "<%= save_print_path %>");
+			alert($('#new_visitor').attr("action"));
+			//$('#new_visitor').submit();
+			$('form#new_visitor').trigger('submit.rails');
+		});
+		
 	});
 </script>
 <%= form_for @visitor, :html => { :class => 'form-horizontal', :name => "checkinform" } do |f| %>
@@ -64,7 +72,7 @@
 	            <%= f.submit "Save", :class => 'save btn btn-large btn-success' %>
 
 	            <!-- <button name="print" class="save btn btn-large btn-success">Print</button> -->
-	            <%= f.submit "Save and print", :class => "save btn btn-large btn-success" %>
+	            <%= f.button "Save and print", :class => "save btn btn-large btn-success", :type => "button", :id => "bt-save-print" %>
 
 	            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
 	            new_visitor_path, :class => 'save btn btn-large btn-success' %>

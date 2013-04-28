@@ -7,7 +7,7 @@
 	                      <h4>Visitor Count</h4>
 	                    </div>
                     </div>
-                    <% group_count = @all_visitors.group_by{ |item| item.send('pass_id')} %>
+                    <% group_count = @all_visitors.group_by{ |item| item.send('visitor_mobile_number')} %>
 	                <div class="span4">
 	                    <div class="numberinfo"><span><%= group_count.length %></span></div>
 	                    <div class="titleinfo">

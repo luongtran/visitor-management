@@ -1,33 +1,6 @@
-<div id="searchbag">
-	<!-- <div class="search-wrap">
-		<%= form_tag visitor_search_path, :remote => false do %>
-		<div class="input-prepend input-append">
-			<div class="btn-group type-choose">
-				<button class="btn place btleft1">Choose type</button>
-				<button class="btn dropdown-toggle btleft2" data-toggle="dropdown">
-					<span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu">
-					<li><a href="#" rel="name">Name</a></li>
-					<li><a href="#" rel="mobile">Mobile #</a></li>
-					<li><a href="#" rel="passid">Pass ID</a></li>
-					<li><a href="#" rel="mypassid">My Pass ID</a></li>
-					<li><a href="#" rel="company">Company</a></li>
-					<li><a href="#" rel="heretomeet">Meet</a></li>
-				</ul>
-			</div>
-			<%= text_field_tag 'search_key', '',:class => 'span2 searchtextbox justus-roman bigtextbox' %>
-			
-			<div class="btn-group">
-				<button class="btn searchsubmit"></button>
-			</div>
-		</div>
-		<div class="submittrue">
-			<input type="submit" value="" class="searchsubmitbt" />
-		</div>
-		<% end %>
-	</div> -->
+<div class="pagerbg expiredpage">
+	<% if !@visitors.nil? %>
+	<%= render :partial => 'visitors_list', :locals =>{:ajax => false} %>
+	<% end %>
 </div>
-<% if !@visitors.nil? %>
-<%= render :partial => 'visitors_list', :locals =>{:ajax => false} %>
-<% end %>
+
