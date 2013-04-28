@@ -16,7 +16,7 @@
 					//$('#visitor_badge_number').val(visitor.badge_number);
 					$('#visitor_authorized_id').val(visitor.authorized_id);
 					$('#visitor_here_to_meet').focus();
-					alert(visitor.photo_file_name);
+					
 					if(visitor.photo != "") {
 						var html = '<img src="/assets/visitors/'+ visitor.id +'/small/' + visitor.photo_file_name +'" alt="visitor image" />';
 						$('#curr_image').html(html);
