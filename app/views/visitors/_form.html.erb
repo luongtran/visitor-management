@@ -22,9 +22,17 @@
 						$('#curr_image').html(html);
 						$('#curr_image').show();
 						$('#webcam').hide();
+						$('#bt_capture').hide();
+						$('#bt_re_capture').show();
 					}
 				}
 			});
+		});
+		
+		$('#bt_re_capture').click(function() {
+			$('#webcam').show();
+			$('#bt_capture').show();
+			$('#bt_re_capture').hide();
 		});
 		
 		$('#bt-save-print').click(function() {
@@ -91,6 +99,7 @@
 	          		</span>
 	          		<span class="span4">
 			            <input type="button" value="Capture" class="capture btn btn-small btn-success" id="bt_capture" onclick="webcam.snap();"/>
+			            <input type="button" value="Re-capture" class="capture btn btn-small btn-success" id="bt_re_capture" style="display: none;" />
 	          		</span>
           		</div>
             </label>
