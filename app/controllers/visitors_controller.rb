@@ -99,6 +99,8 @@ class VisitorsController < ApplicationController
   end
   
   def visitor_checkout
+    logger = Logger.new('log/debug.log')
+    logger.info('------Log for visitor checkout-----')
     if request.post?
       if (!params[:pass_id].blank? && params[:badge_number].blank?)
          conditions = ['pass_id = ? AND uesr_id = ?', params[:pass_id], current_user.id]
@@ -112,14 +114,20 @@ class VisitorsController < ApplicationController
         conditions = ['badge_number = ? AND pass_id = ? AND user_id = ?', params[:badge_number], params[:pass_id], current_user.id]
       end
       
+      logger.info(conditions.to_s)
+      
       visitor = Visitor.find(:first, :conditions => conditions)
       @success = 0
       if !visitor.nil?
+        logger.info('visitor not nil')
         visitor.check_out_time = Time.now
         if visitor.save
+          logger.info('check out successfully')
           @success = 1
           flash[:success] = 'The visitor ' + visitor.visitor_name + ' checked out successfully'
           message = flash[:success]
+        else
+          logger.info(visitor.errors.full_messages.join("\n"))
         end
       else
         @success = 0
@@ -137,15 +145,19 @@ class VisitorsController < ApplicationController
   
   def search
     if (!params[:search_key].nil? && !params[:search_key].empty?)
-       key = params[:search_key]
-      @visitors = Visitor.search(key, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
-      
-      respond_to do |format|
-        format.js
-        format.html
-        format.json { render json: @visitors }
-      end
+      key = params[:search_key]
+      session[:search_key] = key
+    else
+      key = session[:search_key]
     end
+    @visitors = Visitor.search(key, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
+    
+    respond_to do |format|
+      format.js
+      format.html
+      format.json { render json: @visitors }
+    end
+    #end
     
   end
   

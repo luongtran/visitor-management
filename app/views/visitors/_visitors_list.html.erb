@@ -47,7 +47,7 @@
 					<th>Location to Visit</th>
 					<th>Photo</th>
 					<th>Checkout</th>
-					<% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus") %>
+					<% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus" && params[:action] != "search") %>
 				      <th><%=t '.actions', :default => t("helpers.actions") %></th>
 			        <% end %>
 				</tr>
@@ -58,8 +58,24 @@
 				<tr>
 					<td><%= !params[:page].nil? ? (params[:page].to_i - 1) * 5  + i : i %></td>
 					<td><%= visitor.pass_id %></td>
-					<td><%= link_to visitor.badge_number.nil? ? "" : visitor.badge_number, visitor_path(visitor) %></td>
-			        <td><%= link_to visitor.visitor_name, visitor_path(visitor) %></td>
+					
+					<% if params[:controller] == "visitors" && params[:action] == "index" %>
+					<td>
+						<%= link_to visitor.badge_number.nil? ? "" : visitor.badge_number, visitor_path(visitor) %>
+					</td>
+					<td>
+						<%= link_to visitor.visitor_name, visitor_path(visitor) %>
+					</td>
+					<% else %>
+					<td>
+						<%= visitor.badge_number.nil? ? "" : visitor.badge_number %>
+					</td>
+					
+					<td>
+						<%= visitor.visitor_name %>
+					</td>
+						
+					<% end %>
 			        <td><%= visitor.visitor_company_name %></td>
 			        <td><%= visitor.created_at.strftime("%a, %d %b %Y %H:%M")  %></td>
 			        <!-- <td><%= visitor.reason_to_visit %></td> -->
@@ -85,7 +101,7 @@
 			        	<% end %>
 			        	
 			        </td>
-			        <% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus") %>
+			        <% if (params[:controller] == 'visitors' && (params[:action] != "twelve_plus" && params[:action] != "search")) %>
 			        <td>
 			        <% if !ajax %>
 				      <div class="btn-group">

@@ -15,7 +15,8 @@ class Visitor < ActiveRecord::Base
   
   before_create :set_pass_id
   
-  validate :validate_badge_number
+  validate :validate_badge_number, :on => :create
+  validate :validate_visitor_mobile_number_check_in, :on => :create
   
   #phony_normalize :visitor_mobile_number, :default_country_code => 'IN'
   
@@ -44,7 +45,10 @@ class Visitor < ActiveRecord::Base
   end
   
   def self.search(key, user_id)
-    key = key.downcase
+    if !key.nil?
+      key = key.downcase
+    end
+    
     if key
       where('user_id = ? AND (LOWER(visitor_name) like ? OR LOWER(visitor_company_name) like ? OR pass_id like ?)', 
                               user_id, "%#{key}%", "%#{key}%", "%#{key}%")
@@ -56,7 +60,14 @@ class Visitor < ActiveRecord::Base
   def validate_badge_number
     visitor = Visitor.find(:first, :conditions => ['badge_number = ? AND user_id = ? AND check_out_time is null', badge_number, user_id])
     if !visitor.nil?
-      errors.add(:organisation_name, "The badge number already checked in and haven't checked out yet")
+      errors.add(:organisation_name, "You must check out badge number #{badge_number}")
+    end
+  end
+  
+  def validate_visitor_mobile_number_check_in
+    visitor = Visitor.find(:first, :conditions => ["visitor_mobile_number = ? AND user_id = ? AND check_out_time is null", visitor_mobile_number, user_id])
+    if !visitor.nil?
+      errors.add(:organisation_name, "Visitor with mobile number #{visitor_mobile_number} must be checked out")
     end
   end
   
