@@ -71,4 +71,5 @@ input.capture {
 	padding: 4px;
 	border: solid 1px #ccc;
 	border-radius: 0 5px 5px 0;
+	margin-left: -4px;
 }
