@@ -57,7 +57,7 @@ input.capture {
 	margin: 0;
 	margin-left: -4px;
 }
-.pagination .next {
+.pagination a {
 	background: white;
 	padding: 4px;
 	border: solid 1px #ccc;
