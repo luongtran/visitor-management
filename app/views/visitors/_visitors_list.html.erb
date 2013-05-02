@@ -37,7 +37,7 @@
 				<tr>
 					<th>No</th>
 					<th>34passid</th>
-					<th>Badge number</th>
+					<th>Badge ID</th>
 					<!-- <th>My Pass ID</th> -->
 					<th>Visitor name</th>
 					<th>Organization</th>
@@ -60,7 +60,7 @@
 					<td><%= visitor.pass_id %></td>
 					<td><%= link_to visitor.badge_number.nil? ? "" : visitor.badge_number, visitor_path(visitor) %></td>
 			        <td><%= link_to visitor.visitor_name, visitor_path(visitor) %></td>
-			       <td><%= visitor.visitor_company_name %></td>
+			        <td><%= visitor.visitor_company_name %></td>
 			        <td><%= l visitor.created_at  %></td>
 			        <!-- <td><%= visitor.reason_to_visit %></td> -->
 			        <td><%= visitor.here_to_meet %></td>
@@ -78,7 +78,7 @@
 			        	if visitor.check_out_time.nil? %>
 					        <%= form_tag visitor_checkout_path, {:remote => true, :class => 'frm-checkout', :id => 'form-' + visitor.id.to_s } do %>
 					        <%= hidden_field_tag 'pass_id', visitor.pass_id %>
-					        <%= submit_tag 'Checkout', :class => 'btn btn-primary'  %>
+					        <%= submit_tag 'Checkout', :class => 'btn btn-small'  %>
 					        <% end %>
 			        	<% else %>
 			        	Checked out
@@ -88,6 +88,7 @@
 			        <% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus") %>
 			        <td>
 			        <% if !ajax %>
+				      <div class="btn-group">
 			          <%= link_to t('.edit', :default => t("helpers.links.edit")),
 			                      edit_visitor_path(visitor), :class => 'btn btn-mini' %>
 			          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
@@ -95,7 +96,7 @@
 			                      :method => :delete,
 			                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
 			                      :class => 'btn btn-mini btn-danger' %>
-			        	
+			            </div>
 			        <% end %>              
 			        </td>
 			        <% end %>
