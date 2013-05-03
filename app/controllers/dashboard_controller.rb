@@ -74,7 +74,7 @@ class DashboardController < ApplicationController
     @most_visitors = Visitor.select('visitor_name, visitor_mobile_number, count(visitor_name) as num_visitors').where('user_id = ?', current_user.id).group('visitor_name').group("visitor_mobile_number").order('num_visitors desc').limit(5) 
     #Visitor.where('user_id = ?', current_user.id).group_by('pass_id').order_by('count(id)')
     twelve_ago = Time.now - 12.hours
-    @expired = Visitor.where('(((created_at <= ?) AND (check_out_time is null)) || (check_out_time - created_at > 12)) AND (user_id = ?) AND created_at >= ? AND created_at <= ?', twelve_ago, current_user.id, start, end_t)
+    @expired = Visitor.where('(((created_at <= ?) AND (check_out_time is null))) AND (user_id = ?) AND created_at >= ? AND created_at <= ?', twelve_ago, current_user.id, start, end_t)
   end
   
 end
