@@ -14,7 +14,11 @@
 	                      <h4>Unique visitor count</h4>
 	                    </div>
 	                </div>
-	                <% expired = @all_visitors.select { |visitor| ((visitor.check_out_time.nil? && ((Time.now - visitor.created_at) > (12 * 3600))) || (!visitor.check_out_time.nil? && (visitor.check_out_time - visitor.created_at > (12 * 3600))) )} %>
+	                <%
+	                	twelve_ago = Time.now - 12.hours
+	                 	expired = @all_visitors.select { |visitor| ((visitor.check_out_time.nil? && (visitor.created_at > twelve_ago)) || (!visitor.check_out_time.nil? && (visitor.created_at > twelve_ago)) )}
+	                 	 
+                    %>
 	                <div class="span4">
 	                    <div class="numberinfo"><span><%= expired.length %></span></div>
 	                    <div class="titleinfo">
