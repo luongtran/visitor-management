@@ -77,15 +77,7 @@
             	<%= f.text_field :badge_number, {:class => "input-block-level", :placeholder => "Unique number on your badge"} %>
               
             </label>
-            <div>
-	            <%= f.submit "Save", :class => 'save btn btn-large btn-success' %>
-
-	            <!-- <button name="print" class="save btn btn-large btn-success">Print</button> -->
-	            <%= f.button "Save and print", :class => "save btn btn-large btn-success", :type => "button", :id => "bt-save-print" %>
-
-	            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-	            new_visitor_path, :class => 'save btn btn-large btn-success' %>
-            </div>
+            
 		</span>
 		<span class="span1">
 			<div class="break"></div>
@@ -120,10 +112,20 @@
 		    	<%= f.text_field :storage_device_detail, {:class => "input-block-level", :placeholder => "Store device serial number"} %>
 		    </label>
 		    
-		    <label>
+		    <!-- <label>
 		    	<%= f.text_area :comment, :class => 'input-block-level', :rows => 7, :cols => 60, :placeholder => "Comments" %>
 		      
-		    </label>
+		    </label> -->
+		    
+		    <div>
+	            <%= f.submit "Save", :class => 'save btn btn-large btn-success' %>
+
+	            <!-- <button name="print" class="save btn btn-large btn-success">Print</button> -->
+	            <%= f.button "Save and print", :class => "save btn btn-large btn-success", :type => "button", :id => "bt-save-print" %>
+
+	            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+	            new_visitor_path, :class => 'save btn btn-large btn-success' %>
+            </div>
     </span>
 </div>
 <% end %>
