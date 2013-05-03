@@ -14,4 +14,14 @@ class RegistrationsController < ApplicationController
       redirect_to "/login"
     end
   end
+  
+  def reset_password
+    if request.post?
+      
+    end
+    
+    respond_to do |format|
+      format.html
+    end
+  end
 end

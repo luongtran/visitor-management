@@ -183,36 +183,7 @@ class VisitorsController < ApplicationController
     render :json => {'existed' => @existed, 'visitor' => @visitor}
   end
   
-  #POST /visitors/save-print
-  def save_and_print
-    @visitor = Visitor.new(params[:visitor])
-    @visitor.user_id = current_user.id
-    if FileTest.exist?(upload_path)
-      @visitor.photo = File.new(upload_path)
-    end
-    respond_to do |format|
-      if @visitor.save_print
-        format.html 
-      else
-        format.html {
-          i = 0
-          @visitor.errors.full_messages.each do |er|
-            flash["error" + i.to_s] = er
-            i+=1
-          end
-          render action: "new" 
-        }
-      end
-    end
-  end
-  
-  
   private
-  
-  def upload_path # is used in upload and create
-    file_name = session[:session_id].to_s + '.jpg'
-    File.join(Rails.root, 'public', 'uploads', file_name)
-  end
   
   def get_daily_visitors
     visitors = Visitor.find(:all, :conditions => ['DATE(created_at) = DATE(?)', Time.now])

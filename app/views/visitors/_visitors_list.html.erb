@@ -59,7 +59,14 @@
 			        <!-- <td><%= visitor.reason_to_visit %></td> -->
 			        <td><%= visitor.here_to_meet %></td>
 			        <td><%= visitor.location %></td>
-			        <td><%= image_tag visitor.photo.url(:small) %></td>
+			        <td>
+			        	
+			        	<% if !visitor.photo_file_name.nil? %>
+			        	<%= image_tag visitor.photo.url(:small) %>
+			        	<% else %>
+			        	Not Captured
+			        	<% end %>
+		        	</td>
 			        <!-- <td><%= visitor.here_to_meet %></td> -->
 			        <!-- <td><%= visitor.visitor_vehicle_number %></td> -->
 			        <!-- <td><%= visitor.storage_device_detail %></td> -->
