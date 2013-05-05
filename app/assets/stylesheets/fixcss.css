@@ -76,3 +76,7 @@ input.capture {
 .To {
 	margin-right: 10px;
 }
+
+.table th {
+	font-size: 10px;
+}
