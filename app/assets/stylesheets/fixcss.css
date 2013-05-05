@@ -79,4 +79,6 @@ input.capture {
 
 .table th {
 	font-size: 10px;
+	padding-top: 4px;
+	padding-bottom: 4px;
 }
