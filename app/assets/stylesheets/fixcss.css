@@ -93,5 +93,5 @@ input[type="text"] {
 }
 
 .filterbar .kind {
-	marign-right: 10px;
+	marign-right: 10px !important;
 }
