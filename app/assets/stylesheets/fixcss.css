@@ -89,5 +89,5 @@ input[type="text"] {
 }
 
 .quicksearchbar {
-	margin-bottom: 0;
+	margin-bottom: 0 !important;
 }
