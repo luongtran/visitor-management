@@ -87,3 +87,7 @@ input.capture {
 input[type="text"] {
 	line-height: 1;
 }
+
+.quicksearchbar {
+	margin-bottom: 0;
+}
