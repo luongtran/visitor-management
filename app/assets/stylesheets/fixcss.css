@@ -82,3 +82,8 @@ input.capture {
 	padding-top: 4px;
 	padding-bottom: 4px;
 }
+
+
+input[type="text"] {
+	line-height: 1;
+}
