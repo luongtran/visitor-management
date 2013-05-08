@@ -12,8 +12,8 @@
 			<div class="span9">
 				<%= form_tag dashboard_option_view_path, {:id => "view_mode_frm"} do %>
 				<div class="kind pull-left">
-					<div class="btn-group">
-						<a href="#" class="btn view_option">Daily</a>
+					<div class="btn-group filterselectebox">
+						<a href="#" class="btn view_option current">Daily</a>
 						<a href="#" data-toggle="dropdown" class="btn dropdown-toggle">
 							<span class="caret"></span>
 						</a>
@@ -139,3 +139,19 @@
 								</tbody>
 							</table> -->
 	</div>
+
+<!-- RUeta : make change filter select box -->
+<script type="text/javascript">
+	(function($) {
+		jQuery(document).ready(function() {
+			changenameselectbox();
+		});
+		function changenameselectbox()
+		{
+			var group = jQuery('.filterselectebox');
+			var dropbox = jQuery('.view_option.current', group);
+			var now = jQuery('input#option_view').val();
+			dropbox.text(now);
+		}
+	})(jQuery);
+</script>
