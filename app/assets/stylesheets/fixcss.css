@@ -97,3 +97,7 @@ input[type="text"] {
 .filterbar .kind {
 	margin-right: 10px !important;
 }
+
+.formbox form input.input-block-level {
+	line-height: 20px;
+}
