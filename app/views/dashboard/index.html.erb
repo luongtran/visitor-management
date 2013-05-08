@@ -145,14 +145,16 @@
 	(function($) {
 		jQuery(document).ready(function() {
 			changenameselectbox();
+			jQuery('input#option_view').change(function() {
+				changenameselectbox();
+			});
 		});
 		function changenameselectbox()
 		{
 			var group = jQuery('.filterselectebox');
 			var dropbox = jQuery('.view_option.current', group);
 			var now = jQuery('input#option_view').val();
-			if (now != '')
-				dropbox.text(now);
+			if (now != '') dropbox.text(now);
 		}
 	})(jQuery);
 </script>
