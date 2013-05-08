@@ -151,7 +151,8 @@
 			var group = jQuery('.filterselectebox');
 			var dropbox = jQuery('.view_option.current', group);
 			var now = jQuery('input#option_view').val();
-			dropbox.text(now);
+			if (now != '')
+				dropbox.text(now);
 		}
 	})(jQuery);
 </script>
