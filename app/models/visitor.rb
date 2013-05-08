@@ -26,7 +26,7 @@ class Visitor < ActiveRecord::Base
   def set_pass_id
     current = Time.now
     pass_id = current.year.to_s + current.month.to_s + current.hour.to_s + current.min.to_s + current.sec.to_s
-    rand_num = [10000..99999].to_a.sample
+    rand_num = [*10000..99999].sample
     pass_id += rand_num.to_s
     # begin
       # pass_id += rand_num.to_s
