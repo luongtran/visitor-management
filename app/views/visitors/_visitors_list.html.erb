@@ -25,9 +25,9 @@
 					<th>Location to Visit</th>
 					<th>Photo</th>
 					<th>Checkout</th>
-					<% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus" && params[:action] != "search") %>
+					<!-- <% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus" && params[:action] != "search") %>
 				      <th><%=t '.actions', :default => t("helpers.actions") %></th>
-			        <% end %>
+			        <% end %> -->
 				</tr>
 			</thead>
 			<tbody>
@@ -86,7 +86,7 @@
 			        	<% end %>
 			        	
 			        </td>
-			        <% if (params[:controller] == 'visitors' && (params[:action] != "twelve_plus" && params[:action] != "search")) %>
+			        <!-- <% if (params[:controller] == 'visitors' && (params[:action] != "twelve_plus" && params[:action] != "search")) %>
 			        <td>
 			        <% if !ajax %>
 				      <div class="btn-group">
@@ -100,7 +100,7 @@
 			            </div>
 			        <% end %>              
 			        </td>
-			        <% end %>
+			        <% end %> -->
 				</tr>
 				<% i+= 1 %>
 				<% end %>
