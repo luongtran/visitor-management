@@ -45,6 +45,8 @@ end
 
 gem 'phony_rails'
 
+gem "prawn-print", "~> 0.0.1"
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

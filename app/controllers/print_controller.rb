@@ -24,4 +24,10 @@ class PrintController < ApplicationController
       end
     end
   end
+  
+  def print_to_paper
+    your_code_to_write_a_pdf_file("file.pdf")
+    system("lpr", "file.pdf") or raise "lpr failed"
+  end
+  
 end
