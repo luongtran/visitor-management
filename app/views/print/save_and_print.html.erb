@@ -43,9 +43,9 @@
       </div>
       <div class="field row-fluid">
         <div class="span6 text-left">
-          <label>Date :</label>
+          <label>Check in time :</label>
         </div>
-        <div class="span6 text-right"><strong></strong></div>
+        <div class="span6 text-right"><strong><%= @visitor.created_at.strftime("%a, %d %b %Y %H:%M") %></strong></div>
       </div>
       <div class="avatarcard">
       	<%= image_tag @visitor.photo.url() %>
