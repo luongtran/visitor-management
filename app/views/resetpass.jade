@@ -1,0 +1,40 @@
+doctype 5
+
+html
+	head
+		//Bootstrapp files css
+		link(type='text/css', rel='stylesheet', href='css/bootstrap.min.css')
+		//Customize style
+		link(type='text/css', rel='stylesheet', href='css/style.css')
+		//jquery
+		script(type='text/javascript', src='js/jquery-1-1.9.1.min.js')
+		//sj bootstrap core
+		script(type='text/javascript', src='js/bootstrap.min.js')
+	body
+		link(type="text/css", rel="stylesheet", href="css/Adelle/font.css")
+		link(type="text/css", rel="stylesheet", href="css/dashboard.css")
+		link(type="text/css", rel="stylesheet", href="js/jqueryui/css/sunny/jquery-ui-1.10.2.custom.min.css")
+		link(type="text/css", rel="stylesheet", href="css/resetpass.css")
+		link(type="text/css", rel="stylesheet", href="css/fixcss.css")
+		script(type='text/javascript', src='js/jqueryui/js/jquery-ui-1.10.2.custom.min.js')
+		script(type='text/javascript', src='js/action.js')
+		div.header
+			div.center-logo
+				img(alt="34pass.com", src='img/logo.png')
+		div.bodier
+			div.bigtitle Type your new password
+			div.container
+				div.notification
+					div.alert.alert-error Both passwords typed must be identical
+				div.pagerbg.accountpage
+					div.row-fluid
+						div.accountfield.row-fluid
+							div.span6.offset3
+								input.input-block-level(type='text', placeholder='New Password', name='newpass')
+						div.accountfield.row-fluid
+							div.span6.offset3
+								input.input-block-level(type='text', placeholder='Confirm Password', name='vertifypass')
+						div.accountfield.row-fluid
+							div.span2.offset5
+								input.btn.btn-success.btn-block(type='submit', name='changeaccountbt', value='Submit')
+

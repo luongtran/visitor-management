@@ -1,0 +1,32 @@
+doctype 5
+
+html
+	head
+		//Bootstrapp files css
+		link(type='text/css', rel='stylesheet', href='css/bootstrap.min.css')
+		//Customize style
+		link(type='text/css', rel='stylesheet', href='css/style.css')
+		link(type='text/css', rel='stylesheet', href='css/printpage.css')
+		//jquery
+		script(type='text/javascript', src='js/jquery-1-1.9.1.min.js')
+		//sj bootstrap core
+		script(type='text/javascript', src='js/bootstrap.min.js')
+	body
+		div.pageprint
+			h2.company This is companyname
+			items = [{name:'Badge number', value: 'test'}, {name:'Visitor', value: 'Vishant Pai'}, {name:'Visitor mobile', value: '9930900749'}, {name:'Here To Meet', value: "Trung Le Vu Tran"}, {name:'Purpose', value: "Meeting"}, {name:'Location', value: "Meeting Room"}, {name:'Date', value: ""}]
+			each item in items
+				div.field.row-fluid
+					div.span6.text-left
+						label #{item.name} :
+					div.span6.text-right
+						strong #{item.value}
+			div.avatarcard
+				img(alt="", src="")
+			div(style="width:170px; position: absolute; z-index: 2; left: 6px; top: 280px;").optonal-field
+				div.row-fluid.field
+					div(style="padding-left: 10px;").span6.text-left 34pass id
+					div.span6.text-right test
+				div.row-fluid.field
+					div(style="padding-left: 10px;").span6.text-left Check in time
+					div.span6.text-right oh
