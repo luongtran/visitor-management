@@ -32,6 +32,7 @@ gem "less-rails"
 gem "twitter-bootstrap-rails"
 
 gem "paperclip", "~> 3.3.1"
+gem 'aws-sdk'
 gem "mini_magick", "~> 3.4"
 
 #gem "will_paginate", "~>3.0.3"

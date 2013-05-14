@@ -60,6 +60,15 @@ VisitorManagement::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => "34pass",
+    :access_key_id => "AKIAILXBDIGQQ5L3QVFA",
+    :secret_access_key => "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"
+  }
+}
 
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
