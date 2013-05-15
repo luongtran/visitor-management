@@ -42,10 +42,18 @@ VisitorManagement::Application.configure do
     :port                 => 587,
     :domain               => "34pass.com",
     :user_name            => "luongtranduc@gmail.com",
-    :password             => "hieuluong!011",
+    :password             => "",
     :authentication       => "plain",
     :enable_starttls_auto => true
   }
+  
+  config.paperclip_defaults = {
+  :storage => :s3,
+  :s3_credentials => {
+    :bucket => "34pass",
+    :access_key_id => "AKIAILXBDIGQQ5L3QVFA",
+    :secret_access_key => "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"
+  }}
   
   
 end

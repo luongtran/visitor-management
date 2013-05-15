@@ -31,7 +31,7 @@ gem 'devise', '~>2.1.2'
 gem "less-rails"
 gem "twitter-bootstrap-rails"
 
-gem "paperclip", "~> 3.3.1"
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'aws-sdk'
 gem "mini_magick", "~> 3.4"
 

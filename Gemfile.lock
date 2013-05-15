@@ -1,3 +1,14 @@
+GIT
+  remote: git://github.com/thoughtbot/paperclip.git
+  revision: f55173018e246f2f8c196474cb85c7288491644c
+  specs:
+    paperclip (3.4.2)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.5.0)
+      mime-types
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -36,7 +47,10 @@ GEM
       uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     builder (3.0.4)
-    cocaine (0.4.2)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.1)
+      climate_control (>= 0.0.3, < 1.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -81,12 +95,6 @@ GEM
     mysql2 (0.3.11)
     nokogiri (1.5.9)
     orm_adapter (0.4.0)
-    paperclip (3.3.1)
-      activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.4.0)
-      mime-types
     pdf-reader (1.2.0)
       Ascii85 (~> 1.0.0)
       hashery (~> 2.0)
@@ -174,7 +182,7 @@ DEPENDENCIES
   less-rails
   mini_magick (~> 3.4)
   mysql2
-  paperclip (~> 3.3.1)
+  paperclip!
   pg
   phony_rails
   prawn-print (~> 0.0.1)
