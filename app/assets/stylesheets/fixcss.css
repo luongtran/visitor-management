@@ -98,7 +98,7 @@ input[type="text"] {
 	margin-right: 10px !important;
 }
 
-.formbox form input.input-block-level {
+form input.input-block-level {
 	line-height: 20px;
 }
 
