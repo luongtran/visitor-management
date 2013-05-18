@@ -99,7 +99,7 @@ input[type="text"] {
 }
 
 form input.input-block-level {
-	line-height: 20px;
+	line-height: 20px !important;
 }
 
 input.capture {
