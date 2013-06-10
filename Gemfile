@@ -39,7 +39,7 @@ gem "mini_magick", "~> 3.4"
 gem "will_paginate", "~> 3.0.pre2"
 #gem 'bootstrap-will_paginate', :git => 'git://github.com/yrgoldteeth/bootstrap-will_paginate.git'
 
-
+gem 'pry'
 group :production do
   gem 'pg'
 end

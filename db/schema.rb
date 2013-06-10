@@ -11,14 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130413210236) do
-
-  create_table "list_team_members", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "list_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130610172849) do
 
   create_table "photos", :force => true do |t|
     t.string   "im_type"
@@ -55,19 +48,19 @@ ActiveRecord::Schema.define(:version => 20130413210236) do
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
   create_table "visitors", :force => true do |t|
-    t.string   "visitor_name",           :null => false
-    t.string   "visitor_company_name",   :null => false
-    t.string   "visitor_mobile_number",  :null => false
-    t.string   "reason_to_visit",        :null => false
-    t.string   "here_to_meet",           :null => false
+    t.string   "visitor_name",                                 :null => false
+    t.string   "visitor_company_name",                         :null => false
+    t.string   "visitor_mobile_number",                        :null => false
+    t.string   "reason_to_visit",                              :null => false
+    t.string   "here_to_meet",                                 :null => false
     t.string   "location"
     t.string   "visitor_vehicle_number"
     t.string   "storage_device_detail"
     t.string   "authorized_id"
     t.text     "comment"
     t.integer  "user_id"
-    t.datetime "created_at",             :null => false
-    t.datetime "updated_at",             :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.string   "pass_id"
     t.string   "photo_file_name"
     t.string   "photo_content_type"
@@ -76,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20130413210236) do
     t.datetime "check_out_time"
     t.string   "badge_number"
     t.string   "coming_from"
+    t.string   "status",                 :default => "Inside"
   end
 
 end

@@ -22,7 +22,8 @@ VisitorManagement::Application.routes.draw do
   #devise_for :users
   
    devise_for :user,:path => '',
-              :path_names => { :sign_in => 'login', :sign_out => 'logout', :password => 'secret', :confirmation => 'verification', :unlock => 'unblock'}
+              :path_names => { :sign_in => 'login', :sign_out => 'logout', :confirmation => 'verification', :unlock => 'unblock'}, 
+              :controllers => {:passwords => 'devise/passwords'}
              
    
    match "registrations" => "registrations#create", :as => "user_registration"

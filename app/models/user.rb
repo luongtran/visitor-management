@@ -15,12 +15,17 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :remember_me, :organisation_name, :logo
   # attr_accessible :title, :body
-  
+
   validate :organisation_name_cannot_blank
-  
+  after_create :welcome_message
+
   def organisation_name_cannot_blank
     if organisation_name.blank?
       errors.add(:organisation_name, "We require Organization name to print on your visitor badge")
     end
+  end
+
+  def welcome_message
+    UserMailer.welcome_message(self).deliver
   end
 end
