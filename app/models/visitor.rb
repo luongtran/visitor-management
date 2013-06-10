@@ -9,7 +9,8 @@ class Visitor < ActiveRecord::Base
   #validates :badge_number, :presence => true, :on => :save_with_out_print
   
   attr_accessible :authorized_id, :comment, :here_to_meet, :location, :reason_to_visit, :storage_device_detail, :coming_from,
-                  :user_id, :visitor_company_name, :visitor_mobile_number, :visitor_name, :visitor_vehicle_number, :pass_id, :photo, :check_out_time, :badge_number
+                  :user_id, :visitor_company_name, :visitor_mobile_number, :visitor_name, :visitor_vehicle_number, :pass_id, 
+                  :photo, :check_out_time, :badge_number, :status
   
   before_create :set_pass_id
   
@@ -38,16 +39,29 @@ class Visitor < ActiveRecord::Base
     self.pass_id = pass_id
   end
   
+  def self.expired_ones
+    where(status: "Expired" )
+  end
+  
+  def self.checked_out
+    where(status: "Checked Out" )
+  end
+  
+  def self.insiders
+    where(status: "Inside")
+  end
+  
   def self.get_visitors(user_id)
     where('user_id = ?', user_id)
   end
   
-  def self.search(key, user_id)
+  def self.search(word, key, user_id)
     if !key.nil?
       key = key.downcase
     end
-    
-    if key
+    if word.present? && key.present?
+      where("user_id = ? AND (#{word} like ?)", user_id, "%#{key}%")
+    elsif !word.present? && key.present?
       where('user_id = ? AND (LOWER(visitor_name) like ? OR LOWER(visitor_company_name) like ? OR pass_id like ? OR here_to_meet like ? OR badge_number like ? OR visitor_company_name like ? OR visitor_mobile_number like ?)', 
                               user_id, "%#{key}%", "%#{key}%", "%#{key}%", "%#{key}%", "%#{key}%", "%#{key}%", "%#{key}%")
     else

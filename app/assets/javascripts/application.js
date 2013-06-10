@@ -14,6 +14,30 @@
 //= require jquery_ujs
 //= require twitter/bootstrap
 //= require_tree .
+// $(document).ready(function(){
+// 
+//   $(".search_dropdown").change(function(e) {
+//     if($(this).val() == "now_inside") {
+//       debugger;
+//       $.ajax({
+//         type: "POST",
+//         url: "/visitors/search",
+//         data: {search_keyword: "now_inside"},
+//         dataType: JSON,
+//         success: function (data) {
+//           debugger;
+//         },
+//         error: function(e) {
+//           console.log(e);
+//         }
+//       
+//       
+//       });
+//     }
+//   })
+//     
+// })
+
 $(function() {
 	change_name_selectbox();
 	$('.view_option').click(function() {
@@ -37,6 +61,7 @@ $(function() {
 			// $('#dashboard_content').html(data);
 		// });
 	});
+  
 	
 	
 	$('.frm-checkout').submit(function() {

@@ -1,3 +1,4 @@
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -299,4 +300,6 @@ border-radius: 4px;
 #newvisitor .newvisitor-row {
 	margin-bottom: 10px;
 }
-
+.clear {
+  clear: both;
+}

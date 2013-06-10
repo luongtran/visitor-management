@@ -38,24 +38,36 @@
 		                <li><%= link_to "Checkout", visitor_checkout_path %></li>
 		                <li><%= link_to "Expired", twelve_plus_path %></li>
 		                <li><%= link_to "Dashboard", dashboard_index_path %></li>
-		                <li class="dropdown">
-			                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Me</a>
-			                <ul class="dropdown-menu">
-				                <li><%= link_to "Me", me_index_path %></li>
-				                <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-			                </ul>
-		                </li>
+		                <li><%= link_to "Me", me_index_path %></li>
+		                <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+                    <% if current_user.present? %>
+                      <li><%= link_to "Reset Password", new_user_password_path(current_user) %></li>
+                    <% end%>
+
+                    <!-- <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Me</a>
+                      <ul class="dropdown-menu">
+                        <li><%= link_to "Me", me_index_path %></li>
+                        <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+                      </ul>
+                    </li> -->
 		              </ul>
 		            </div>
 	            </span>
 	            <span class="span3">
 		            <div class="quicksearch">
 		              <%= form_tag visitor_search_path do %>
-											
-						<%= text_field_tag 'search_key', "", {:class => "quicksearchbar input-block-level", :placeholder => "Search.."} %>
-						<%= submit_tag '', :class => 'searchbt' %>
-						
-					  <% end %>
+                    <%= select_tag 'search_keyword', options_for_select( [ ["Visitor Name", "visitor_name"],
+                                                                    ["Here to meet", "here_to_meet"],
+                                                                    ["Visitor company name", "visitor_company_name"],
+                                                                    ["Badge ID", "badge_number"],
+                                                                    ["34pass ID", "pass_id"],
+                                                                    ["Now Inside", "now_inside"]]), prompt: "Select", class: "search_dropdown" %>
+                                                                    <br/>
+                                                                    <div class="clear"></div>
+                    <%= text_field_tag 'search_key', "", {:class => "quicksearchbar input-block-level", :placeholder => "Search.."} %>
+                    <%= submit_tag '', :class => 'searchbt' %>                  
+                  <% end %>
 		            </div>
 	            </span>
             </div>

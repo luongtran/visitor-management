@@ -122,8 +122,7 @@ class VisitorsController < ApplicationController
       @success = 0
       if !visitor.nil?
         logger.info('visitor not nil')
-        visitor.check_out_time = Time.now
-        if visitor.save
+        if visitor.update_attributes(status: "Checked Out", check_out_time: Time.now)
           logger.info('check out successfully')
           @success = 1
           flash[:success] = 'The visitor ' + visitor.visitor_name + ' checked out successfully'
@@ -147,21 +146,23 @@ class VisitorsController < ApplicationController
   end
   
   def search
+    search_keyword = params[:search_keyword] if params[:search_keyword].present?
     if (!params[:search_key].nil? && !params[:search_key].empty?)
       key = params[:search_key]
       session[:search_key] = key
     else
       key = session[:search_key]
     end
-    @visitors = Visitor.search(key, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
-    
+    if search_keyword == "now_inside"
+      @visitors = Visitor.insiders.paginate(:per_page => PER_PAGE, :page => params[:page])
+    else
+      @visitors = Visitor.search(search_keyword, key, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
+    end
     respond_to do |format|
       format.js
       format.html
       format.json { render json: @visitors }
     end
-    #end
-    
   end
   
   def twelve_plus
@@ -170,6 +171,7 @@ class VisitorsController < ApplicationController
     twelve_ago = Time.now - 12.hours
     #logger.info(twelve_ago)
     @visitors = Visitor.where('(created_at <= ?) AND (check_out_time is null) AND (user_id = ?)', twelve_ago, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
+    @visitors.each {|v| v.update_attributes(status: "Expired")}
     render 'index'
   end
   
