@@ -56,10 +56,13 @@ class Visitor < ActiveRecord::Base
   end
   
   def self.search(word, key, user_id)
+    puts "@"*30
+    puts "Word: #{word}, key: #{key}"
     if !key.nil?
       key = key.downcase
     end
     if word.present? && key.present?
+      puts "Am in word if block"
       where("user_id = ? AND (#{word} like ?)", user_id, "%#{key}%")
     elsif !word.present? && key.present?
       where('user_id = ? AND (LOWER(visitor_name) like ? OR LOWER(visitor_company_name) like ? OR pass_id like ? OR here_to_meet like ? OR badge_number like ? OR visitor_company_name like ? OR visitor_mobile_number like ?)', 

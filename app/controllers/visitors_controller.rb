@@ -156,7 +156,10 @@ class VisitorsController < ApplicationController
     if search_keyword == "now_inside"
       @visitors = Visitor.insiders.paginate(:per_page => PER_PAGE, :page => params[:page])
     else
+      puts "!" * 30
+      puts "Am in Visitor Search controller"
       @visitors = Visitor.search(search_keyword, key, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
+      puts "!" * 30
     end
     respond_to do |format|
       format.js
