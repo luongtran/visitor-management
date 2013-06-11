@@ -61,6 +61,17 @@ VisitorManagement::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
+  config.action_mailer.default_url_options = { :host => 'calm-sands-6650.herokuapp.com' }
+  ActionMailer::Base.smtp_settings = {
+    :address              => "oxmail.registrar-servers.com",
+    :port                 => 25,
+    :domain               => "16columns.com",
+    :user_name            => "contact@16columns.com",
+    :password             => "W!nner999",
+    :authentication       => "plain",
+    :enable_starttls_auto => true
+  }
+  
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
