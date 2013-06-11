@@ -63,7 +63,7 @@ class Visitor < ActiveRecord::Base
     end
     if word.present? && key.present?
       puts "Am in word if block"
-      where("user_id = ? AND (#{word} like ?)", user_id, "%#{key}%")
+      where("user_id = ? AND (lower(#{word}) like ?)", user_id, '%#{key.downcase}%')
     elsif !word.present? && key.present?
       where('user_id = ? AND (LOWER(visitor_name) like ? OR LOWER(visitor_company_name) like ? OR pass_id like ? OR here_to_meet like ? OR badge_number like ? OR visitor_company_name like ? OR visitor_mobile_number like ?)', 
                               user_id, "%#{key}%", "%#{key}%", "%#{key}%", "%#{key}%", "%#{key}%", "%#{key}%", "%#{key}%")
