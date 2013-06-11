@@ -159,6 +159,7 @@ class VisitorsController < ApplicationController
       puts "!" * 30
       puts "Am in Visitor Search controller"
       @visitors = Visitor.search(search_keyword, key, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
+      @visitors.each { |v| puts "Visitor: #{v.inspect}"}
       puts "!" * 30
     end
     respond_to do |format|
