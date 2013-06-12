@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
   default from: "contact@16columns.com"
 
   def welcome_message(user)
-    subject = "Receptionist and Visitors, now happier than ever"
+    subject = "Manage Visitors, easily"
     mail(:to => user.email, :subject => subject)
   end
 end
