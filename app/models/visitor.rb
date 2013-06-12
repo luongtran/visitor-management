@@ -47,8 +47,8 @@ class Visitor < ActiveRecord::Base
     where(status: "Checked Out" )
   end
   
-  def self.insiders
-    where(status: "Inside")
+  def self.insiders(user_id)
+    where(status: "Inside", user_id: user_id)
   end
   
   def self.get_visitors(user_id)

@@ -34,12 +34,13 @@
 	            <span class="span6 pull-right">
 		            <div class="quicksearch">
 		              <%= form_tag visitor_search_path do %>
-                    <%= select_tag 'search_keyword', options_for_select( [ ["Visitor Organization", "visitor_name"],
+                    <%= select_tag 'search_keyword', options_for_select( [ ["Now Inside", "now_inside"],
+                                                                    ["Visitor name", "visitor_name"],
                                                                     ["Here to meet", "here_to_meet"],
-                                                                    ["Visitor company name", "visitor_company_name"],
+                                                                    ["Visitor Organization", "visitor_company_name"],
                                                                     ["Badge ID", "badge_number"],
-                                                                    ["34pass ID", "pass_id"],
-                                                                    ["Now Inside", "now_inside"]]), prompt: "Select", class: "search_dropdown span4" %>
+                                                                    ["34pass ID", "pass_id"]
+                                                                    ]), class: "search_dropdown span4" %>
                     <%= text_field_tag 'search_key', "", {:class => "quicksearchbar input-block-level span8", :placeholder => "Search..", :style => "margin-top:-10px;"} %>
                     <%= submit_tag '', :class => 'searchbt' %>
                   <% end %>
