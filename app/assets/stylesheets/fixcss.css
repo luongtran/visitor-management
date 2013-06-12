@@ -20,7 +20,14 @@ input.capture {
 	top: 2px;
 	right: 2px;
 }
-
+.clear {
+  clear: both;
+}
+.span7.navigation {
+  margin: 0px auto;
+  display: block;
+  float: none;
+}
 .mainmenu ul > li a {
 	display: block;
 }
