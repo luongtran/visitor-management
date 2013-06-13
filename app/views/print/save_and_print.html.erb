@@ -1,7 +1,7 @@
 <script type="text/javascript">
-	$(document).ready(function() {
-		printpage();
-		window.location = '<%= new_visitor_path %>';
+	$(window).load(function() {
+		//printpage();
+	//	window.location = '<%= new_visitor_path %>';
 	});
 	
 	function printpage()
@@ -50,7 +50,7 @@
       <div class="avatarcard">
       	<%= image_tag @visitor.photo.url() %>
   	  </div>
-      <div style="width:170px; position: absolute; z-index: 2; left: 6px; top: 280px;" class="optonal-field">
+      <div style="width:170px; position: absolute; z-index: 2; left: 107px; top: 280px;" class="optonal-field">
         <div class="row-fluid field">
           <div style="padding-left: 10px;" class="span6 text-left">Badge #</div>
           <div class="span6 text-right"><%= @visitor.badge_number %></div>
