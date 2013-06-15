@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   validate :organisation_name_cannot_blank
-  after_create :welcome_message
+  after_create :welcome_message, :user_registered_message
 
   def organisation_name_cannot_blank
     if organisation_name.blank?
@@ -28,4 +28,9 @@ class User < ActiveRecord::Base
   def welcome_message
     UserMailer.welcome_message(self).deliver
   end
+
+  def user_registered_message
+    AdminMailer.user_registered_message.deliver
+  end
+
 end

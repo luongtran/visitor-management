@@ -27,7 +27,7 @@
 	        <div class="row-fluid">
 	        	<span class="span2">
 		            <div class="logoheader">
-		            	<%= image_tag "logo.png", :alt => "34pass.com" %>
+		            	<%= link_to image_tag("logo.png", :alt => "34pass.com"), root_path %>
 		            	
 	            	</div>
             	</span>
@@ -75,6 +75,7 @@
 	    		<%= yield %>
 	    	</div>
     	</div>
+		
 		
 	</body>
 </html>

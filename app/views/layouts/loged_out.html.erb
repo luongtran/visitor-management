@@ -24,7 +24,8 @@
 		<div class="canvas">
 			<div class="canvas-header">
 				<div class="logo text-center clearfix">
-					<%= image_tag "logo.png", :alt => "34pass.com" %>
+					<%= link_to image_tag("logo.png", :alt => "34pass.com"), 
+					    new_user_session_path %>
 					<br/>
 					<h2 class="bigheadline">Manage Visitors, easily</h2>
 				</div>

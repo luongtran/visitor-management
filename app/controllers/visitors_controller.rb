@@ -187,7 +187,8 @@ class VisitorsController < ApplicationController
     else
       @existed = 0
     end
-    render :json => {'existed' => @existed, 'visitor' => @visitor}
+    render :json => {'existed' => @existed, 'visitor' => @visitor, 
+                     'visitor_photo' => @visitor.photo.url}
   end
   
   private

@@ -18,7 +18,8 @@
 					$('#visitor_here_to_meet').focus();
 					
 					if(visitor.photo_file_name != null) {
-						var html = '<img src="/assets/visitors/'+ visitor.id +'/small/' + visitor.photo_file_name +'" alt="visitor image" />';
+					//	var html = '<img src="/assets/visitors/'+ visitor.id +'/small/' + visitor.photo_file_name +'" alt="visitor image" />';
+						var html = '<img src=' + data.visitor_photo + ' />';
 						$('#curr_image').html(html);
 						$('#curr_image').show();
 						$('#webcam').hide();
