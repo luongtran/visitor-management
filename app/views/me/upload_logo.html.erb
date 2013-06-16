@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1><%=t '.title', :default => 'Me - Logo' %></h1>
+</div>
+<div class="container">
+	<div class="left-content">
+		<%= render 'me_menu' %>
+	</div>
+	<div class="right-content">
+		<%= form_for @user, :url => me_update_path, :class => 'form-horizontal' do |f| %>
+			<div class="control-group">
+			    <%= label_tag 'Logo'%>
+			    <div class="controls">
+			      <%= f.file_field :logo, :class => 'file_field' %>
+			    </div>
+			</div>
+			
+			    <%= f.submit 'Upload', :class => 'btn btn-primary' %>
+			    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+			                me_index_path, :class => 'btn' %>
+			
+		<% end %>
+	</div>
+</div>

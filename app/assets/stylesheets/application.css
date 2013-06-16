@@ -1,0 +1,307 @@
+
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ *= require bootstrap
+ *= require bootstrap-responsive
+ *= require login_style
+ *= require admin_style
+ */
+
+.new_user {
+	width:500px;
+	margin-left:10px;
+}
+.large-input {
+	width:500px;
+}
+
+.invalid {
+	color:red;
+	
+}
+ .valid {
+ 	color:green;
+ }
+
+.left-content {
+	width:20%;
+	float:left;
+}
+
+.right-content {
+	width: 80%;
+	float:left;
+}
+
+.notification {
+	text-align: center;
+	
+}
+
+.twelve-link {
+	float:left;
+	margin-top:50px;
+}
+
+
+table tr th {
+	background-color: #d3DADE;
+	padding: 3px;
+}
+table tr.rowb { background-color:#EAf2FD; }
+
+table tr.filterColumns td { padding:2px; }
+
+body { padding-bottom:150px; }
+
+.pretty th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+.notification, .notice {
+    height:30px;
+/*    background-color:green;*/
+    color:green;
+    display:none;
+    vertical-align: middle;
+    text-align:center;
+    font-size:16px;
+    font-style:italic;
+}
+
+.un-read td {
+    font-weight:bold;
+}
+
+.email-toolbar {
+    display:none;
+}
+
+.email-toolbar form {
+    float: left;
+}
+.email-link {
+    width:100px;
+    font-size:14px;
+    font-weight:bold;
+    color:black;
+    
+    vertical-align:middle;
+}
+
+.email-nav {
+    border: 1px solid #DDD;
+    border-radius: 10px;
+    margin-top: -10px;
+    
+}
+
+.email-nav li {
+    border-bottom: 1px solid #DDD;
+    width: 90%;
+    margin-left: 6px;
+    height:30px;
+    list-style:none;
+}
+
+.email-nav li a {
+    margin-left: 30px;
+    vertical-align:middle;
+}
+.email-nav > li:hover, .email-nav li.active {
+    text-decoration: none;
+    background-color: #EEF6FC;
+    color: blue;
+}
+.email-title {
+    font-weight:bold;
+    font-size:16px;
+    margin-bottom:20px;
+    margin-top:40px;
+}
+#message {
+    background-color:white;
+    padding:10px;
+    border:1px solid #DDD;
+    border-radius:10px;
+}
+
+.small-img {
+    float: left;
+    width: 150px;
+    height: 150px;
+    margin-right:10px;
+    
+}
+
+.small-img img {
+    width:120px;
+    height:120px;
+    margin-left:15px;
+    margin-top:15px;
+}
+
+.right {
+    float:right;
+}
+
+#ajax-property-image-form {
+    display:none;
+}
+
+#frmEditContent {
+    z-index:100;
+    
+}
+
+#fancybox-content {
+    z-index:1000;
+    min-width:500px;
+    min-height:300px;
+}
+#fancybox-wrap {
+    min-width:500px;
+}
+#em-tpl-hidden {
+    display:none;
+}
+
+.span4.span-large {
+width: 800px;
+}
+
+
+.edit-content {
+    
+    width: 100%;
+    position: relative;
+}
+
+.tpl-content {
+    border: 1px dashed #900;
+    cursor: pointer;
+    padding: 4px;
+    display: block;
+}
+.edit-links, .edit-content-links, .edit-image .image-meta, .default-edit-image .image-meta, .tpl-repeatwrap, .tpl-hidewrap, .tpl-repeatmovewrap {
+    line-height: 43px;
+    opacity: 1;
+    display:none;
+    -moz-transition-duration: .5s;
+    -webkit-transition-duration: .5s;
+    -o-transition-duration: .5s;
+}
+
+.edit-links, .edit-content-links {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    margin: 3px;
+    padding: 5px 3px;
+    background: url(/assets/alpha-black-20pct.png) white;
+    font-family: "Helvetica Neue",Helvetica,Arial,Verdana,sans-serif;
+}
+
+.edit-links {
+    position: relative;
+    float:right;
+}
+
+
+.edit-links li, .edit-content-links li, .tpl-repeatmovewrap li {
+    display: inline;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.preheaderContent a:link, .preheaderContent a:visited, .preheaderContent a .yshortcuts {
+    color: #303030;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.preheaderContent a:link, .preheaderContent a:visited, .preheaderContent a .yshortcuts {
+    color: #303030;
+    font-weight: normal;
+    text-decoration: underline;
+}
+
+.tpl-link {
+    display: block;
+    float: left;
+    border: 0 !important;
+    letter-spacing: 0 !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    color: black !important;
+    padding: 2px 4px !important;
+    margin: 0 2px !important;
+    font-size: 11px !important;
+    line-height: 14px;
+    background: url(/assets/alpha-white-75pct.png);
+}
+
+.edit-links, .edit-content-links, .tpl-rounded, .tpl-link {
+border-radius: 4px;
+}
+
+.invisible {
+    display:none;
+}
+
+.bt-right {
+    float:right;
+    margin-bottom:10px;
+}
+
+#frmEditImage .left-menu {
+    width:200px;
+    float:left;
+    border-right: 1px solid #DDD;
+}
+
+#frmEditImage .left-menu li {
+    border-bottom: 1px solid #DDD;
+    height:30px;
+    list-style:none;
+    font-weight:bold;
+    font-size:14px;
+}
+
+#frmEditImage .right-image-area {
+    width:90%;
+    float:left;
+    margin-left:20px;
+}
+#my-images-area {
+    width:100%;
+    max-height:400px;
+    overflow:scroll;
+}
+
+.content-left-panel a {
+	font-size:14px;
+	font-weight:bold;
+}
+#newvisitor .newvisitor-row {
+	margin-bottom: 10px;
+}
+.clear {
+  clear: both;
+}
+
+

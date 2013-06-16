@@ -1,0 +1,11 @@
+<div class="notification">
+	<% flash.each do |type, message| %>
+		<% if !message.blank? %>
+		<div class="alert <%= bootstrap_class_for(type) %>">
+			<%= message %>
+		</div>
+		<% end %>
+	<% end %>
+	<!-- <div class="alert alert-success">It looks like you already have an account</div>
+	<div class="alert alert-error mobile">Oops! please enter your email id</div> -->
+</div>

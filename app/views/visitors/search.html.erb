@@ -1,0 +1,6 @@
+<div class="pagerbg expiredpage">
+	<% if !@visitors.nil? %>
+	<%= render :partial => 'visitors_list', :locals =>{:ajax => false} %>
+	<% end %>
+</div>
+

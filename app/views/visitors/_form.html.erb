@@ -1,0 +1,181 @@
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#bt-optional-field').click(function() {
+			//$(this).hide();
+			$('.optional-fields').show();
+		});
+		
+		$('#visitor_visitor_mobile_number').focusout(function() {
+			var visitor_phone = $(this).val();
+			$.getJSON('<%= visitor_get_by_phone_path %>', {"visitor_mobile_number" : visitor_phone}, function(data) {
+				var existed = data.existed;
+				if(existed == 1) {
+					var visitor = data.visitor
+					$('#visitor_visitor_name').val(visitor.visitor_name);
+					$('#visitor_visitor_company_name').val(visitor.visitor_company_name);
+					//$('#visitor_badge_number').val(visitor.badge_number);
+					$('#visitor_authorized_id').val(visitor.authorized_id);
+					$('#visitor_here_to_meet').focus();
+					
+					if(visitor.photo_file_name != null) {
+					//	var html = '<img src="/assets/visitors/'+ visitor.id +'/small/' + visitor.photo_file_name +'" alt="visitor image" />';
+						var html = '<img src=' + data.visitor_photo + ' />';
+						$('#curr_image').html(html);
+						$('#curr_image').show();
+						$('#webcam').hide();
+						$('#bt_capture').hide();
+						$('#bt_re_capture').show();
+					}
+				}
+			});
+		});
+
+		$('#bt_capture').click(function() {
+			webcam.snap();
+			$('#bt_capture').attr("disabled", "disabled");
+			$('#bt_capture').hide();
+			$('#bt_re_capture').show();
+		});
+		
+		$('#bt_re_capture').click(function() {
+			$('#curr_image').hide();
+			$('#bt_re_capture').hide();
+			$('#webcam').show();
+			$('#bt_capture').show(1, function() {
+				$('#bt_capture').prop('disabled', false);
+				webcam.reset();
+			});
+			//jQuery.fx.off = false;
+		});
+
+		
+			
+		
+		$('#bt-save-print').click(function() {
+			$('#new_visitor').attr("action", "<%= save_print_path %>");
+			//alert($('#new_visitor').attr("action"));
+			//$('#new_visitor').submit();
+			$('form#new_visitor').trigger('submit.rails');
+		});
+		
+	});
+</script>
+<%= form_for @visitor, :html => { :class => 'form-horizontal', :name => "checkinform" } do |f| %>
+	<div class="row-fluid">
+		<span class="span5">
+			<label>
+				<div class="required label label-info">required</div>
+				<%= f.text_field :visitor_mobile_number, :class => 'input-block-level', :placeholder => "Mobile number" %>
+			</label>
+			<label>
+              	<div class="required label label-info">required</div>
+                <%= f.text_field :visitor_name, {:class => "input-block-level", :placeholder => "Visitor name"} %>  
+                
+            </label>
+            <label>
+            	<%= f.text_field :visitor_company_name, {:class => "input-block-level", :placeholder => "Visitor company name"} %>
+                  
+            </label>
+            <label>
+              <div class="required label label-info">required</div>
+              	<%= f.text_field :here_to_meet, {:class => "input-block-level", :placeholder => "Here to meet"} %>
+            </label>
+            <label>
+            	<%= f.text_field :reason_to_visit, {:class => "input-block-level", :placeholder => "Purpose of visit"} %>
+              
+            </label>
+            <label>
+            	<%= f.text_field :location, {:class => "input-block-level", :placeholder => "Location to visit"} %>
+              
+            </label>
+            <label>
+            	<%= f.text_field :badge_number, {:class => "input-block-level", :placeholder => "Unique number on your badge"} %>
+              
+            </label>
+            
+		</span>
+		<span class="span1">
+			<div class="break"></div>
+		</span>
+		<span class="span6">
+			<label>
+	            <div class="avatarinput row-fluid capturebt">
+	            	<span class="span7">
+	            		<div id="curr_image"></div>
+		              	<div id="webcam"></div>
+		              	<!-- <img src="http://genk2.vcmedia.vn/N0WoyYblO3QdmZFKPMtKnadHAHTevz/Image/2012/Tran-Anh/1_original-(Copy)-58670.jpg" class="img-rounded"> -->
+	          		</span>
+	          		<span class="span4">
+			            <input type="button" value="Capture" class="capture btn btn-small btn-success" id="bt_capture"/>
+			            <input type="button" value="Re-capture" class="capture btn btn-small btn-success" id="bt_re_capture" style="display: none;" />
+	          		</span>
+          		</div>
+            </label>
+			<!-- <label>
+				<%= f.text_field :coming_from, {:class => "input-block-level", :placeholder => "Coming from"} %>
+		    </label> -->
+		    
+		    <!--<label>-->
+		    	<!--<%= f.text_field :visitor_vehicle_number, :class => 'input-block-level', :placeholder => "Visitor vehicle number" %>-->
+		    <!--</label>-->
+		    
+		    <label>
+		    	<%= f.text_field :authorized_id, {:class => "input-block-level", :placeholder => "Any authorized identity number"} %>
+		    </label>
+		    
+		    <label>
+		    	<%= f.text_field :storage_device_detail, {:class => "input-block-level", :placeholder => "Store device serial number"} %>
+		    </label>
+		    
+		    <!-- <label>
+		    	<%= f.text_area :comment, :class => 'input-block-level', :rows => 7, :cols => 60, :placeholder => "Comments" %>
+		      
+		    </label> -->
+		    
+		    <div>
+	            <%= f.submit "Save", :class => 'save btn btn-large btn-success' %>
+
+	            <!-- <button name="print" class="save btn btn-large btn-success">Print</button> -->
+	            <%= f.button "Save and print", :class => "save btn btn-large btn-success", :type => "button", :id => "bt-save-print" %>
+
+	            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+	            new_visitor_path, :class => 'save btn btn-large btn-success' %>
+            </div>
+    </span>
+</div>
+<% end %>
+
+<script type="text/javascript">
+	   function onload_complete(msg) {
+	        // fetch the CSRF meta tag data
+	        var csrf_param = $('meta[name=csrf-param]').attr('content');
+	        var csrf_token = $('meta[name=csrf-token]').attr('content');
+	        //alert(csrf_param + ", " + csrf_token);
+	        
+	        // reset the api URL appending the auth token parameter
+	        webcam.set_api_url('<%= upload_photos_path %>' + '?' + csrf_param + "=" + encodeURI(encodeURI(csrf_token)));
+	    }
+	
+	    function upload_complete(msg) {
+	    	
+	        if (msg == 'ok') {
+	            $('#new_photo').show();
+	            $('#visitor_visitor_vehicle_number').focus();
+	        } else {
+	            alert('An error occured');
+	            webcam.reset();
+	        }
+	    }
+	
+	    webcam.set_swf_url('/webcam.swf');
+	    //webcam.configure('camera');
+	    //webcam.set_stealth(true)
+	    webcam.set_api_url('<%= upload_photos_path %>');
+	    webcam.set_quality(90);
+	    webcam.set_shutter_sound(true, '/shutter.mp3');
+	    webcam.set_hook('onLoad', 'onload_complete');
+	    webcam.set_hook('onComplete', 'upload_complete');
+	    $('#webcam').html(webcam.get_html(250, 200));
+	    
+</script>
+  

@@ -1,0 +1,10 @@
+<h1>Photo</h1>
+<p><%= image_tag @photo.image.url(:small) %></p>
+<p>
+  <strong>Type:</strong><br />
+  <%=h @photo.im_type %>
+</p>
+<p>
+  <%= link_to "Take a new picture", new_photo_path %>
+  | <%= link_to "See all pictures", photos_path %>
+</p>

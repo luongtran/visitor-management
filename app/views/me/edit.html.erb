@@ -1,0 +1,40 @@
+<div class="page-header">
+  <h1><%=t '.title', :default => 'Me - Change password' %></h1>
+</div>
+
+<div class="container">
+	<div class="left-content">
+		<%= render 'me_menu' %>
+	</div>
+	<div class="right-content">
+		<%= form_for current_user, :url => change_password_path, :class => 'form-horizontal'  do |f| %>
+	
+			<div class="control-group">
+			    <%= label_tag 'Current password'%>
+			    <div class="controls">
+			      <%= f.password_field :current_password, :class => 'text_field' %>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <%= label_tag 'New password' %>
+			    <div class="controls">
+			      <%= f.password_field :password, :class => 'text_field' %>
+			    </div>
+			</div>
+			<div class="control-group">
+			    <%= label_tag 'Confirm new password' %>
+			    <div class="controls">
+			      <%= f.password_field :password_confirmation, :class => 'text_field' %>
+			    </div>
+			</div>
+			
+			<div class="form-actions">
+			    <%= submit_tag 'Change', :class => 'btn btn-primary' %>
+			    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+			                me_index_path, :class => 'btn' %>
+			  </div>
+		<% end %>
+	</div>
+</div>
+
+

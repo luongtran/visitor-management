@@ -1,0 +1,55 @@
+<div class="pageprint">
+	<h2 class="company">This is companyname</h2>
+	<div class="field row-fluid">
+        <div class="span6 text-left">
+          <label>Visitor :</label>
+        </div>
+        <div class="span6 text-right"><strong><%= @visitor.visitor_name %></strong></div>
+      </div>
+      <div class="field row-fluid">
+        <div class="span6 text-left">
+          <label>Visitor mobile :</label>
+        </div>
+        <div class="span6 text-right"><strong><%= @visitor.visitor_mobile_number %></strong></div>
+      </div>
+      <div class="field row-fluid">
+        <div class="span6 text-left">
+          <label>Here To Meet :</label>
+        </div>
+        <div class="span6 text-right"><strong><%= @visitor.here_to_meet %></strong></div>
+      </div>
+      <div class="field row-fluid">
+        <div class="span6 text-left">
+          <label>Purpose :</label>
+        </div>
+        <div class="span6 text-right"><strong><%= @visitor.reason_to_visit %></strong></div>
+      </div>
+      <div class="field row-fluid">
+        <div class="span6 text-left">
+          <label>Location :</label>
+        </div>
+        <div class="span6 text-right"><strong><%= @visitor.location %></strong></div>
+      </div>
+      <div class="field row-fluid">
+        <div class="span6 text-left">
+          <label>Date :</label>
+        </div>
+        <div class="span6 text-right"><strong></strong></div>
+      </div>
+      <div class="avatarcard">
+      	<%= image_tag @visitor.photo.url() %>
+  	  </div>
+      <div style="width:170px; position: absolute; z-index: 2; left: 6px; top: 280px;" class="optonal-field">
+        <div class="row-fluid field">
+          <div style="padding-left: 10px;" class="span6 text-left">Badge #</div>
+          <div class="span6 text-right"><%= @visitor.badge_number %></div>
+        </div>
+        <div class="row-fluid field">
+          <div style="padding-left: 10px;" class="span6 text-left">34pass ID</div>
+          <div class="span6 text-right"><%= @visitor.pass_id %></div>
+        </div>
+        <div class="row-fluid field">
+          <div style="padding-left: 10px;" class="span6 text-left">Check in time</div>
+          <div class="span6 text-right"><%= @visitor.created_at.strftime("%a, %d %b %Y %H:%M") %></div>
+        </div>
+</div>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Visitor Management</title>
+		
+		<%= stylesheet_link_tag    "bootstrap.min", :media => "all" %>
+		<%= stylesheet_link_tag    "fontkit-museo/stylesheet", :media => "all" %>
+		<%= stylesheet_link_tag    "style", :media => "all" %>
+		<%= stylesheet_link_tag    "fixcss", :media => "all" %>
+		
+  		<%= javascript_include_tag "application" %>
+	  	<%= javascript_include_tag "custom" %>
+	  	<%= javascript_include_tag "bootstrap.min" %>
+	  	
+	  	<%= csrf_meta_tags %>
+	  	
+		<!--[if lt IE 9]>
+		<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+	</head>
+	<body>
+		<!--BODY PAGE-->
+		
+		<div class="canvas">
+			<div class="canvas-header">
+				<div class="logo text-center clearfix">
+					<%= link_to image_tag("logo.png", :alt => "34pass.com"), 
+					    new_user_session_path %>
+					<br/>
+					<h2 class="bigheadline">Manage Visitors, easily</h2>
+				</div>
+			</div>
+			
+			<div class="canvas-body">
+				<div class="container">
+					<%= render partial: "layouts/flash_messages", flash: flash %>
+					<div class="row-fluid">
+						<%= yield %>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<div class="canvas-footer">
+			<div class="copyright">
+				<strong>34pass.com</strong> by <a href=''><strong>16columns</strong></a>
+			</div>
+		</div>
+		
+	</body>
+</html>

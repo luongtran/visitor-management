@@ -1,0 +1,42 @@
+// Place all the styles related to the Visitors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.optional-fields {
+  display:none;
+}
+
+#bt-optional-field {
+  margin-left:100px;
+}
+
+.search {
+  width:500px;
+  margin-left:300px;
+  float:left;
+}
+
+.left-input {
+  float:left;
+  
+}
+
+.right-input {
+  float:left;
+  margin-left:10px;
+  
+}
+
+#visitor_search_results {
+  width:100%;
+  float:left;
+}
+
+#checkout {
+  width:100%;
+  float:left;
+}
+
+#frmVisitorSearch {
+  display:none;
+}
