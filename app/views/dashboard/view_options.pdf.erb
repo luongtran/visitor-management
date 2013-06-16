@@ -1,0 +1,13 @@
+
+<table border>
+        <tr>
+        	<td style="width:15px"> # </td> <td style="width: 100px;"> Name</td> 
+        	<td> Mobile number</td>
+        </tr>
+        <% @all_visitors.each do |visitor| %>
+        	<tr>
+        		<td> <%= visitor.id %> </td> <td> <%= visitor.visitor_name %> </td> 
+        		<td> <%= visitor.visitor_mobile_number %> </td> 
+        	</tr>
+        <% end %>
+</table>
