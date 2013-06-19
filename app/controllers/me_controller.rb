@@ -12,9 +12,21 @@ class MeController < ApplicationController
     
     if @user.update_with_password(params[:user])
       sign_in(@user, :bypass => true)
-      redirect_to me_index_path, :notice => "Password updated!"
+      flash[:info] = "Password has been changed successfully"
+      redirect_to me_index_path
     else
-      render :edit
+      flash[:alert] = "Problem occured while changing your password"
+      redirect_to me_index_path
+    end
+  end
+
+  def excel_import
+    if HereToMeet.import(params[:excel_file])
+      flash[:info] = "Successfully imported"
+      redirect_to me_index_path
+    else
+      flash[:alert] = "Problem occured while importing"
+      redirect_to me_index_path
     end
   end
   
@@ -28,6 +40,14 @@ class MeController < ApplicationController
   
   def update_organisation
     @user = current_user
+
+     if @user.update_attributes(params[:user])
+      flash[:info] = "Organization has been changed successfully"
+      redirect_to me_index_path
+    else
+      flash[:alert] = "Problem occured while changing organization"
+      redirect_to me_index_path
+    end
   end
   
   def update
@@ -51,6 +71,14 @@ class MeController < ApplicationController
       end
     end
     redirect_to me_index_path
+  end
+
+  def update_organization
+     @user = current_user
+     @user.organisation_name = params[:user][:organisation_name]
+        if @user.save
+          flash[:info] = "Hurray! Company name is sucessfully modified"
+        end
   end
   
   def edit

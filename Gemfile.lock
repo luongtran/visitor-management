@@ -143,8 +143,13 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     ref (1.0.4)
+    roo (1.11.1)
+      nokogiri
+      rubyzip
+      spreadsheet (> 0.6.4)
     ruby-ole (1.2.11.6)
     ruby-rc4 (0.1.5)
+    rubyzip (0.9.9)
     sass (3.2.7)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -203,6 +208,7 @@ DEPENDENCIES
   prawn-print (~> 0.0.1)
   pry
   rails (= 3.2.8)
+  roo
   sass-rails (~> 3.2.3)
   therubyracer
   to_xls-rails

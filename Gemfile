@@ -52,7 +52,7 @@ gem "prawn-print", "~> 0.0.1"
 gem 'to_xls-rails'
 gem 'wkhtmltopdf-binary'
 gem 'wicked_pdf'
-
+gem 'roo'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
