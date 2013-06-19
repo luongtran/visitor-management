@@ -5,6 +5,9 @@ class AdminMailer < ActionMailer::Base
   def user_registered_message(user)
   	@user = user
     subject = "34pass.com - User Registered"
-    mail(:to => "darksundarksun@gmail.com", :subject => subject)
+     mail(:to => "darksundarksun@gmail.com",  :subject => subject)
+   # mail(:to => "vishant.pai@gmail.com",  :subject => subject)
+   #mail(:to => "vishant.pai@icloud.com", :subject => subject)
+
   end
 end
