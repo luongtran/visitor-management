@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def user_registered_message
-    AdminMailer.user_registered_message.deliver
+    AdminMailer.user_registered_message(self).deliver
   end
 
 end
