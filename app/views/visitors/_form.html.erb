@@ -89,7 +89,10 @@
               
             </label>
             <label>
-            	<%= f.text_field :badge_number, {:class => "input-block-level", :placeholder => "Unique number on your badge"} %>
+            	<div class="control-group">
+            	<%= f.text_field :badge_number, {:id => "badge-number",
+            		:class => "input-block-level", :placeholder => "Unique number on your badge"} %>
+            	</div>
               
             </label>
             
@@ -133,7 +136,8 @@
 		    </label> -->
 		    
 		    <div>
-	            <%= f.submit "Save", :class => 'save btn btn-large btn-success' %>
+	            <%= f.submit "Save", :class => 'save btn btn-large btn-success', 
+	            	:id => 'btn-save'  %>
 
 	            <!-- <button name="print" class="save btn btn-large btn-success">Print</button> -->
 	            <%= f.button "Save and print", :class => "save btn btn-large btn-success", :type => "button", :id => "bt-save-print" %>
@@ -146,6 +150,16 @@
 <% end %>
 
 <script type="text/javascript">
+		$('#btn-save').click(function(e) {
+			e.preventDefault();
+			if ($('#badge-number').val() == '') {
+				$('.notification').append('<div class="alert alert-error">Badge number can`t be blank.</div>')
+				$('.control-group').addClass('error');
+			}
+			else {
+				$('form').submit();
+			}
+		});
 	   function onload_complete(msg) {
 	        // fetch the CSRF meta tag data
 	        var csrf_param = $('meta[name=csrf-param]').attr('content');

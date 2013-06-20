@@ -21,11 +21,12 @@ class MeController < ApplicationController
   end
 
   def excel_import
-    if HereToMeet.import(params[:excel_file])
+    if HereToMeet.import(params[:excel_file], current_user)
       flash[:info] = "Successfully imported"
       redirect_to me_index_path
     else
-      flash[:alert] = "Problem occured while importing"
+      flash[:alert] = "Problem occured while importing. 
+                       Notice that only .xls and .xlsx file types are supported"
       redirect_to me_index_path
     end
   end
