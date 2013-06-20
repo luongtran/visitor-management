@@ -42,11 +42,17 @@ gem "will_paginate", "~> 3.0.pre2"
 gem 'pry'
 group :production do
   gem 'pg'
+  #gem 'wkhtmltopdf-heroku' # for pdf expor on heroku
 end
 
 gem 'phony_rails'
 
 gem "prawn-print", "~> 0.0.1"
+
+gem 'to_xls-rails'
+gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

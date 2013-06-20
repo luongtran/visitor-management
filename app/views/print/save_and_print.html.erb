@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	$(document).ready(function() {
+	$(window).load(function() {
 		printpage();
 		window.location = '<%= new_visitor_path %>';
 	});
@@ -50,17 +50,16 @@
       <div class="avatarcard">
       	<%= image_tag @visitor.photo.url() %>
   	  </div>
-      <div style="width:170px; position: absolute; z-index: 2; left: 6px; top: 280px;" class="optonal-field">
+      <div style="width:170px; position: absolute; z-index: 2; left: 107px; top: 280px;" class="optonal-field">
         <div class="row-fluid field">
-          <div style="padding-left: 10px;" class="span6 text-left">Badge #</div>
+          <div style="padding-left: 0px;" class="span6 text-left">Badge #</div>
           <div class="span6 text-right"><%= @visitor.badge_number %></div>
         </div>
         <div class="row-fluid field">
-          <div style="padding-left: 10px;" class="span6 text-left">34pass ID</div>
-          <div class="span6 text-right"><%= @visitor.pass_id %></div>
+          <div style="padding-left: 0px;" class="span6 text-left">34pass ID</div>
+          <div class="span6 text-right" style="margin-left:-19px;">
+            <%= @visitor.pass_id %>
+          </div>
         </div>
-        <div class="row-fluid field">
-          <div style="padding-left: 10px;" class="span6 text-left">Check in time</div>
-          <div class="span6 text-right"><%= @visitor.created_at.strftime("%a, %d %b %Y %H:%M") %></div>
-        </div>
+       
 </div>

@@ -6,7 +6,6 @@
 <%= javascript_include_tag "jqueryui/js/jquery-ui-1.10.2.custom.min" %>
 
 <div class="pagerbg dashboardpage">
-	
 	<div class="filterbar clearfix">
 		<div class="row-fluid">
 			<div class="span9">
@@ -24,7 +23,17 @@
 	                      <li><a href="#" class="view_option">Year</a></li>
 	                      <li><a href="#" class="view_option">Custom</a></li>
 	                    </ul>
+	                   <div class="btn-toolbar" style="margin: 0;">
+					 <div class="btn-group" data-toggle="buttons-radio" 
+					      style="margin-top:5px;"> 
+					  <button type="button" class="btn xls active">XLS</button>
+					  <button type="button" class="btn pdf">PDF</button>
 					</div>
+					<%= link_to "Export", '#', :class => "btn btn export-button",
+						:style => 'margin-top: 5px;' %>
+					
+					</div>
+				</div>
 					<%= hidden_field_tag :option_view, @view_option %>
 				</div>
 				<div class="calendar pull-left" style="display: none;", id="calendar_area">
@@ -102,13 +111,22 @@
 	</div>
 
  <!--RUeta : make change filter select box-->
-<script type="text/javascript">
+<%= javascript_tag do %>
 	(function($) {
 		jQuery(document).ready(function() {
 			jQuery('.filterselectebox .dropdown-menu a').click(function() {
 				jQuery('.filterselectebox .dropdown-toggle').dropdown('toggle');
 			});
+			$('.export-button').click(function(event) {
+				event.preventDefault();
+				if($('.active').text() == "XLS") {
+					window.location = '<%= dashboard_option_view_path(:format => :xls) %>';
+				}
+				else if ($('.active').text() == "PDF") {
+					window.location = '<%= dashboard_option_view_path(:format => :pdf) %>';
+				}
+			});
 		});
 
 	})(jQuery);
-</script>
+<% end %>

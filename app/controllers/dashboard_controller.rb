@@ -50,12 +50,22 @@ class DashboardController < ApplicationController
     end
     
     get_visitors(start.to_datetime, end_t.to_datetime, params[:page])
-    
+
     respond_to do |format|
       format.html {
         render "index"
       }
       format.js
+      format.xls { 
+        filename = "Visitors-#{Time.now.strftime("%Y%m%d%H%M%S")}.xls",
+        send_data(@all_visitors.to_xls(:only => [:id, :visitor_name,  :visitor_mobile_number]),
+                  :type => "text/xls; charset=utf-8; header=present",
+                  :filename => filename) 
+      }
+      format.pdf {
+        render :pdf => 'pdf', 
+               :template => "dashboard/view_options.pdf.erb"
+      }
     end
     
   end
@@ -63,7 +73,6 @@ class DashboardController < ApplicationController
   def view_mode
     @view_mode = params[:option_view]
   end
-  
   
   private 
   

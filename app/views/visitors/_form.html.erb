@@ -18,7 +18,8 @@
 					$('#visitor_here_to_meet').focus();
 					
 					if(visitor.photo_file_name != null) {
-						var html = '<img src="/assets/visitors/'+ visitor.id +'/small/' + visitor.photo_file_name +'" alt="visitor image" />';
+					//	var html = '<img src="/assets/visitors/'+ visitor.id +'/small/' + visitor.photo_file_name +'" alt="visitor image" />';
+						var html = '<img src=' + data.visitor_photo + ' />';
 						$('#curr_image').html(html);
 						$('#curr_image').show();
 						$('#webcam').hide();
@@ -28,13 +29,27 @@
 				}
 			});
 		});
+
+		$('#bt_capture').click(function() {
+			webcam.snap();
+			$('#bt_capture').attr("disabled", "disabled");
+			$('#bt_capture').hide();
+			$('#bt_re_capture').show();
+		});
 		
 		$('#bt_re_capture').click(function() {
 			$('#curr_image').hide();
 			$('#bt_re_capture').hide();
 			$('#webcam').show();
-			$('#bt_capture').show();
+			$('#bt_capture').show(1, function() {
+				$('#bt_capture').prop('disabled', false);
+				webcam.reset();
+			});
+			//jQuery.fx.off = false;
 		});
+
+		
+			
 		
 		$('#bt-save-print').click(function() {
 			$('#new_visitor').attr("action", "<%= save_print_path %>");
@@ -91,7 +106,7 @@
 		              	<!-- <img src="http://genk2.vcmedia.vn/N0WoyYblO3QdmZFKPMtKnadHAHTevz/Image/2012/Tran-Anh/1_original-(Copy)-58670.jpg" class="img-rounded"> -->
 	          		</span>
 	          		<span class="span4">
-			            <input type="button" value="Capture" class="capture btn btn-small btn-success" id="bt_capture" onclick="webcam.snap();"/>
+			            <input type="button" value="Capture" class="capture btn btn-small btn-success" id="bt_capture"/>
 			            <input type="button" value="Re-capture" class="capture btn btn-small btn-success" id="bt_re_capture" style="display: none;" />
 	          		</span>
           		</div>
