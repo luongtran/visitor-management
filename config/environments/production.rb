@@ -62,7 +62,7 @@ VisitorManagement::Application.configure do
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
   
-  config.action_mailer.default_url_options = { :host => 'calm-sands-6650.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => '34pass.com' }
   ActionMailer::Base.smtp_settings = {
     :address              => "oxmail.registrar-servers.com",
     :port                 => 25,

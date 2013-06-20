@@ -18,6 +18,7 @@
 					<th>Badge ID</th>
 					<!-- <th>My Pass ID</th> -->
 					<th>Visitor name</th>
+          <th>Status</th>
 					<th>Organization</th>
 					<!-- <th>Mobile</th> -->
 					<th>Check In</th>
@@ -31,79 +32,87 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% i = 1%>
-				<% @visitors.each do |visitor| %>
-				<tr>
-					<td><%= !params[:page].nil? ? (params[:page].to_i - 1) * 5  + i : i %></td>
-					<td><%= visitor.pass_id %></td>
+        <% if  @visitors.length > 0 %>
+  				<% i = 1%>
+  				<% @visitors.each do |visitor| %>
+  				<tr>
+  					<td><%= !params[:page].nil? ? (params[:page].to_i - 1) * 5  + i : i %></td>
+  					<td><%= visitor.pass_id %></td>
 					
-					<% if params[:controller] == "visitors" && params[:action] == "index" %>
-					<td>
-						<%= link_to visitor.badge_number.nil? ? "" : visitor.badge_number, visitor_path(visitor) %>
-					</td>
-					<td>
-						<%= link_to visitor.visitor_name, visitor_path(visitor) %>
-					</td>
-					<% else %>
-					<td>
-						<%= visitor.badge_number.nil? ? "" : visitor.badge_number %>
-					</td>
+  					<% if params[:controller] == "visitors" && params[:action] == "index" %>
+  					<td>
+  						<%= link_to visitor.badge_number.nil? ? "" : visitor.badge_number, visitor_path(visitor) %>
+  					</td>
+  					<td>
+  						<%= link_to visitor.visitor_name, visitor_path(visitor) %>
+  					</td>
+  					<% else %>
+  					<td>
+  						<%= visitor.badge_number.nil? ? "" : visitor.badge_number %>
+  					</td>
 					
-					<td>
-						<%= visitor.visitor_name %>
-					</td>
+  					<td>
+  						<%= visitor.visitor_name %>
+  					</td>
 						
-					<% end %>
-			        <td><%= visitor.visitor_company_name %></td>
-			        <td><%= visitor.created_at.strftime("%a, %d %b %Y %H:%M")  %></td>
-			        <!-- <td><%= visitor.reason_to_visit %></td> -->
-			        <td><%= visitor.here_to_meet %></td>
-			        <td><%= visitor.location %></td>
-			        <td>
+  					<% end %>
+                <td><%= visitor.status %></td>
+  			        <td><%= visitor.visitor_company_name %></td>
+  			        <td><%= visitor.created_at.strftime("%a, %d %b %Y %H:%M")  %></td>
+  			        <!-- <td><%= visitor.reason_to_visit %></td> -->
+  			        <td><%= visitor.here_to_meet %></td>
+  			        <td><%= visitor.location %></td>
+  			        <td>
 			        	
-			        	<% if !visitor.photo_file_name.nil? %>
-			        	<%= image_tag visitor.photo.url(:small) %>
-			        	<% else %>
-			        	Not Captured
-			        	<% end %>
-		        	</td>
-			        <!-- <td><%= visitor.here_to_meet %></td> -->
-			        <!-- <td><%= visitor.visitor_vehicle_number %></td> -->
-			        <!-- <td><%= visitor.storage_device_detail %></td> -->
-			        <!-- <td><%= visitor.authorized_id %></td>
-			        <td><%= visitor.comment %></td> -->
+  			        	<% if !visitor.photo_file_name.nil? %>
+  			        	<%= image_tag visitor.photo.url(:small) %>
+  			        	<% else %>
+  			        	Not Captured
+  			        	<% end %>
+  		        	</td>
+  			        <!-- <td><%= visitor.here_to_meet %></td> -->
+  			        <!-- <td><%= visitor.visitor_vehicle_number %></td> -->
+  			        <!-- <td><%= visitor.storage_device_detail %></td> -->
+  			        <!-- <td><%= visitor.authorized_id %></td>
+  			        <td><%= visitor.comment %></td> -->
 			        
-			        <!-- <td><%= visitor.pass_id %></td> -->
-			        <td>
-			        	<%
-			        	if visitor.check_out_time.nil? %>
-					        <%= form_tag visitor_checkout_path, {:remote => true, :class => 'frm-checkout', :id => 'form-' + visitor.id.to_s } do %>
-					        <%= hidden_field_tag 'pass_id', visitor.pass_id %>
-					        <%= submit_tag 'Checkout', :class => 'btn btn-small'  %>
-					        <% end %>
-			        	<% else %>
-			        	Checked out
-			        	<% end %>
+  			        <!-- <td><%= visitor.pass_id %></td> -->
+  			        <td>
+  			        	<%
+  			        	if visitor.check_out_time.nil? %>
+  					        <%= form_tag visitor_checkout_path, {:remote => true, :class => 'frm-checkout', :id => 'form-' + visitor.id.to_s } do %>
+  					        <%= hidden_field_tag 'pass_id', visitor.pass_id %>
+  					        <%= submit_tag 'Checkout', :class => 'btn btn-small'  %>
+  					        <% end %>
+  			        	<% else %>
+  			        	Checked out
+  			        	<% end %>
 			        	
-			        </td>
-			        <!-- <% if (params[:controller] == 'visitors' && (params[:action] != "twelve_plus" && params[:action] != "search")) %>
-			        <td>
-			        <% if !ajax %>
-				      <div class="btn-group">
-			          <%= link_to t('.edit', :default => t("helpers.links.edit")),
-			                      edit_visitor_path(visitor), :class => 'btn btn-mini' %>
-			          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-			                      visitor_path(visitor),
-			                      :method => :delete,
-			                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-			                      :class => 'btn btn-mini btn-danger' %>
-			            </div>
-			        <% end %>              
-			        </td>
-			        <% end %> -->
-				</tr>
-				<% i+= 1 %>
-				<% end %>
+  			        </td>
+  			        <!-- <% if (params[:controller] == 'visitors' && (params[:action] != "twelve_plus" && params[:action] != "search")) %>
+  			        <td>
+  			        <% if !ajax %>
+  				      <div class="btn-group">
+  			          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+  			                      edit_visitor_path(visitor), :class => 'btn btn-mini' %>
+  			          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+  			                      visitor_path(visitor),
+  			                      :method => :delete,
+  			                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+  			                      :class => 'btn btn-mini btn-danger' %>
+  			            </div>
+  			        <% end %>              
+  			        </td>
+  			        <% end %> -->
+  				</tr>
+  				<% i+= 1 %>
+  				<% end %>
+        <% else%>
+          <div class="alert alert-success">
+        			There are no visitors.
+        	</div>
+        <% end%>
+        
 			</tbody>
 			<!-- <tfoot>
 			    <tr>
