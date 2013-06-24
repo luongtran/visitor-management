@@ -58,9 +58,13 @@ class DashboardController < ApplicationController
       format.js
       format.xls { 
         filename = "Visitors-#{Time.now.strftime("%Y%m%d%H%M%S")}.xls",
-        send_data(@all_visitors.to_xls(:only => [:id, :pass_id, :visitor_name,  :visitor_mobile_number,
-                  :visitor_company_name, :check_out_time, :here_to_meet, :location, :status]),
-                  :type => "text/xls; charset=utf-8; header=present",
+        send_data(@all_visitors.to_xls(
+                  :only => [:id, :pass_id, :visitor_name,  :visitor_mobile_number,
+                  :visitor_company_name, :check_out_time, :here_to_meet, :location, :status,
+                  :badge_number],
+                  :headers => ["id", "34passid", "Visitor name",  "mobile number",
+                  "Organisation", "Check In", "Here to meet", "Location to visit", "Status",
+                  "Badge ID"]),
                   :filename => filename) 
                 # :authorized_id, :comment, :here_to_meet, :location, :reason_to_visit, :storage_device_detail, :coming_from,
                  # :user_id, :visitor_company_name, :visitor_mobile_number, :visitor_name, :visitor_vehicle_number, :pass_id, 

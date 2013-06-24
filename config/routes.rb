@@ -28,6 +28,8 @@ VisitorManagement::Application.routes.draw do
              
    
    match "registrations" => "registrations#create", :as => "user_registration"
+
+   match 'here_to_meet/show/:id' => "here_to_meet#show", :as => "here_to_meet"
  
   resources :photos do
     post 'upload', :on => :collection
