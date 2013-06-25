@@ -71,14 +71,11 @@
 						$('#heretomeet-table > tbody').html('');
 						$.each(data, function(i, val) {
 							$('#heretomeet-table > tbody').append("<tr>");
-							$('#heretomeet-table > tbody').append("<td>" 
-								+ parseInt(val.badge_nubmer) + 
-								"</td>");
 							$('#heretomeet-table > tbody').append("<td><a href='#' class='table-name'>" + val.name + 
 								"</a></td>");
 							$('#heretomeet-table > tbody').append("<td class='table-email'>" + val.email + 
 								"</td><br>");
-							$('#heretomeet-table > tbody').append("<td class='table-phone'>" + parseInt(val.mobile_number) + "</td><br>");
+							$('#heretomeet-table > tbody').append("<td class='table-phone'>" + val.mobile_number + "</td><br>");
 							$('#heretomeet-table > tbody').append("</tr>");
 						});
 					}
@@ -89,7 +86,7 @@
 		$(document).on('click', 'a.table-name', function(event) {
 			event.preventDefault();
 			$('#visitor_visitor_name').val($(this).html());
-			$('#badge-number').val($(this).parent().prev().html());
+			$('#here_to_meet').val($(this).html());
 			$('#visitor_visitor_mobile_number').val($(this).closest('td').next().next().html());
 			$('#searchBadgeModal').hide();
 			$('.modal-backdrop').remove();
@@ -195,7 +192,7 @@
   <div class="modal-body">
   	<table class="table table-striped" id="heretomeet-table">
   		<thead> 
-  			<tr> <td> Bage number </td> <td> Name </td> <td> Email </td> <td> Mobile number </td></tr>
+  			<tr> <td> Name </td> <td> Email </td> <td> Mobile number </td></tr>
   		</thead>
   		<tbody>
   		</tbody>

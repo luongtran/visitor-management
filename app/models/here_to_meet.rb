@@ -16,6 +16,7 @@ class HereToMeet < ActiveRecord::Base
   			record = self.new
   			record.attributes = row.to_hash.slice(*accessible_attributes)
         record.organization = user.organisation_name
+        record.mobile_number = record.mobile_number.to_s.gsub(".0", "") #roo returns '.0' at the end if a number
   			record.save!
   		end	
   	end
