@@ -18,7 +18,7 @@
 					<th>Badge ID</th>
 					<!-- <th>My Pass ID</th> -->
 					<th>Visitor name</th>
-          <th>Status</th>
+          <th> Mobile number </th>
 					<th>Organization</th>
 					<!-- <th>Mobile</th> -->
 					<th>Check In</th>
@@ -26,6 +26,7 @@
 					<th>Location to Visit</th>
 					<th>Photo</th>
 					<th>Checkout</th>
+          <th>Status</th>
 					<!-- <% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus" && params[:action] != "search") %>
 				      <th><%=t '.actions', :default => t("helpers.actions") %></th>
 			        <% end %> -->
@@ -46,6 +47,9 @@
   					<td>
   						<%= link_to visitor.visitor_name, visitor_path(visitor) %>
   					</td>
+            <td>
+              <%= visitor.visitor_mobile_number %>
+            </td>
   					<% else %>
   					<td>
   						<%= visitor.badge_number.nil? ? "" : visitor.badge_number %>
@@ -54,9 +58,12 @@
   					<td>
   						<%= visitor.visitor_name %>
   					</td>
-						
+            
+						<td>
+              <%= visitor.visitor_mobile_number %>
+            </td>
+
   					<% end %>
-                <td><%= visitor.status %></td>
   			        <td><%= visitor.visitor_company_name %></td>
   			        <td><%= visitor.created_at.strftime("%a, %d %b %Y %H:%M")  %></td>
   			        <!-- <td><%= visitor.reason_to_visit %></td> -->
@@ -89,6 +96,7 @@
   			        	<% end %>
 			        	
   			        </td>
+                <td><%= visitor.status %></td>
   			        <!-- <% if (params[:controller] == 'visitors' && (params[:action] != "twelve_plus" && params[:action] != "search")) %>
   			        <td>
   			        <% if !ajax %>
