@@ -61,16 +61,19 @@
 		$('.badge-search-btn').click(function(event) {
 			//event.preventDefault();
 			//$('.modal-body').append('a');
-			badge_number = $('#badge-number').val();
+			value = $('#here_to_meet').val();
 			$('#heretomeet-table > tbody').html('<div class="alert alert-error">No results found</div>');
-			if(badge_number) {
+			if(value) {
 				$.ajax({
 					type: 'GET',
-					url: '/here_to_meet/show/' + badge_number,
+					url: '/here_to_meet/show/' + value,
 					success: function(data) {
+						$('#heretomeet-table > tbody').html('');
 						$.each(data, function(i, val) {
-							$('#heretomeet-table > tbody').html('');
 							$('#heretomeet-table > tbody').append("<tr>");
+							$('#heretomeet-table > tbody').append("<td>" 
+								+ parseInt(val.badge_nubmer) + 
+								"</td>");
 							$('#heretomeet-table > tbody').append("<td><a href='#' class='table-name'>" + val.name + 
 								"</a></td>");
 							$('#heretomeet-table > tbody').append("<td class='table-email'>" + val.email + 
@@ -86,7 +89,8 @@
 		$(document).on('click', 'a.table-name', function(event) {
 			event.preventDefault();
 			$('#visitor_visitor_name').val($(this).html());
-			$('#visitor_visitor_mobile_number').val($('a.table-name').closest('td').next().next().html());
+			$('#badge-number').val($(this).parent().prev().html());
+			$('#visitor_visitor_mobile_number').val($(this).closest('td').next().next().html());
 			$('#searchBadgeModal').hide();
 			$('.modal-backdrop').remove();
 			$('.modal').removeClass('in');
@@ -112,8 +116,11 @@
                   
             </label>
             <label>
-              <div class="required label label-info">required</div>
-              	<%= f.text_field :here_to_meet, {:class => "input-block-level", :placeholder => "Here to meet"} %>
+              <div class="input-append">
+              	<%= f.text_field :here_to_meet, {:id => "here_to_meet", :class => "input-block-level", :placeholder => "Here to meet",
+              		:style => "width:300px"} %>
+              	<a href="#searchBadgeModal" role="button" class="btn badge-search-btn" style="height:38px; line-height:38px;" data-toggle="modal">Search</a>
+              	</div>
             </label>
             <label>
             	<%= f.text_field :reason_to_visit, {:class => "input-block-level", :placeholder => "Purpose of visit"} %>
@@ -121,15 +128,10 @@
             </label>
             <label>
             	<%= f.text_field :location, {:class => "input-block-level", :placeholder => "Location to visit"} %>
-              
             </label>
             <label>
-            	<div class="input-append">
             	<%= f.text_field :badge_number, {:id => "badge-number",
-            		:class => "input-block-level", :placeholder => "Unique number on your badge", :style => "width:300px;"} %>
-            	<a href="#searchBadgeModal" role="button" class="btn badge-search-btn" style="height:38px; line-height:38px;" data-toggle="modal">Search</a>
-            	</div>
-              
+            		:class => "input-block-level", :placeholder => "Unique number on your badge" } %>
             </label>
             
 		</span>
@@ -193,7 +195,7 @@
   <div class="modal-body">
   	<table class="table table-striped" id="heretomeet-table">
   		<thead> 
-  			<tr> <td> Name </td> <td> Email </td> <td> Mobile number </td></tr>
+  			<tr> <td> Bage number </td> <td> Name </td> <td> Email </td> <td> Mobile number </td></tr>
   		</thead>
   		<tbody>
   		</tbody>
