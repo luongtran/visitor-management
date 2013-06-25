@@ -85,9 +85,9 @@
 
 		$(document).on('click', 'a.table-name', function(event) {
 			event.preventDefault();
-			$('#visitor_visitor_name').val($(this).html());
+			//$('#visitor_visitor_name').val($(this).html());
 			$('#here_to_meet').val($(this).html());
-			$('#visitor_visitor_mobile_number').val($(this).closest('td').next().next().html());
+			//$('#visitor_visitor_mobile_number').val($(this).closest('td').next().next().html());
 			$('#searchBadgeModal').hide();
 			$('.modal-backdrop').remove();
 			$('.modal').removeClass('in');
@@ -116,7 +116,8 @@
               <div class="input-append">
               	<%= f.text_field :here_to_meet, {:id => "here_to_meet", :class => "input-block-level", :placeholder => "Here to meet",
               		:style => "width:300px"} %>
-              	<a href="#searchBadgeModal" role="button" class="btn badge-search-btn" style="height:38px; line-height:38px;" data-toggle="modal">Search</a>
+              	<a href="#searchBadgeModal"
+              	 role="button" class="btn badge-search-btn" style="height:38px; line-height:38px;" data-toggle="modal">Search</a>
               	</div>
             </label>
             <label>
