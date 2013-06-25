@@ -11,7 +11,7 @@ class RegistrationsController < ApplicationController
         i+=1
       end
       #flash[:error] = "Oops! unexpected errors occurs"
-      redirect_to "/login"
+      redirect_to root_path
     end
   end
   

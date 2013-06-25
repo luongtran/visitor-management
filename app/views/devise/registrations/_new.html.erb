@@ -25,8 +25,9 @@
 		<label><%= f.password_field :password, {:class => "input-block-level", :placeholder => "Password"} %></label>
 		
 		<label>
-			<span class="row-fluid">
-				<%= f.submit "Digitalize people movement", :class => "btn btn-large btn-success span8 offset2" %>
+			<span>
+				<%= f.submit "Digitalize people movement", :class => "btn btn-large btn-success span6 offset", :style => "margin-left:35px;" %>
+				<%= link_to "Login", new_user_session_path, :class => "btn btn-large btn-success span4", :style => "float:right; margin-right:35px" %>
 			</span>
 		</label>
 		

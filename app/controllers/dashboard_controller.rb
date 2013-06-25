@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_filter :signed_in?, :authenticate_user!
   
   def index
     logger = Logger.new('log/debug.log')
@@ -93,5 +93,9 @@ class DashboardController < ApplicationController
     twelve_ago = Time.now - 12.hours
     @expired = Visitor.where('(((created_at <= ?) AND (check_out_time is null))) AND (user_id = ?) AND created_at >= ? AND created_at <= ?', twelve_ago, current_user.id, start, end_t)
   end
-  
+
+  def signed_in?
+    signed_in = user_signed_in? ? true : false
+    render :template => 'welcome/index' unless signed_in 
+  end
 end

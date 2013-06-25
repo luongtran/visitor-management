@@ -10,6 +10,7 @@ alpha-black-20pct.png: alpha-black-20pct-ec2cb31af0db678c3b288790dc9fad35.png
 alpha-white-75pct.png: alpha-white-75pct-2b326ca1f461c33d921892a057284c0f.png
 arrow.png: arrow-6b7ca131a41bcffa90f981f948bf635c.png
 background.png: background-b18d1c3a24d39eba7d16f6859fcce181.png
+bgshadowbrick.png: bgshadowbrick-1d2947aa9a608825b39af3eefa330718.png
 break-ling.png: break-ling-2aa6704646007f61d263cf0759062889.png
 btn-arrow.png: btn-arrow-40e0ad2a780328bce1df21aafd96382a.png
 btn-arrow2.png: btn-arrow2-22517847e3edc346dda0aaa965207b63.png
@@ -20,15 +21,25 @@ dash-numgreen.png: dash-numgreen-be792ae3aed3bcffef29473941ff9e03.png
 dash-numred.png: dash-numred-fed0725ed9ccc1b90ce38e696d97e14d.png
 dashboard-sd.png: dashboard-sd-20d104eb875f14d0a5534b7c2c401d71.png
 demo-slidebanner.png: demo-slidebanner-047e902e1b0909277aa9c340161506df.png
+demoimg.png: demoimg-72519e89bb4bc5657db4542889bcc0fe.png
 divider-bg.png: divider-bg-f968dfb84b6d75aa3307baf507d42a87.png
 dot.png: dot-d48ec5ddd35bad23342751bde94c8d14.png
 footer-shadow.png: footer-shadow-da75bad875a81fc5ff1761f048390d68.png
 form-head.png: form-head-ff05f85da343fb2b97b7cff925da967f.png
 glyphicons-halflings-white.png: glyphicons-halflings-white-13553a5bf21ae3cc374006592488ec64.png
 glyphicons-halflings.png: glyphicons-halflings-ab3144065a860d198f1d7d9a4882640c.png
+icon-1-camera.png: icon-1-camera-2fea3b87e99ad2e9186ee86ffb865de1.png
+icon-1-eye.png: icon-1-eye-8238e5d6c0f4f023890228f028a832e2.png
+icon-1-mani.png: icon-1-mani-e4366ea89200f60594e108c011baba88.png
+icon-1-plane.png: icon-1-plane-a4da035620bc4bb85ab97696e51f5c7e.png
+icon-1-plus.png: icon-1-plus-72f2b088c968b04e93dac8c39084ee9e.png
+icon-1-print.png: icon-1-print-0c29f7d10e12e5b90bca9e211e683c7e.png
 icon-contact.png: icon-contact-b7e9579a146ac49b8d339ae67b7a57c3.png
+icon-envelope.png: icon-envelope-8c4f19cc97fff883f11fa87cd9f0210d.png
 icon-nameapp.png: icon-nameapp-ef71518dac5b5bccbee85088cae2db73.png
+icon-plus.png: icon-plus-48174392cdc2fe6c589eff37d35a564c.png
 icon-profile.png: icon-profile-e122a0e810e27ee71439363078716f16.png
+icon-twitter.png: icon-twitter-a3b588892877e0985d36ab14890fc9ea.png
 icon12.gif: icon12-2d98ef41f06415da9a018f000395afee.gif
 kinhlup.png: kinhlup-89fd341cf733785202c5e57fe2676841.png
 left_panel_buttons.png: left_panel_buttons-b3ceaa5e5de0a6d5ac31de29afe54264.png
@@ -48,6 +59,8 @@ rank5.png: rank5-9c70910cc79ced0085ef18b1085b2b85.png
 review-logo.png: review-logo-2b8a3a4bc434c51b47a15f8cd0d17700.png
 searchbar.png: searchbar-bff8a90013b4bdea028a90be02a09b1a.png
 securityguard.png: securityguard-3d059995ad53f32be73a101788906720.png
+shadow1.png: shadow1-d1c1353a62384bc7910dd2dc0c857096.png
+shadow2.png: shadow2-8a8b14af6089fd8d8308c1edc9293f1c.png
 shadowtop.png: shadowtop-560c6d8785fcf40c16abd6a8e02911c1.png
 slidebanner-1.png: slidebanner-1-2e018780fa22844685c0066ef93f8029.png
 table-thead.png: table-thead-d27ad0f07ba017f82876f4c10281557b.png
@@ -55,6 +68,7 @@ tableheader.png: tableheader-734dc5b14e47626143f959866aa5b3aa.png
 top-shadow.png: top-shadow-d5506aa08d2121815cb89fabdb57d4ab.png
 twocol-bg.png: twocol-bg-31c861a4b890fbbf17ffc61ccd43863d.png
 vertical-shadow.png: vertical-shadow-49d150ce95da701789d6634a7a789743.png
+verticalline.png: verticalline-abe9a64636e941483e5bfa81f7ed2b81.png
 victory.png: victory-761f0d299a7528182f0b455a3cf741e2.png
 application.js: application-9c442450e3c9fd588b28a510c1e6627f.js
 jqueryui/css/sunny/images/animated-overlay.gif: jqueryui/css/sunny/images/animated-overlay-691b2d4343303de8d214ad5395fd895d.gif
@@ -90,7 +104,7 @@ Adelle/Adelle_Semibold.eot: Adelle/Adelle_Semibold-7e406fad01a7c20171855c8565b64
 Adelle/Adelle_Semibold.svg: Adelle/Adelle_Semibold-7c48ce268f8dbcf465cbd748602417d5.svg
 Adelle/Adelle_Semibold.ttf: Adelle/Adelle_Semibold-dfb9863f000ad29fc6587983110aad62.ttf
 Adelle/Adelle_Semibold.woff: Adelle/Adelle_Semibold-64d0eceb494da1328ae63e762d7d47d0.woff
-application.css: application-03018557d82f95fa307cd3ffdcf7318e.css
+application.css: application-a22d42dd9add3bbf2dad3706761fb427.css
 fontkit-lucidaconsole/Lucida Console.eot: fontkit-lucidaconsole/Lucida Console-c5945097083d39ae174b82f0396d5e19.eot
 fontkit-lucidaconsole/Lucida Console.otf: fontkit-lucidaconsole/Lucida Console-c0df20796db7fc479fc6a61fe0ed19ad.otf
 fontkit-lucidaconsole/Lucida Console.svg: fontkit-lucidaconsole/Lucida Console-3d5b43e422e64d1799edc6f65981fdf3.svg

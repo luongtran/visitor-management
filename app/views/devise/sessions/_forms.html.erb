@@ -1,17 +1,8 @@
-<span class="span6">
-	<div class="formbox" id="register">
-		<h1 class="headtext text-left">Sign up for a 60-day free trial of 34pass</h1>
-		<h3 class="semi-headtext">Registration in less than 20 seconds</h3>
-		
-		<%= render :partial => 'devise/registrations/new' %>
-	</div>
-</span>
-<span class="span1 breakvertical"></span>
-<span class="span5">
-	<div class="formbox" id="login">
-		<h1 class="headtext text-left">Login</h1>
-		<div style="height: 68px"></div>
-		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+	<div class="canvas-body" style="background:none;">
+		<div class="container small pagerbg" style="margin-top: 60px">
+			<h2 class="text-center displayblock">Login</h2>
+			<div id="login" class="formbox">
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 			
 			<label>
 				<%= f.email_field :email, {:class => "input-block-level", :placeholder => "Email"} %>
@@ -29,10 +20,23 @@
 				</span>
 				<br/>
 				<span class="row-fluid">
-					<a href="/password/new" class="resetpass span8 offset2 text-center">Reset password</a>
+					<%= link_to "Reset password", new_user_password_path,
+						:class => "resetpass span8 offset2 text-center" %>
 				</span>
 			</label>
 				
 		<% end %>
+		</div>
+
+		</div>
 	</div>
-</span>
+
+	<div class="spacing"></div>
+</div>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('.bigheadline').remove();
+		$('.canvas-body').css('background', 'none');
+	});
+</script>

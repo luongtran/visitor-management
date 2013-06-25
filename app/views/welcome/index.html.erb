@@ -1,29 +1,129 @@
-<div class="row-fluid">
-	<span class="span6">
-		<div class="formbox" id="register">
-			<h1 class="headtext text-left">Register within <strong class="special">20</strong> secs</h1>
+	<div class="canvas-body">
+		<div class="container">
+			<div class="notification">
+				<div class="alert alert-error">
+					You need to sign in or sign up before continuing.
+				</div>
+				<!-- <div class="alert alert-success">It looks like you already have an account</div>
+				<div class="alert alert-error mobile">Oops! please enter your email id</div> -->
+			</div>
+			<div class="row-fluid">
+						<span class="span6">
+	<div id="register" class="formbox">
+		<h1 class="headtext text-left">Sign up for a 60-day free trial of 34pass</h1>
 
-			<form action="" method="POST" name="register">
-				<label><input type="text" name="email" placeholder="Your email address" class="input-block-level"/></label>
-				<label><input type="text" name="company" placeholder="Your company name" class="input-block-level"/></label>
-				<label><input type="text" name="pass" placeholder="Enter password" class="input-block-level"/></label>
-				<label><input type="text" name="repass" placeholder="re-enter password" class="input-block-level"/></label>
-				<label>
-					<span class="row-fluid">
-						<button class="btn btn-large btn-success span8 offset2" name="registerbt">Digitalize people movement</button>
-					</span>
-				</label>
-			</form>
+		<h3 class="semi-headtext">Registration in less than 20 seconds</h3>
+
+		<%= render :partial => 'devise/registrations/new' %>
+	</div>
+</span>
+				<span class="span1 breakvertical"></span>
+<span class="span5">
+
+	<!-- ads for price -->
+	<div class="well text-center pricecompo">
+		<div class="priceinner">
+			<h2><a href="http://ch.eckout.com/34pass1" class="alert">$20 per month</a></h2>
+			<p><strong>Unlimited visitors per location</strong></p>
+			<p><strong>Unlimited visitors per user</strong></p>
 		</div>
-	</span>
-	<span class="span1 breakvertical">
-	</span>
-	
-	<!--right col-->
-	<span class="span5">
-		<div class="formbox" id="login">
-			<h1 class="headtext text-center">Login</h1>
-			<%= render :partial => 'devise/sessions/new' %>
+	</div>
+
+</span>
+
+
+			</div>
 		</div>
-	</span>
+
+		<!-- new  -->
+		<div class="container part2">
+			<div class="row-fluid">
+			<span class="span7 offset2">
+				<div class="well sociallink">
+					<div class="row-fluid">
+						<div class="span7">
+							<div class="social clearfix">
+								<span class="">NEED SUPPORT</span>
+								<a href="support@16columns.com">
+									<%= image_tag "icon-envelope.png" %>
+								</a>
+								<a href="http://twitter.com/16columns">
+									<%= image_tag "icon-twitter.png" %>
+								</a>
+							</div>
+						</div>
+						<div class="span5">
+							<a href="http://twitter.com/34pass">
+								<%= image_tag "icon-plus.png", :class => "mrm" %>
+								NEW FEATURES
+							</a>
+						</div>
+					</div>
+				</div>
+			</span>
+			</div>
+		</div>
+
+		<div class="headerline2 text-center">
+			<div class="shadow1">
+				<%= image_tag "shadow1.png" %>
+			</div>
+			<div class="cont">
+				<h3>Replace manual register with web enabled online visitor management solution</h3>
+			</div>
+			<div class="shadow2">
+				<%= image_tag "shadow2.png" %>
+			</div>
+		</div>
+
+		<div class="bodyline2 container">
+			<div class="row-fluid">
+			<span class="span3">
+				<%= image_tag "demoimg.png" %>
+			</span>
+			<span class="span9">
+				<ul class="unstyled tagline2">
+					<li class="pull-left">
+						<span>
+							<%= image_tag "icon-1-plus.png" %>
+						</span>
+						<span>Check-in visitors instantly</span>
+					</li>
+					<li class="pull-left">
+						<span>
+							<%= image_tag "icon-1-plane.png" %>
+						</span>
+						<span>Entire visitor statistics in one place, organized</span>
+					</li>
+					<li class="pull-left">
+						<span>
+							<%= image_tag "icon-1-camera.png" %>
+						</span>
+						<span>Capture visitor images and print them too</span>
+					</li>
+					<li class="pull-left">
+						<span>
+							<%= image_tag "icon-1-eye.png" %>
+						</span>
+						<span>Meet compliance required from Visitor management</span>
+					</li>
+					<li class="pull-left">
+						<span>
+							<%= image_tag "icon-1-mani.png" %>
+						</span>
+						<span>Find visitor inside your premises instantly</span>
+					</li>
+					<li class="pull-left">
+						<span>
+							<%= image_tag "icon-1-print.png" %>
+						</span>
+						<span>Works without a printer and webcam too</span>
+					</li>
+				</ul>
+			</span>
+			</div>
+		</div>
+
+	</div>
+
 </div>
