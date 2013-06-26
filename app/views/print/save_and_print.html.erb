@@ -2,7 +2,11 @@
 	$(window).load(function() {
 		printpage();
 		window.location = '<%= new_visitor_path %>';
-	});
+    var date = new Date(); // get user local time for printing
+    date = date.getDate() + '-' + (date.getMonth() + 1)+ '-' + date.getFullYear() + " " +
+           date.getHours() + ':' + date.getMinutes(); 
+    $('#check_time').html(date);	
+  });
 	
 	function printpage()
 	{
@@ -45,7 +49,7 @@
         <div class="span6 text-left">
           <label>Check in time :</label>
         </div>
-        <div class="span6 text-right"><strong><%= @visitor.created_at.strftime("%a, %d %b %Y %H:%M") %></strong></div>
+        <div class="span6 text-right"><strong id="check_time"></strong></div>
       </div>
       <div class="avatarcard">
       	<%= image_tag @visitor.photo.url() %>
