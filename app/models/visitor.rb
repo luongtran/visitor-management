@@ -17,6 +17,7 @@ class Visitor < ActiveRecord::Base
   validate :validate_visitor_mobile_number_check_in, :on => :create
   validate :badge_number_not_blank, :on => :save_with_out_print
   validate :validate_badge_number, :on => :create
+  validate :valid_mobile_number?
   #phony_normalize :visitor_mobile_number, :default_country_code => 'IN'
   
   # validates_plausible_phone :visitor_mobile_number, :presence => true
@@ -99,6 +100,12 @@ class Visitor < ActiveRecord::Base
     visitor = Visitor.find(:first, :conditions => ["visitor_mobile_number = ? AND user_id = ? AND check_out_time is null", visitor_mobile_number, user_id])
     if !visitor.nil?
       errors.add(:visitor_mobile_number, "#{visitor_mobile_number} must be checked out")
+    end
+  end
+
+  def valid_mobile_number?
+    if self.visitor_mobile_number.match /[a-zA-Z]/
+      errors.add(:visitor_mobile_number, " should not include characters")
     end
   end
   
