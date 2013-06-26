@@ -35,6 +35,20 @@
 	              		</div>
                     </div>
                     <% end %>
+                    <%= form_for current_user, :url => update_location_path, :class => 'form-horizontal'  do |f| %>
+					<div class="accountfield row-fluid">
+	                    <div class="span4 text-right">
+	                    <%= label_tag 'Edit location and zip code'%>
+	                    </div>
+	                    <div class="span6">
+	                    	<%= f.text_field :location, {:class => "input-block-level", :placeholder => "Enter new location name"} %>
+	                    	<%= f.text_field :zip_code, {:class => "input-block-level", :placeholder => "Enter new zip code"} %>
+	                    </div>
+	                     <div class="span2">
+	                    	<input type="submit" value="Edit" class="btn btn-success span8">
+	              		</div>
+                    </div>
+                    <% end %>
                     <%= form_for current_user, :url => change_password_path, :method => 'put', :class => 'form-horizontal'  do |f| %>
                     <div class="accountfield row-fluid">
 	                    <div class="span4 text-right">

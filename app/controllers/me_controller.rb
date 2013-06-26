@@ -50,7 +50,20 @@ class MeController < ApplicationController
       redirect_to me_index_path
     end
   end
-  
+
+  def update_location
+    @user = current_user
+
+    if @user.update_attributes(params[:user])
+      flash[:info] = "Location and zip code has been changed successfully"
+      redirect_to me_index_path
+    else
+      flash[:alert] = "Problem occured while changing location and zip code"
+      redirect_to me_index_path
+
+    end
+  end
+
   def update
     @user = current_user
     notice = ""

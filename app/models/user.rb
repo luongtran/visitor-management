@@ -13,11 +13,15 @@ class User < ActiveRecord::Base
   validates_attachment_content_type :logo, :content_type => ['image/jpeg', 'image/png', 'image/jpg', 'image/gif']
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :remember_me, :organisation_name, :logo
+  attr_accessible :email, :password, :remember_me, :organisation_name, :logo, :location, 
+                  :zip_code
   # attr_accessible :title, :body
 
   validate :organisation_name_cannot_blank
   after_create :welcome_message, :user_registered_message
+
+  validates :location, :presence => true
+  validates :zip_code, :presence => true, numericality: { only_integer: true }
 
   def organisation_name_cannot_blank
     if organisation_name.blank?

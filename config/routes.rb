@@ -42,6 +42,7 @@ VisitorManagement::Application.routes.draw do
   match 'me/update' => "me#update", :as => 'me_update'
   match 'me/update-organisation' => "me#update_organisation", :as => 'update_organisation'
   match 'me/excel_import' => "me#excel_import", :as => 'excel_import'
+  match 'me/update_location' => "me#update_location", :as => 'update_location'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
