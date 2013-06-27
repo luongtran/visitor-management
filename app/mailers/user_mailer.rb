@@ -6,4 +6,9 @@ class UserMailer < ActionMailer::Base
     subject = "Receptionist and Visitors, now happier than ever"
     mail(:to => user.email, :subject => subject)
   end
+
+  def activated_message(user)
+  	subject = "Your account is activated for 30 days now."
+  	mail(:to => user.email, :subject => subject)
+  end
 end

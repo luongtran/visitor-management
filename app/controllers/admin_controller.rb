@@ -11,6 +11,7 @@ class AdminController < ApplicationController
 		user.expires = user.expires + 1.month.to_i
 		if user.save
 			flash[:success] = "User activated for 1 month"
+			UserMailer.activated_message(user).deliver
 			render :index
 		else
 			flash[:alert] = "Arror happend while activating"
