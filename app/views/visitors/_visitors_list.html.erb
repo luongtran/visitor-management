@@ -72,7 +72,10 @@
   			        <td>
 			        	
   			        	<% if !visitor.photo_file_name.nil? %>
-  			        	<%= image_tag visitor.photo.url(:small) %>
+  			        	
+                  <div class='visitor-search-photo' 
+                       style="background-image: url('<%=visitor.photo.url(:small) %>');">
+                  </div>
   			        	<% else %>
   			        	Not Captured
   			        	<% end %>

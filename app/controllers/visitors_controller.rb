@@ -206,9 +206,10 @@ class VisitorsController < ApplicationController
     render :template => 'welcome/index' unless user_not_expired?
   end
 
- def user_not_expired?
+  def user_not_expired?
     if current_user
-      current_user && (current_user.admin || (current_user.expires > Time.now))
+      redirect_to 'https://ch.eckout.com/secure/34pass1' unless (current_user.admin || (current_user.expires > Time.now)) 
+      current_user
     end
   end
   
