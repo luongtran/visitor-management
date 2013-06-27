@@ -14,11 +14,12 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :remember_me, :organisation_name, :logo, :location, 
-                  :zip_code
+                  :zip_code, :admin
   # attr_accessible :title, :body
 
   validate :organisation_name_cannot_blank
-  after_create :welcome_message, :user_registered_message
+  after_create  :welcome_message, :user_registered_message
+  before_create :set_experiment_time
 
   validates :location, :presence => true
   validates :zip_code, :presence => true, numericality: { only_integer: true }
@@ -35,6 +36,10 @@ class User < ActiveRecord::Base
 
   def user_registered_message
     AdminMailer.user_registered_message(self).deliver
+  end
+
+  def set_experiment_time
+    self.expires = 2.month.from_now
   end
 
 end

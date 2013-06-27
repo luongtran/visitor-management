@@ -36,6 +36,9 @@ VisitorManagement::Application.routes.draw do
   end
   
   resources :me, :only => [:index, :edit] 
+
+  match 'admin' => 'admin#index', :as => 'admin_index'
+  match 'admin/activate/:id' => 'admin#activate', :as => 'admin_activate'
   
   match 'me/upload-logo' => 'me#upload_logo', :as => :upload_logo
   match 'me/change-password' => 'me#change_password', :as => 'change_password'

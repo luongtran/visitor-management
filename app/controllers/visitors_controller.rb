@@ -1,5 +1,6 @@
 class VisitorsController < ApplicationController
   
+  before_filter :signed_in?
   PER_PAGE = 10
   
   before_filter :authenticate_user!
@@ -31,7 +32,7 @@ class VisitorsController < ApplicationController
   # GET /visitors/new.json
   def new
     @visitor = Visitor.new
-    
+      
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @visitor }
@@ -48,6 +49,8 @@ class VisitorsController < ApplicationController
   def create
     @visitor = Visitor.new(params[:visitor])
     @visitor.user_id = current_user.id
+    @visitor.user_location = current_user.location
+    @visitor.zip_code      = current_user.zip_code
     if FileTest.exist?(upload_path)
       @visitor.photo = File.new(upload_path)
     end
@@ -196,6 +199,15 @@ class VisitorsController < ApplicationController
   def get_daily_visitors
     visitors = Visitor.find(:all, :conditions => ['DATE(created_at) = DATE(?)', Time.now])
     @daily_visitors = visitors.length
+  end
+
+  def signed_in?
+    signed_in = user_signed_in? ? true : false
+    render :template => 'welcome/index' unless user_not_expired?
+  end
+
+  def user_not_expired?
+      current_user && (current_user.admin || (current_user.expires > Time.now))
   end
   
 end

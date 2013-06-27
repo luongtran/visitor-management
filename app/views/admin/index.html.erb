@@ -1,0 +1,47 @@
+<div class="row-fluid">
+		<div class="span12">
+			<%= form_tag admin_index_path do %>
+				<%= label_tag "Find user by Email" %>
+				<%= text_field_tag :email%>
+				<%= submit_tag "Find", :class => 'save btn btn-large btn-success',
+									   :id    => 'find-btn' %>
+			<% end %>
+		</div>
+		<div class="span12 search-results">
+			<% if @users && @users.any? %>
+
+			<table class="table table-striped" id="heretomeet-table">
+				<thead> 
+					<tr> 
+						<td> Email </td> 
+						<td> Organisation </td> 
+						<td> Location </td> 
+						<td> Zip Code </td> 
+						<td> Expire date</td>
+					</tr>
+				</thead>
+
+				<tbody>
+					<% @users.each do |user| %>
+						<tr> 
+							 <td><%= user.email %> </td> 
+						 	 <td><%= user.organisation_name %> </td> 
+						 	 <td><%= user.location %> </td> 
+							 <td><%= user.zip_code %> </td>
+							 <td><%= user.expires %> </td>
+							 <td> 
+							 	<%= link_to "Activate for 1 month", admin_activate_path(user), :class => "btn btn-success" %>
+							 	</button> 
+							 </td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+			<% end %>
+		</div>
+</div>
+
+<script type="text/javascript">
+	
+</script>

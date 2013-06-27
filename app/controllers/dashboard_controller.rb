@@ -50,7 +50,7 @@ class DashboardController < ApplicationController
     end
     
     get_visitors(start.to_datetime, end_t.to_datetime, params[:page])
-
+    
     respond_to do |format|
       format.html {
         render "index"
@@ -61,7 +61,7 @@ class DashboardController < ApplicationController
         send_data(@all_visitors.to_xls(
                   :only => [:id, :pass_id, :visitor_name,  :visitor_mobile_number,
                   :visitor_company_name, :check_out_time, :here_to_meet, :location, :status,
-                  :badge_number, :location, :zip_code],
+                  :badge_number, :user_location, :zip_code],
                   :headers => ["id", "34passid", "Visitor name",  "mobile number",
                   "Organisation", "Check In", "Here to meet", "Location to visit", "Status",
                   "Badge ID"]),
@@ -96,6 +96,10 @@ class DashboardController < ApplicationController
 
   def signed_in?
     signed_in = user_signed_in? ? true : false
-    render :template => 'welcome/index' unless signed_in 
+    render :template => 'welcome/index' unless user_not_expired?
+  end
+
+  def user_not_expired?
+      current_user && (current_user.admin || (current_user.expires > Time.now))
   end
 end

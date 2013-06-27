@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   
-  before_filter :authenticate_user!, :only => :index
+  before_filter :signed_in?, :authenticate_user!, :only => :index
   
   def create
     @photo = Photo.new(params[:photo])
@@ -30,5 +30,14 @@ class PhotosController < ApplicationController
   def upload_path # is used in upload and create
     file_name = session[:session_id].to_s + '.jpg'
     File.join(Rails.root, 'public', 'uploads', file_name)
+  end
+
+  def signed_in?
+    signed_in = user_signed_in? ? true : false
+    render :template => 'welcome/index' unless user_not_expired?
+  end
+
+  def user_not_expired?
+      current_user && (current_user.admin || (current_user.expires > Time.now))
   end
 end

@@ -21,4 +21,5 @@ class ApplicationController < ActionController::Base
     file_name = session[:session_id].to_s + '.jpg'
     File.join(Rails.root, 'public', 'uploads', file_name)
   end
+
 end

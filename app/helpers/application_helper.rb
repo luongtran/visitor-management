@@ -26,7 +26,5 @@ module ApplicationHelper
     else
        "alert-error"
     end
-  end
-  
-  
+  end 
 end

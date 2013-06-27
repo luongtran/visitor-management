@@ -1,6 +1,6 @@
 class MeController < ApplicationController
   
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :signed_in?
   
   def index
     
@@ -97,6 +97,17 @@ class MeController < ApplicationController
   
   def edit
     
+  end
+
+  private
+
+  def signed_in?
+    signed_in = user_signed_in? ? true : false
+    render :template => 'welcome/index' unless user_not_expired?
+  end
+
+  def user_not_expired?
+      current_user && (current_user.admin || (current_user.expires > Time.now))
   end
   
 end
