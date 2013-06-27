@@ -100,6 +100,8 @@ class DashboardController < ApplicationController
   end
 
   def user_not_expired?
+    if current_user
       current_user && (current_user.admin || (current_user.expires > Time.now))
+    end
   end
 end

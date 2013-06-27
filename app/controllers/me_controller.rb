@@ -106,8 +106,10 @@ class MeController < ApplicationController
     render :template => 'welcome/index' unless user_not_expired?
   end
 
-  def user_not_expired?
+ def user_not_expired?
+    if current_user
       current_user && (current_user.admin || (current_user.expires > Time.now))
+    end
   end
   
 end
