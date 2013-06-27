@@ -91,15 +91,6 @@ class VisitorsController < ApplicationController
 
   # DELETE /visitors/1
   # DELETE /visitors/1.json
-  def destroy
-    @visitor = Visitor.find(params[:id])
-    @visitor.destroy
-
-    respond_to do |format|
-      format.html { redirect_to visitors_url }
-      format.json { head :no_content }
-    end
-  end
   
   def visitor_checkout
     logger = Logger.new('log/debug.log')
