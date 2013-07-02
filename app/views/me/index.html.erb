@@ -25,13 +25,13 @@
 					<%= form_for current_user, :url => update_organisation_path, :class => 'form-horizontal'  do |f| %>
 					<div class="accountfield row-fluid">
 	                    <div class="span4 text-right">
-	                    <%= label_tag 'Edit organization name'%>
+	                    <%= label_tag 'Edit organization name' %>
 	                    </div>
-	                    <div class="span6">
-	                    	<%= f.text_field :organisation_name, {:class => "input-block-level", :placeholder => "Enter new organization name"} %>
+	                    <div class="span4">
+	                    	<%= f.text_field :organisation_name, {:class => "input-block-level", :placeholder => "Enter new organization name", :style => "line-hight:20px; font-size:17px; height:48px;" } %>
 	                    </div>
 	                     <div class="span2">
-	                    	<input type="submit" value="Edit" class="btn btn-success span8">
+	                    	<input type="submit" value="Edit" class="btn btn-large btn-success span8" style="width:100px">
 	              		</div>
                     </div>
                     <% end %>
@@ -40,13 +40,27 @@
 	                    <div class="span4 text-right">
 	                    <%= label_tag 'Edit location and zip code'%>
 	                    </div>
-	                    <div class="span6">
-	                    	<%= f.text_field :location, {:class => "input-block-level", :placeholder => "Enter new location name"} %>
-	                    	<%= f.text_field :zip_code, {:class => "input-block-level", :placeholder => "Enter new zip code"} %>
+	                    <div class="span4">
+	                    	<%= f.text_field :location, {:class => "input-block-level", :placeholder => "Enter new location name",
+	                    		:style => "line-hight:20px; font-size:17px; height:48px;" } %>
+	                    </div>
+	                    <div class="span2">
+	                    	<input type="submit" value="Edit" class="btn btn-success  btn-large span8" style="width:100px">
+	              		</div>
+	              	</div>
+	                </div>
+	                <div class="accountfield row-fluid">
+	                     <div class="span4 text-right">
+	                    <%= label_tag 'Edit zip code'%>
+	                    </div>
+	                    <div class="span4">
+	                    	<%= f.text_field :zip_code, {:class => "input-block-level", :placeholder => "Enter new zip code",
+	                    		:style => "line-hight:20px; font-size:17px; height:48px;" } %>
 	                    </div>
 	                     <div class="span2">
-	                    	<input type="submit" value="Edit" class="btn btn-success span8">
+	                    	<input type="submit" value="Edit" class="btn btn-success  btn-large span8" style="width:100px">
 	              		</div>
+	              	</div>
                     </div>
                     <% end %>
                     <%= form_for current_user, :url => change_password_path, :method => 'put', :class => 'form-horizontal'  do |f| %>
@@ -54,20 +68,23 @@
 	                    <div class="span4 text-right">
 	                    	<%= label_tag 'Generate new password'%>
 	                    </div>
-	                    <div class="span6">
-	                    	<%= f.password_field :current_password, :class => 'span12 textbox-big justus-roman', :placeholder => "Old password" %>
-	                    	
+	                    <div class="span4">
+	                    	<label style="line-hight:20px; font-size:17px;">
+	                    	<%= f.password_field :current_password, :class => 'span12 textbox-big justus-roman', :placeholder => "Old password",
+	                    		:style => "line-hight:20px; font-size:17px; height:48px;" %>
+	                    	</label>
 	                    </div>
 	                </div>
-	                
+	                <br>
 	                <div class="accountfield row-fluid">
 	                    <div class="span4 text-right">
 	                    </div>
-	                    <div class="span6">
-	                    	<%= f.password_field :password, {:class => "input-block-level", :placeholder => "New password"}  %>
+	                    <div class="span4">
+	                    	<%= f.password_field :password, {:class => "input-block-level", :placeholder => "New password",
+	                    		:style => "line-hight:20px; font-size:17px; height:48px;" } %>
 	                    </div>
 	                    <div class="span2">
-	                    	<input type="submit" value="Generate" class="btn btn-success">
+	                    	<input type="submit" value="Generate" class="btn btn-success btn-large" style="width:100px">
 	              		</div>
 	                </div>
 	                <% end %>
@@ -75,14 +92,14 @@
 	                <div class="accountfield row-fluid">
 	                   <div class="span4 text-right">
 	                    <%= label_tag 'Import "here to meet" list'%>
-	                    <%= link_to 'Download sample table', 
+	                    <%= link_to 'Please use this template ONLY to import', 
 	                                '34pass-heretomeet.xlsx' %>
 	                    </div>
-	                    <div class="span6">
+	                    <div class="span4">
 	                    	<%= file_field_tag :excel_file, :class => "" %> 	
 	                    </div>
 	                     <div class="span2">
-	                    	<input type="submit" value="Upload" class="btn btn-success span8">
+	                    	<input type="submit" value="Upload" class="btn btn-success span8 btn-large" style="width:100px">
 	              		</div>
                     </div>
 	                <% end %>
@@ -93,3 +110,9 @@
 	</div>
 </div>
 
+<style type="text/css">
+	label {
+		height: 40px;
+		line-height: 40px;
+	}
+</style>
