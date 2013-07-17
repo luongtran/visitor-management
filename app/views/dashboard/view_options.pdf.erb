@@ -10,6 +10,7 @@
                 <td> Location </td>
                 <td> Status </td>
                 <td> Badge Nubmer </td>
+                <td> Created by </td>
         </tr>
         <% @all_visitors.each do |visitor| %>
         	<tr>
@@ -22,6 +23,7 @@
                         <td> <%= visitor.location %> </td>
                         <td> <%= visitor.status %> </td>
                         <td> <%= visitor.badge_number %> </td>
+                        <td> <%= visitor.user.email %> </td>
 </tr>
         <% end %>
 </table>

@@ -92,3 +92,7 @@ function change_name_selectbox() {
 	
 	if(view_mode != "") dropbox.text(view_mode);
 }
+
+$(document).ready(function(){
+    $.fn.checknet();
+});

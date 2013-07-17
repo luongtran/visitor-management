@@ -50,7 +50,6 @@ class DashboardController < ApplicationController
     end
     
     get_visitors(start.to_datetime, end_t.to_datetime, params[:page])
-    
     respond_to do |format|
       format.html {
         render "index"
@@ -61,10 +60,10 @@ class DashboardController < ApplicationController
         send_data(@all_visitors.to_xls(
                   :only => [:id, :pass_id, :visitor_name,  :visitor_mobile_number,
                   :visitor_company_name, :check_out_time, :here_to_meet, :location, :status,
-                  :badge_number, :user_location, :zip_code],
+                  :badge_number, :user_location, :zip_code, :user_id],
                   :headers => ["id", "34passid", "Visitor name",  "mobile number",
                   "Organisation", "Check In", "Here to meet", "Location to visit", "Status",
-                  "Badge ID"]),
+                  "Badge ID", "Created by"]),
                   :filename => filename) 
                 # :authorized_id, :comment, :here_to_meet, :location, :reason_to_visit, :storage_device_detail, :coming_from,
                  # :user_id, :visitor_company_name, :visitor_mobile_number, :visitor_name, :visitor_vehicle_number, :pass_id, 

@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
   validates :location, :presence => true
   validates :zip_code, :presence => true, numericality: { only_integer: true }
 
+  has_many :visitors
+
   def organisation_name_cannot_blank
     if organisation_name.blank?
       errors.add(:organisation_name, "We require Organization name to print on your visitor badge")

@@ -2,14 +2,14 @@
 			<div class="span9">
 				<div class="row-fluid">
 			 		<div class="span4">
-	                    <div class="numberinfo"><span><%= @all_visitors.length %></span></div>
+	                    <div class="numberinfo numberinfo-visitor-count"><span><%= @all_visitors.length %></span></div>
 	                    <div class="titleinfo">
 	                      <h4>Visitor Count</h4>
 	                    </div>
                     </div>
                     <% group_count = @all_visitors.group_by{ |item| item.send('visitor_mobile_number')} %>
 	                <div class="span4">
-	                    <div class="numberinfo"><span><%= group_count.length %></span></div>
+	                    <div class="numberinfo numberinfo-unique-visitor-count"><span><%= group_count.length %></span></div>
 	                    <div class="titleinfo">
 	                      <h4>Unique visitor count</h4>
 	                    </div>
@@ -20,7 +20,7 @@
 	                 	 
                     %>
 	                <div class="span4">
-	                    <div class="numberinfo"><span><%= @expired.length %></span></div>
+	                    <div class="numberinfo numberinfo-expired-badges"><span><%= @expired.length %></span></div>
 	                    <div class="titleinfo">
 	                      <h4>Expired badges</h4>
 	                    </div>
@@ -36,7 +36,8 @@
 							@most_visitors.each do |visitor|
 								i += 1
 						%>
-						<li><a href="#" class="name"><%= visitor.visitor_name %><span class="counter"><%= visitor.num_visitors %></span></a></li>
+						<li>
+						<a href="#" class="name"><%= visitor.visitor_name %><span class="counter"><%= visitor.num_visitors %></span></a></li>
 						<% end %>
 					</ul>
 				</div>

@@ -165,10 +165,7 @@ class VisitorsController < ApplicationController
   end
   
   def twelve_plus
-    #logger = Logger.new('log/debug.log')
-    #logger.info('---Log for twelve plus----')
     twelve_ago = Time.now - 12.hours
-    #logger.info(twelve_ago)
     @visitors = Visitor.where('(created_at <= ?) AND (check_out_time is null) AND (user_id = ?)', twelve_ago, current_user.id).paginate(:per_page => PER_PAGE, :page => params[:page])
     @visitors.each {|v| v.update_attributes(status: "Expired")}
     render 'index'
