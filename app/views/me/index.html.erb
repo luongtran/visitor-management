@@ -38,10 +38,14 @@
                     <%= form_for current_user, :url => update_location_path, :class => 'form-horizontal'  do |f| %>
 					<div class="accountfield row-fluid">
 	                    <div class="span4 text-right">
-	                    <%= label_tag 'Edit location'%>
+	                    <%= label_tag 'Edit location/zip'%>
 	                    </div>
-	                    <div class="span4">
+	                    <div class="span3">
 	                    	<%= f.text_field :location, {:class => "input-block-level", :placeholder => "Enter new location name",
+	                    		:style => "line-hight:20px; font-size:17px; height:48px;" } %>
+	                    </div>
+	                    <div class="span1">
+	                    	<%= f.text_field :zip_code, {:class => "input-block-level", :placeholder => "Enter new zip code",
 	                    		:style => "line-hight:20px; font-size:17px; height:48px;" } %>
 	                    </div>
 	                    <div class="span2">
@@ -49,19 +53,7 @@
 	              		</div>
 	              	</div>
 	                </div>
-	                <div class="accountfield row-fluid">
-	                     <div class="span4 text-right">
-	                    <%= label_tag 'Edit zip code'%>
-	                    </div>
-	                    <div class="span4">
-	                    	<%= f.text_field :zip_code, {:class => "input-block-level", :placeholder => "Enter new zip code",
-	                    		:style => "line-hight:20px; font-size:17px; height:48px;" } %>
-	                    </div>
-	                     <div class="span2">
-	                    	<input type="submit" value="Save" class="btn btn-success  btn-large span8" style="width:100px">
-	              		</div>
-	              	</div>
-                    </div>
+
                     <% end %>
                     <%= form_for current_user, :url => change_password_path, :method => 'put', :class => 'form-horizontal'  do |f| %>
                     <div class="accountfield row-fluid">

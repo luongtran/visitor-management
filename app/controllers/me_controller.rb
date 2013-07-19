@@ -42,7 +42,7 @@ class MeController < ApplicationController
   def update_organisation
     @user = current_user
 
-     if @user.update_attributes(params[:user])
+    if @user.update_attributes(params[:user])
       flash[:info] = "Organization has been changed successfully"
       redirect_to me_index_path
     else

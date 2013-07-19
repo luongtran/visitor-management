@@ -37,7 +37,30 @@
 								i += 1
 						%>
 						<li>
-						<a href="#" class="name"><%= visitor.visitor_name %><span class="counter"><%= visitor.num_visitors %></span></a></li>
+							<%=link_to visitor_search_path do%>
+								<%="#{visitor.visitor_name} -  #{visitor.visitor_mobile_number} "%>
+								<span class="counter"><%= visitor.num_visitors %></span>
+							<%end%>
+						
+						</li>
+						
+						<% end %>
+					</ul>
+
+					<h4>Here to meet</h4>
+					<ul class="nav nav-tabs nav-stacked">
+						<% 
+							i = 0
+							@most_visitors.each do |visitor|
+								i += 1
+						%>
+						<li>
+							<%=link_to visitor_search_path do%>
+								<%="#{visitor.here_to_meet}"%>
+							<%end%>
+						
+						</li>
+						
 						<% end %>
 					</ul>
 				</div>
