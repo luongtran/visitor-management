@@ -21,7 +21,7 @@ dash-numgreen.png: dash-numgreen-be792ae3aed3bcffef29473941ff9e03.png
 dash-numred.png: dash-numred-fed0725ed9ccc1b90ce38e696d97e14d.png
 dashboard-sd.png: dashboard-sd-20d104eb875f14d0a5534b7c2c401d71.png
 demo-slidebanner.png: demo-slidebanner-047e902e1b0909277aa9c340161506df.png
-demoimg.png: demoimg-72519e89bb4bc5657db4542889bcc0fe.png
+# demoimg.png: demoimg-72519e89bb4bc5657db4542889bcc0fe.png
 divider-bg.png: divider-bg-f968dfb84b6d75aa3307baf507d42a87.png
 dot.png: dot-d48ec5ddd35bad23342751bde94c8d14.png
 footer-shadow.png: footer-shadow-da75bad875a81fc5ff1761f048390d68.png

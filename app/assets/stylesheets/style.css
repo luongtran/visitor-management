@@ -105,3 +105,15 @@ thead {
 h1.green-color{
 	color: green !important;
 }
+
+.demoimg img{
+	height: 580px;
+}
+
+.breakvertical{
+	width: 5px !important;
+}
+
+.custom-container{
+	width: 1100px !important;
+}
