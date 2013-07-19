@@ -87,7 +87,8 @@ class DashboardController < ApplicationController
     @all_visitors = Visitor.where('user_id = ? AND created_at >= ? AND created_at <= ?', current_user.id, start, end_t)
     @visitors = Visitor.where('user_id = ? AND created_at >= ? AND created_at <= ?', current_user.id, start, end_t).paginate(:per_page => 3, :page => page)
     #@unique_visitors = Visitor.where('user_id = ? AND created_at >= ? AND created_at <= ?', current_user.id, start, end_t).group_by('pass_id')
-    @most_visitors = Visitor.select('visitor_name, visitor_mobile_number,here_to_meet, count(visitor_name) as num_visitors').where('user_id = ?', current_user.id).group('visitor_name').group("visitor_mobile_number").group("here_to_meet").order('num_visitors desc').limit(5) 
+    @most_visitors = Visitor.select('visitor_name, visitor_mobile_number,here_to_meet, count(visitor_name) as num_visitors').where('user_id = ?', current_user.id).group('visitor_name').group("visitor_mobile_number").order('num_visitors desc').limit(5)
+    @here_to_meet = Visitor.select('here_to_meet').where('user_id = ?', current_user.id).group("here_to_meet").limit(5) 
     #Visitor.where('user_id = ?', current_user.id).group_by('pass_id').order_by('count(id)')
     twelve_ago = Time.now - 12.hours
     @expired = Visitor.where('(((created_at <= ?) AND (check_out_time is null))) AND (user_id = ?) AND created_at >= ? AND created_at <= ?', twelve_ago, current_user.id, start, end_t)
