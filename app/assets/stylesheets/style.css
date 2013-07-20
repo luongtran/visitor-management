@@ -106,8 +106,9 @@ h1.green-color{
 	color: green !important;
 }
 
-.demoimg img{
-	height: 580px;
+.demoimg{
+	margin-top: 100px;
+	/*height: 550px;*/
 }
 
 .breakvertical{
