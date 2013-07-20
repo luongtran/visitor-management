@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(:version => 20130627101122) do
     t.string   "coming_from"
     t.string   "status",                 :default => "Inside"
     t.string   "user_location"
+    t.string   "user_email"
     t.integer  "zip_code"
   end
 

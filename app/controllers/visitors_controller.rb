@@ -50,6 +50,7 @@ class VisitorsController < ApplicationController
     @visitor = Visitor.new(params[:visitor])
     @visitor.user_id = current_user.id
     @visitor.user_location = current_user.location
+    @visitor.user_email    = current_user.email
     @visitor.zip_code      = current_user.zip_code
     if FileTest.exist?(upload_path)
       @visitor.photo = File.new(upload_path)

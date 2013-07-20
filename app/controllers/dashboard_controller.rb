@@ -60,7 +60,7 @@ class DashboardController < ApplicationController
         send_data(@all_visitors.to_xls(
                   :only => [:id, :pass_id, :visitor_name,  :visitor_mobile_number,
                   :visitor_company_name, :check_out_time, :here_to_meet, :location, :status,
-                  :badge_number, :user_location, :zip_code, :user_id],
+                  :badge_number, :user_location, :zip_code, :user_email],
                   :headers => ["id", "34passid", "Visitor name",  "mobile number",
                   "Organisation", "Check In", "Here to meet", "Location to visit", "Status",
                   "Badge ID", "Created by"]),
