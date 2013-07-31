@@ -24,92 +24,33 @@
 	</head>
 	<body>
 		<!--BODY PAGE-->
-		
-		<div class="canvas">
-			<div class="canvas-header">
-				<div class="logo clearfix">
-					<div class = "row-fluid">
-						<div class = "span2">
-							<%= link_to image_tag("logo.png", :alt => "34pass.com"), 
-						    new_user_session_path %>
-						</div>
+		<div class="row" style="background:#365A7D ">
 
-						<div class = "span6">
-							<div class = "row-fluid">
-								<h2 class="bigheadline">Manage Visitors, easily </h2>
-							</div>
-
-							
-							<div class "row-fluid">
-								<h2 class="bigheadline" style="font-size:30px;">Easiest Visitor management system yet</h2>
-							</div>
-
-						</div>
-
-						<div class = "span4 pull-right ">
-							<div class = "row-fluid">
-								<div class = "span2">
-									<br>
-									<a href="mailto:support@16columns.com">
-										<b>Email </b>
-									</a>
-									<div class = "row-fluid">
-										
-									</div>
-								</div>
-								<div class = "span2">
-									<br>
-									<a href="http://twitter.com/16columns">
-										<b>Twitter</b>
-									</a>
-									<div class = "row-fluid">
-										
-									</div>
-								</div>
-
-								<div class = "span6">
-									<br>
-									<a href="http://twitter.com/34pass">
-										<b>New Features</b>
-									</a>
-								</div>
-							</div>
-
-							<div class = "row-fluid text-right-side">
-								<b>Support: 8866476880</b> 
-							</div>
-						</div>
-					</div>
-
-
-					<!-- <div class = "row-fluid">
-			
-						<div class "span 9">
-							<h3 class="bigheadline" style="font-size:30px;">Easiest Visitor management system yet</h3>
-						</div>
-				
-					</div> -->
-					
-				</div>
-
+			<div class="span2 offset1" style="margin-top:10px;">
+				<%= link_to image_tag("logo.png"), root_path %>
 			</div>
-			
-			<div class="canvas-body" style="background:none;">
-				<div class="container">
-					<%= render partial: "layouts/flash_messages", flash: flash %>
-					<div class="row-fluid">
-						<%= yield %>
-					</div>
-				</div>
+
+			<div class="span9 offset3">
+				<ul class="nav nav-pills pull-right">
+					<li><a href="#"><h5>  Just $29 per month </h5></a></li>
+					<li><a href="http://twitter.com/34pass"><h5>  Updates </h5></a></li>
+					<li><a href="mailto:support@16columns.com"><h5> Email us </h5></a></li>
+					<li><a href="#"><h5> Contact us @ 0886647880 </h5></a></li>
+
+					<%= link_to "Login", new_user_session_path,
+						:style => "margin-top:10px;", :class => "btn btn-large btn-danger" if request.original_url.match(/login/).to_s.empty? %>
+				</ul>
 			</div>
-			
+
 		</div>
+
+		<%= yield %>
+
 		
-		<div class="canvas-footer">
-			<div class="copyright">
-				<strong>34pass.com</strong> by <a href=''><strong>16columns</strong></a>
+		<!-- FOOTER -->
+		</br></br>
+			<div class="row well">
+				<label class="offset6">34pass a product of <a href="http://16columns.com">16columns</a>
 			</div>
-		</div>
-		
 	</body>
 </html>

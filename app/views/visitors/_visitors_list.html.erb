@@ -1,6 +1,11 @@
 <%- model_class = Visitor -%>
 
 
+<div class="row">
+
+<div class="span16 offset1">
+
+<br>
 <!-- <div id="result-table"> -->
 	
 	<!-- <div class="wrap-content"> -->
@@ -9,24 +14,24 @@
 			
 		</div>
 		
-		<table class="table table table-bordered">
+		<table class="table table-hover table-condensed table-bordered">
 
 			<thead>
 				<tr>
-					<th>No</th>
-					<th>34passid</th>
-					<th>Badge ID</th>
+					<th>Sr. no</th>
+					<th>34pass ID</th>
+					<th>Badge number</th>
 					<!-- <th>My Pass ID</th> -->
 					<th>Visitor name</th>
           <th> Mobile number </th>
 					<th>Organization</th>
 					<!-- <th>Mobile</th> -->
-					<th>Check In</th>
+					<th>In date/time</th>
 					<th>Here to meet</th>
-					<th>Location to Visit</th>
-					<th>Photo</th>
-					<th>Checkout</th>
+					<th>Location to visit</th>
+					<th>Visitor image</th>
           <th>Status</th>
+					<th>Checkout</th>  
 					<!-- <% if (params[:controller] == 'visitors' && params[:action] != "twelve_plus" && params[:action] != "search") %>
 				      <th><%=t '.actions', :default => t("helpers.actions") %></th>
 			        <% end %> -->
@@ -136,9 +141,9 @@
 			<%= will_paginate(@visitors) %>
 		</div>
 
-	<!-- </div> -->
+</div> 
 
-<!-- </div> -->
+</div> 
 
 <script type="text/javascript">
 	$(document).ready(function() {

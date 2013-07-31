@@ -1,42 +1,91 @@
-	<div class="canvas-body" style="background:none;">
-		<div class="container small pagerbg" style="margin-top: 60px">
-			<h2 class="text-center displayblock">Login</h2>
-			<div id="login" class="formbox">
-				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-			
-			<label>
-				<%= f.email_field :email, {:class => "input-block-level", :placeholder => "Email"} %>
-			</label>
-			<label>
-				<%= f.password_field :password, {:class => "input-block-level", :placeholder => "Password"} %>
-			</label>
-			<!-- <label>
-				<%= f.check_box :remember_me %> <%= f.label :remember_me %>
-			</label> -->
-			
-			<label>
-				<span class="row-fluid">
-					<%= f.submit "Manage Visitor", :class => "btn btn-large btn-success span8 offset2", :name=>"loginbt" %>
-				</span>
-				<br/>
-				<span class="row-fluid">
-					<%= link_to "Reset password", new_user_password_path,
-						:class => "resetpass span8 offset2 text-center" %>
-				</span>
-			</label>
-				
-		<% end %>
-		</div>
 
-		</div>
+
+
+<div class="row">
+<div class="well" style="background:#4174C0">
+   		
+<div style="margin-left:610px;">
+    	<h5 style="color:#ffffff">  Sign in to 34pass  </h5>	
 	</div>
 
-	<div class="spacing"></div>
+	<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),
+		:html => {:class => "form-horizontal offset4"}) do |f| %>
+		<br/>
+	
+	<div class="offset2" style="max-width:298px; overflow:hidden;">
+	  		<%= render 'layouts/flash_messages' %>
+	</div>
+
+    	<div class="control-group">
+    		<div class="controls">
+    			<%= f.email_field :email, {:class => "span4", :placeholder => "Email"} %>
+    		</div>
+    
+	</div>
+
+
+	<div class="control-group">
+    
+    		<div class="controls">
+    			<%= f.password_field :password, {:class => "span4", :placeholder => "Your Password"} %>
+    		</div>
+    	</div>
+
+    	
+
+	<div class="control-group">
+    		<div class="controls">
+				<%= f.submit "Login", :class => "btn btn-large btn-danger offset1" %>
+				<br/></br>
+				<%= link_to "I can't sign in or I forgot my username/password", new_user_password_path, :style => "color:#ffffff" %>	
+    		</div>
+    	</div>
+
+
+ 	<% end %>
+
 </div>
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$('.bigheadline').remove();
-		$('.canvas-body').css('background', 'none');
-	});
-</script>
+</div>
+
+<div class="row">
+<div class="span4 offset1">
+
+	<div class="thumbnail">
+                    <div class="caption">
+                    <h4>Create instant visitor pass</h4>
+                    <p> Print visitor pass with speed. Application works without a printer too, just use your existing 			visitor pass numbers</p>
+                    
+                  </div>
+        </div>
+</div>
+
+<div class="span4 offset1">
+
+	<div class="thumbnail">
+                    <div class="caption">
+                    <h4>Know visitors inside your premises</h4>
+                    <p> Just a click and get the results of the visitors inside your premises immediately </p>
+                    
+                  </div>
+                </div>
+
+	</div>
+
+
+<div class="span4 offset1">
+
+	<div class="thumbnail">
+                    <div class="caption">
+                    <h4>Make use of advanced search feature</h4>
+                    <p> Enter any information of the visitor or the visit and get results immediately. </p>
+                    
+                  </div>
+         </div>
+
+	</div>
+</div>
+
+
+</div>
+</br></br>

@@ -17,7 +17,7 @@
   		
 	  	<%= javascript_include_tag 'webcam' %>
 	  	<%= javascript_include_tag "custom" %>
-	  	<%= javascript_include_tag 'jquery.checknet-1.6.min' %>
+
 	  	<%= csrf_meta_tags %>
 	  	
 		<!--[if lt IE 9]>
@@ -26,61 +26,68 @@
 	</head>
 	<body>
 		
-		<div class="header" style="position:fixed; width:100%; background-color:white; height:160px; z-index:10;">
-	      <div class="container">
-	        <div class="row-fluid">
-	        	<span class="span2">
-		            <div class="logoheader">
-		            	<%= link_to image_tag("logo.png", :alt => "34pass.com"), root_path %>
-		            	
-	            	</div>
-            	</span>
-	            <span class="span6 pull-right">
-		            <div class="quicksearch">
-		              <%= form_tag visitor_search_path do %>
-                    <%= select_tag 'search_keyword', options_for_select( [ ["Now Inside", "now_inside"],
+		<div class="row" style="background:#365A7D;">
+
+<div class="span6 pull-right"  style="margin-top:10px;">
+
+<a href="/me" style="margin-left:100px; color:white"><i class="icon-wrench icon-white"> </i> Account</a>
+
+<%= link_to "Logout", destroy_user_session_path, :style => "margin-left:30px; color:white",
+	:method => :delete %>
+
+</div>
+</div>
+
+<div class="row" style="background:#365A7D ">
+
+	
+	<div class="span16 offset2" >
+
+		<ul class="nav nav-pills" style="margin-top:20px; margin-bottom: 10px">
+			<li class=<%= "active" if request.original_url == "" ||
+										request.original_url.match(/visitors\/new/)  %>
+				>
+				<%= link_to "Check in + Out", new_visitor_path %></li>
+			<li><a href="#" style="margin-left:20px;"> Schedule appointment</a></li>
+
+			<li class=<%= "active" if request.original_url.match(/dashboard/) %> >
+				<a href="/dashboard" style="margin-left:20px">Dashboard</a>
+			</li>
+		
+
+	<!-- search compnents goes here -->
+
+  	 		<li> 
+    		 <%= form_tag visitor_search_path, :class => "offset2" do %>
+  
+			<%= select_tag 'search_keyword', options_for_select( [ 
                                                                     ["Visitor name", "visitor_name"],
                                                                     ["Here to meet", "here_to_meet"],
                                                                     ["Visitor Organization", "visitor_company_name"],
-                                                                    ["Badge ID", "badge_number"],
-                                                                    ["34pass ID", "pass_id"], ["Mobile number", "visitor_mobile_number"]
-                                                                    ]), class: "search_dropdown span4" %>
-                    <%= text_field_tag 'search_key', "", {:class => "quicksearchbar input-block-level span8", :placeholder => "Search..", :style => "margin-top:-10px;"} %>
-                    <%= submit_tag '', :class => 'searchbt' %>
-                  <% end %>
-		            </div>
-	            </span>
-              <div class="clear"></div>
-            	<span class="span7 navigation">
-		            <div class="mainmenu">
-		              <ul class="unstyled">
-		                <li><%= link_to "Check In", new_visitor_path %></li>
-		                <li><%= link_to "Checkout", visitor_checkout_path %></li>
-		                <li><%= link_to "Expired", twelve_plus_path %></li>
-		                <li><%= link_to "Dashboard", dashboard_index_path %></li>
-                    <li class="dropdown">
-                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Me</a>
-                      <ul class="dropdown-menu">
-                        <li><%= link_to "Me", me_index_path %></li>
-                        <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
-                      </ul>
-                    </li>
-		              </ul>
-		            </div>
-	            </span>
-            </div>
-	      </div>
-	    </div>
+                                                                    ["Mobile number", "visitor_mobile_number"]
+                                                                    ]), class: "span2" %>
+
+			
+
+			</li>
+			<li>
+				<%= text_field_tag 'search_key', "", {:class => "span4", :placeholder => "jump to visitor specific information", :style => "margin-left:20px;"} %>
+			</li>
+    			<li>
+    				<button type="submit" class="btn btn-medium btn-success" style="margin-left:20px;" ><i class="icon-search icon-white"> </i> Search</button></li>
+			 </li>
+			<% end %>
+		</ul>
+
+
+
+	</div>
+
+
+</div>
 	    
-	    <div class="bodier">
-	    	<div class="container" style="padding-top:180px;">
-	    		<%= render partial: "layouts/flash_messages", flash: flash %>
-	    		
+	    		<%#= render partial: "layouts/flash_messages", flash: flash %>
 	    		<%= yield %>
-	    	</div>
-    	</div>
-		
-		
 	</body>
 </html>
 

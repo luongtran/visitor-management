@@ -49,9 +49,10 @@ class VisitorsController < ApplicationController
   def create
     @visitor = Visitor.new(params[:visitor])
     @visitor.user_id = current_user.id
-    @visitor.user_location = current_user.location
-    @visitor.user_email    = current_user.email
-    @visitor.zip_code      = current_user.zip_code
+    @visitor.reason_to_visit = "aaa"
+    #@visitor.user_location = current_user.location
+   # @visitor.user_email    = current_user.email
+    #@visitor.zip_code      = current_user.zip_code
     if FileTest.exist?(upload_path)
       @visitor.photo = File.new(upload_path)
     end
@@ -68,7 +69,7 @@ class VisitorsController < ApplicationController
             flash["error" + i.to_s] = er
             i+=1
           end
-          render action: "new" 
+          render :new
         }
         format.json { render json: @visitor.errors, status: :unprocessable_entity }
       end
@@ -134,7 +135,7 @@ class VisitorsController < ApplicationController
       
       respond_to do |format|
         format.json { render :json => {'success' => @success, 'id' => visitor.id, 'message' => message}}
-        format.html
+        format.html { redirect_to new_visitor_path }
       end
       
     end

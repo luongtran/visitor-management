@@ -1,0 +1,130 @@
+
+	<% 
+		 if @user.nil?
+		 	@user = User.new
+		 end
+	%>
+<div class="well" style="background:#4174C0; padding-left:0px">
+
+	<%= form_for(@user, :as => @user, :url => user_registration_path, :name => "register",
+		:html => { :class => "form-horizontal offset4"} ) do |f| %> 
+
+		<h3 style="color:#ffffff"> Unlimited visitor check-in at each location. Pay monthly. </h3> 
+		<h4 style="color:#ffffff" class="offset3"> Sign-up in seconds</h4> 	
+		<br/>
+	   <!-- registration_path(resource_name) -->
+	  	<% if @user.errors.any? %>
+		    <div id="error_explanation">
+		      <h3 class="semi-headtext"><%= pluralize(@user.errors.count, "error") %> prohibited this apt from being saved:</h3>
+		
+		      <ul>
+		      <% @user.errors.full_messages.each do |msg| %>
+		        <li class="semi-headtext"><%= msg %></li>
+		      <% end %>
+		      </ul>
+		    </div>
+	  	<% end %>
+
+	  	<div class="offset2" style="max-width:298px; overflow:hidden;">
+	  		<%= render 'layouts/flash_messages' %>
+	  	</div>
+	  	
+
+	<div class="control-group">
+    
+    		<div class="controls">
+    			<%= f.email_field :email, {:id => "inputEmail", :placeholder => "Email",
+    				:class => "span4"} %>
+    		</div>
+    
+	</div>
+
+    	<div class="control-group">
+    
+    		<div class="controls">
+    			<%= f.text_field :organisation_name, {:class => "span4", :placeholder => "Organization name"} %>
+    		</div>
+    
+	</div>
+
+	<div class="control-group">
+    
+    		<div class="controls">
+    			<%= f.password_field :password, {:class => "span4", :placeholder => "Choose Password"} %>
+    		</div>
+    	</div>
+
+    	<div class="control-group">
+
+    		<div class="controls">
+    			<%= f.text_field :location, {:class => "span4",
+				:placeholder => "Location"} %> 
+    		</div>
+    
+	</div>
+
+    		<div class="control-group">
+    
+    		<div class="controls">
+    			<%= f.text_field :zip_code, {:class => "span2",
+				:placeholder => "Zip Code"} %> 
+    		</div>
+    
+	</div>
+
+
+    
+
+	<div class="control-group">
+    		<div class="controls">
+			
+			<%= f.submit "Create a two month free account", 
+				:class => "btn btn-large btn-danger" %>
+    		</div>
+    	</div>
+
+<% end %>
+</div>
+
+<div class="row">
+<div class="span4 offset1">
+
+	<div class="thumbnail">
+                    <div class="caption">
+                    <h4>Create instant visitor pass</h4>
+                    <p> Print visitor pass with speed. Application works without a printer too, just use your existing visitor pass numbers</p>
+                    
+                  </div>
+        </div>
+</div>
+
+<div class="span4 offset1">
+
+	<div class="thumbnail">
+                    <div class="caption">
+                    <h4>Know visitors inside your premises</h4>
+                    <p> Just a click and get the results of the visitors inside your premises immediately </p>
+                    
+                  </div>
+                </div>
+
+	</div>
+
+
+<div class="span4 offset1">
+
+	<div class="thumbnail">
+                    <div class="caption">
+                    <h4>Make use of advanced search feature</h4>
+                    <p> Enter any information of the visitor or the visit and get results immediately. </p>
+                    
+                  </div>
+         </div>
+
+	</div>
+</div>
+
+
+</div>
+
+	

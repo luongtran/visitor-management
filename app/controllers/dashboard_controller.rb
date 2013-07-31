@@ -13,6 +13,11 @@ class DashboardController < ApplicationController
     logger.info(tomorrow.to_datetime)
     
     get_visitors(yesterday.to_datetime, tomorrow.to_datetime, params[:page])
+
+    @visitors_count        = current_user.visitors.count
+    @unique_visitors_count = current_user.visitors.count
+    @expired_visitors_count = current_user.visitors.expired_ones.count
+    @most_visitors = Visitor.select('visitor_name, visitor_mobile_number, count(visitor_name) as num_visitors').where('user_id = ?', current_user.id).group('visitor_name').group("visitor_mobile_number").order('num_visitors desc').limit(5)
   end
   
   def view_options

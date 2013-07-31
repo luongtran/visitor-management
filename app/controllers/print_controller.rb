@@ -5,6 +5,7 @@ class PrintController < ApplicationController
   def save_and_print
     
     @visitor = Visitor.new(params[:visitor])
+    @visitor.reason_to_visit = "aaa"
     @visitor.user_id = current_user.id
     if FileTest.exist?(upload_path)
       @visitor.photo = File.new(upload_path)

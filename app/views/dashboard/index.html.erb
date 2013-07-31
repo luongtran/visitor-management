@@ -5,112 +5,157 @@
 <%= javascript_include_tag "action" %>
 <%= javascript_include_tag "jqueryui/js/jquery-ui-1.10.2.custom.min" %>
 
-<div class="pagerbg dashboardpage">
-	<div class="filterbar clearfix">
-		<div class="row-fluid">
-			<div class="span9">
-				<%= form_tag dashboard_option_view_path, {:id => "view_mode_frm", :remote => true} do %>
-				<div class="kind pull-left">
-					<div class="btn-group filterselectebox">
-						<a href="#" class="btn view_option current">Daily</a>
-						<a href="#" data-toggle="dropdown" class="btn dropdown-toggle">
-							<span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-						  <li><a href="#" class="view_option">Daily</a></li>
-	                      <li><a href="#" class="view_option">Weekly</a></li>
-	                      <li><a href="#" class="view_option">Monthly</a></li>
-	                      <li><a href="#" class="view_option">Year</a></li>
-	                      <li><a href="#" class="view_option">Custom</a></li>
-	                    </ul>
-	                   <div class="btn-toolbar" style="margin: 0;">
-					 <div class="btn-group" data-toggle="buttons-radio" 
-					      style="margin-top:5px;"> 
-					  <button type="button" class="btn xls active">XLS</button>
-					  <button type="button" class="btn pdf">PDF</button>
-					</div>
-					<%= link_to "Export", '#', :class => "btn btn export-button",
-						:style => 'margin-top: 5px;' %>
-					
-					</div>
-				</div>
-					<%= hidden_field_tag :option_view, @view_option %>
-				</div>
-				<div class="calendar pull-left" style="display: none;", id="calendar_area">
-					<%= text_field_tag :from, "", {:class => "From", :id => "From", :placeholder => "From"} %>
-					<%= text_field_tag :to, "", {:class => "To", :id => "To", :placeholder => "To"} %>
-				</div>
-				<%= button_tag "Submit", :type => "submit", :class => "filter-submit btn btn-success", :id => "view_mode_sb", :style => "display:none;" %>
-				<% end %>
-			</div>
-			<div class="span3"></div>
-		</div>
-	</div>
-	<div class="contentvisitor" id="dashboard_content">
-		<%= render "dashboard" %>
-	</div>
-		<!-- <table class="table">
-								<thead>
-									<tr class="justus-roman">
-										<th class="choose"></th>
-										<th>No of Visitor</th>
-										<th>Unique visitor</th>
-										<th>Passes expired</th>
-										<th class="mostvisitedtd">Most Visited</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td class="choose">
-											<div class="btn-group dash-tab">
-												<button class="btn place">Action</button>
-												<button class="btn dropdown-toggle" data-toggle="dropdown">
-													<span class="caret"></span>
-												</button>
-												<ul class="dropdown-menu">
-													<li><a href="#today" class="dash-filter" rel="today">Today</a></li>
-													<li><a href="#this-week" class="dash-filter" rel="week">This Week</a></li>
-													<li><a href="#this-month" class="dash-filter" rel="month">This Month</a></li>
-													<li><a href="#this-year" class="dash-filter" rel="Year">This Year</a></li>
-													<li><a href="#" class="dash-filter" rel="range">Custom Range</a></li>
-												</ul>
-											</div>
-										</td>
-										<td>
-											<div class="dash-num">
-												<span class="num justus-roman">
-													<%= @all_visitors.length %>
-												</span>
-											</div>
-										</td>
-										<% group_count = @all_visitors.group_by{ |item| item.send('pass_id')} %>
-										<td>
-											<div class="dash-num green">
-												<span class="num green justus-roman">
-													<%= group_count.length %>
-												</span>
-											</div>
-										</td>
-										<% expired = @all_visitors.select { |visitor| ((visitor.check_out_time.nil? && ((Time.now - visitor.created_at) > (12 * 3600))) || (!visitor.check_out_time.nil? && (visitor.check_out_time - visitor.created_at > (12 * 3600))) )} %>
-										<td>
-											<div class="dash-num red">
-												<span class="num red justus-roman">
-													<%= expired.length %>
-												</span>
-											</div>
-										</td>
-										<td class="mostvisitedtd">
-											
-											<div class="mostvisited">
-												
-											</div>
-										</td>
-									</tr>
-								</tbody>
-							</table> -->
+
+	<br/><br/>
+
+<div class="row">
+
+	<div class="span12 offset3">
+
+
+
+	<form class="form-inline">
+
+			<select class="span2">
+			<option>Today</option>
+			<option>Week</option>
+			<option>Month</option>
+			<option>Year</option>
+			<option>Custom</option>
+
+			</select>
+			
+			<div id="datetimepicker" class="input-append date">
+      			<input type="text"></input>
+     			 <span class="add-on">
+       			 <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      			</span>
+   			 </div>
+	
+
+
+			<div id="datetimepicker" class="input-append date">
+      			<input type="text"></input>
+     			 <span class="add-on">
+       			 <i data-time-icon="icon-time" data-date-icon="icon-calendar"></i>
+      			</span>
+   			 </div>
+
+		<button type="submit" class="btn btn-medium btn-success"> Submit</button>
+
+		
+	</form>
+
 	</div>
 
- <!--RUeta : make change filter select box-->
+
+	
+</div>
+
+<div class="row">
+	<div class="span12 offset2">
+
+
+
+    	<table class="table table-hover table-condensed table-bordered">
+   
+   	 <thead>
+   	 <tr>
+
+	 <th>Visitor Count</th>
+   	 <th>Unique visitor count</th>
+	 <th>Passes expired</th>
+	 
+	<th>Export</th>
+    	</tr>
+    	</thead>
+    	<tbody>
+    	<tr>
+    
+   	 <td><%= @visitors_count %></td>
+   	 <td><%= @unique_visitors_count %></td>
+	 <td><%= @expired_visitors_count %></td>
+	<td>Excel, PDF</td>
+	
+    	</tr>
+    	</tbody>
+    	</table>
+
+	</div>
+
+
+</div>
+
+
+<div class="row">
+
+	<div class="span6 offset2">
+
+	<div class="well">
+	<table class="table table-hover table-condensed table-bordered">
+   
+   	 <thead>
+   	 <tr>
+	 <caption> <strong>Frequent Visitor </strong> </caption>
+	 <th>Vistor Name</th>
+   	 <th>Mobile number</th>
+	 <th>Count</th>
+	 <th>Action</th>
+    	</tr>
+    	</thead>
+    	<tbody>
+    	
+    
+    <% 
+							i = 0
+							@most_visitors.each do |visitor|
+								i += 1
+						%>
+	<tr>					
+   	 <td><%= visitor.visitor_name %></td>
+   	 <td><%= visitor.visitor_mobile_number %></td>
+	 <td><%= visitor.num_visitors %></td>
+	<td>Create Pass</td>
+	 </tr>
+	<% end %>
+   	
+   	 </tbody>
+    	</table>
+	</div>
+	</div>
+
+<div class="span5 offset1">
+	<div class="well">
+	<table class="table table-hover table-condensed table-bordered">
+   
+   	 <thead>
+    	<tr>
+	<caption><strong> Most Visited</strong> </caption>
+	 <th>Name</th>
+  	 <th>Count</th>
+	 </tr>
+    	</thead>
+    	<tbody>
+    	
+    
+   	 <% @most_visitors.each do |visitor| %>
+   	 <tr>
+	   	 <td><%= visitor.visitor_name %></td>
+	   	
+		 <td><%= visitor.num_visitors %></td>
+	</tr>
+	 <% end %>
+
+
+	
+   	 </tr>
+    	</tbody>
+    	</table>
+
+</div>
+
+</div>
+
 <%= javascript_tag do %>
 	(function($) {
 		jQuery(document).ready(function() {

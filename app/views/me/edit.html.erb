@@ -1,39 +1,118 @@
-<div class="page-header">
-  <h1><%=t '.title', :default => 'Me - Change password' %></h1>
-</div>
+<br/><br/>
+<div class="row">
 
-<div class="container">
-	<div class="left-content">
-		<%= render 'me_menu' %>
-	</div>
-	<div class="right-content">
-			<div class="control-group">
-			    <%= label_tag 'Current password'%>
-			    <div class="controls">
-			      <%= f.password_field :current_password, :class => 'text_field' %>
-			    </div>
-			</div>
-			<%= form_for current_user, :url => change_password_path, :class => 'form-horizontal'  do |f| %>
-			<div class="control-group">
-			    <%= label_tag 'New password' %>
-			    <div class="controls">
-			      <%= f.password_field :password, :class => 'text_field' %>
-			    </div>
-			</div>
-			<div class="control-group">
-			    <%= label_tag 'Confirm new password' %>
-			    <div class="controls">
-			      <%= f.password_field :password_confirmation, :class => 'text_field' %>
-			    </div>
-			</div>
-			<% end %>
-			<div class="form-actions">
-			    <%= submit_tag 'Change', :class => 'btn btn-primary' %>
-			    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-			                me_index_path, :class => 'btn' %>
-			  </div>
+	<div class="span8 offset2">
+
+
+	<!--tab starts here-->
+			<div class="well">
+
+			<div class="tabbable">
+
+
+			<ul class="nav nav-tabs">
+			
+
+  			<li class="active"><a href="#Profile" data-toggle="pill" ><i class="icon-cog"></i> Profile</a></li>
+
+			<li><a href="#Heretomeet" data-toggle="pill" ><i class="icon-briefcase"></i> Here to meet</a></li>
+			
+			<li><a href="#adduser" data-toggle="pill" ><i class="icon-plus-sign"></i> Add user</a></li>
+  			
+  
+			</ul>
+				
+			
+			
+			<div class="tab-content">
+
+
+				<div class="tab-pane active" id="Profile">
+
+				    <form class="form-inline">
+ 				    <div class="control-group">
+   					 <label class="control-label" for="inputEmail">Edit Organization name</label>
+   					 <div class="controls">
+   					 <input type="text" id="inputEmail" placeholder="">
+					 <button type="submit" class="btn">Save</button>
+    					 </div>
+    				   </div>
+
+
+   				<div class="control-group">
+    				<label class="control-label" for="inputPassword">Old Password</label>
+    				<div class="controls">
+   				 <input type="password" id="inputPassword" placeholder="">
+				
+   				 </div>
+    				</div>
+
+				<div class="control-group">
+    				<label class="control-label" for="inputPassword">New Password</label>
+    				<div class="controls">
+   				 <input type="password" id="inputPassword" placeholder="">
+				<button type="submit" class="btn">Change Password</button>
+   				 </div>
+    				</div>
+
+				<div class="control-group">
+    				<label class="control-label" for="inputPassword">Edit Location and Zip code</label>
+    				<div class="controls">
+   				 <input type="text" id="inputPassword" placeholder="">
+						 
+				
+   				 <input type="text" id="inputPassword" placeholder="" class="span1">
+					<button type="submit" class="btn">Save</button>
+   				 </div>
+    				</div>
+    
+ 				</form>
+
+				</div> <!-- end profile-->
+
+
+
+				<div class="tab-pane" id="Heretomeet">
+				
+			
+				
+				<form class="form-inline">
+				
+					<div class="control-group">
+   					 <label class="control-label" for="inputEmail">Use this <a href="#">template</a> to enter your employee or staff details</label>
+   					 <div class="controls">
+   					 <input type="text" id="inputEmail" placeholder="">
+					 <button type="submit" class="btn">Browse</button>
+					<button type="submit" class="btn">Upload</button>
+    					 </div>
+    				 	</div>
+
+			
+				</form>
+				
+				
 		
-	</div>
-</div>
+				</div> <!-- end here to meet-->
 
+			<div class="tab-pane" id="adduser">
+				 <form class="form-inline">
+					<div class="control-group">
+
+					<div class="controls">
+					
+   					 <input type="text" id="inputEmail" placeholder="Email address">
+					 <button type="submit" class="btn"> Add uccser</button>
+					
+    					 </div>
+    				 	</div>
+				</form>
+				
+			</div>
+	
+	</div> <!--end tab content-->
+	
+	</div>
+	</div> <!-- end span 8-->
+
+</div> <!-- end row for tabbable-->
 

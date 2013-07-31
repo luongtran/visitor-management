@@ -17,94 +17,153 @@
 		});
 	})
 </script>
-<div class="pagerbg accountpage">
-	<div class="row-fluid">
-		<div class="span16">
-			<div class="accountpanel">
-				<div class="row-fluid">
-					<%= form_for current_user, :url => update_organisation_path, :class => 'form-horizontal'  do |f| %>
-					<div class="accountfield row-fluid">
-	                    <div class="span4 text-right">
-	                    <%= label_tag 'Edit organization name' %>
-	                    </div>
-	                    <div class="span4">
-	                    	<%= f.text_field :organisation_name, {:class => "input-block-level", :placeholder => "Enter new organization name", :style => "line-hight:20px; font-size:17px; height:48px;" } %>
-	                    </div>
-	                     <div class="span2">
-	                    	<input type="submit" value="Save" class="btn btn-large btn-success span8" style="width:100px">
-	              		</div>
-                    </div>
-                    <% end %>
-                    <%= form_for current_user, :url => update_location_path, :class => 'form-horizontal'  do |f| %>
-					<div class="accountfield row-fluid">
-	                    <div class="span4 text-right">
-	                    <%= label_tag 'Edit location/zip'%>
-	                    </div>
-	                    <div class="span3">
-	                    	<%= f.text_field :location, {:class => "input-block-level", :placeholder => "Enter new location name",
-	                    		:style => "line-hight:20px; font-size:17px; height:48px;" } %>
-	                    </div>
-	                    <div class="span1">
-	                    	<%= f.text_field :zip_code, {:class => "input-block-level", :placeholder => "Enter new zip code",
-	                    		:style => "line-hight:20px; font-size:17px; height:48px;" } %>
-	                    </div>
-	                    <div class="span2">
-	                    	<input type="submit" value="Save" class="btn btn-success  btn-large span8" style="width:100px">
-	              		</div>
-	              	</div>
-	                </div>
 
-                    <% end %>
-                    <%= form_for current_user, :url => change_password_path, :method => 'put', :class => 'form-horizontal'  do |f| %>
-                    <div class="accountfield row-fluid">
-	                    <div class="span4 text-right">
-	                    	<%= label_tag 'Generate new password'%>
-	                    </div>
-	                    <div class="span4">
-	                    	<label style="line-hight:20px; font-size:17px;">
-	                    	<%= f.password_field :current_password, :class => 'span12 textbox-big justus-roman', :placeholder => "Old password",
-	                    		:style => "line-hight:20px; font-size:17px; height:48px;" %>
-	                    	</label>
-	                    </div>
-	                </div>
-	                <br>
-	                <div class="accountfield row-fluid">
-	                    <div class="span4 text-right">
-	                    </div>
-	                    <div class="span4">
-	                    	<%= f.password_field :password, {:class => "input-block-level", :placeholder => "New password",
-	                    		:style => "line-hight:20px; font-size:17px; height:48px;" } %>
-	                    </div>
-	                    <div class="span2">
-	                    	<input type="submit" value="Generate" class="btn btn-success btn-large" style="width:100px">
-	              		</div>
-	                </div>
-	                <% end %>
-	                <%= form_tag excel_import_path, :url => me_update_path, :class => 'form-horizontal', :multipart => true  do  %>
-	                <div class="accountfield row-fluid">
-	                   <div class="span4 text-right">
-	                    <%= label_tag 'Import "here to meet" list'%>
-	                    <%= link_to 'Please use this template ONLY to import', 
-	                                '34pass-heretomeet.xlsx' %>
-	                    </div>
-	                    <div class="span4">
-	                    	<%= file_field_tag :excel_file, :class => "" %> 	
-	                    </div>
-	                     <div class="span2">
-	                    	<input type="submit" value="Upload" class="btn btn-success span8 btn-large" style="width:100px">
-	              		</div>
-                    </div>
-	                <% end %>
-				</div>
-				
-			</div>
-		</div>
+<br/><br/>
+
+<div class="span12 offset1">
+	<div style="max-width:620px; margin-left:60px">
+		<%= render 'layouts/flash_messages'%>
 	</div>
 </div>
 
+<div class="row">
+
+	<div class="span8 offset2">
+
+
+	<!--tab starts here-->
+			<div class="well">
+
+			<div class="tabbable">
+
+
+			<ul class="nav nav-tabs">
+			
+
+  			<li class="active"><a href="#Profile" data-toggle="pill" ><i class="icon-cog"></i> Profile</a></li>
+
+			<li><a href="#Heretomeet" data-toggle="pill" ><i class="icon-briefcase"></i> Here to meet</a></li>
+			
+			<li><a href="#adduser" disabled='true' data-toggle="pill"><i class="icon-plus-sign"></i> Add user</a></li>
+  			
+  
+			</ul>
+				
+			
+			
+			<div class="tab-content">
+
+				<!-- Change organization form -->
+				<div class="tab-pane active" id="Profile">
+					<%= form_for current_user, :url => update_organisation_path,
+						:class => "form-inline" do |f| %>
+	 				    <div class="control-group">
+	   					 <label class="control-label" for="inputEmail">Edit Organization name</label>
+	   					 <div class="controls">
+	   					 <%= f.text_field :organisation_name %>
+						 <button type="submit" class="btn">Save</button>
+	    					 </div>
+	    				   </div>
+    				 <% end %>
+    			<!-- Change password form -->		 
+    			<%= form_for current_user, :url => change_password_path, :method => 'put'  do |f| %>
+
+	   				<div class="control-group">
+	    				<label class="control-label" for="inputPassword">Old Password</label>
+	    				<div class="controls">
+							<%= f.password_field :current_password%>
+	   				 	</div>
+	    			</div>
+
+					<div class="control-group">
+	    				<label class="control-label" for="inputPassword">New Password</label>
+	    				<div class="controls">
+	   				 		<%= f.password_field :password %>
+							<button type="submit" class="btn">Change Password</button>
+	   				 	</div>
+	    			</div>
+
+	    		<% end %>
+
+	    		<!-- change location form -->
+	    		<%= form_for current_user, :url => update_location_path, :class => 'form-horizontal'  do |f| %>
+					<div class="control-group">
+	    				<label class="control-label" for="inputPassword">Edit Location and Zip code</label>
+	    				<div class="controls">
+	   				 		<%= f.text_field :location %>
+	   						 <%= f.text_field :zip_code, :style => "width:50px" %>
+							<button type="submit" class="btn">Save</button>
+	   				 	</div>
+	    			</div>
+    			<% end %>
+
+				</div> <!-- end profile-->
+
+
+
+				<div class="tab-pane" id="Heretomeet">
+				
+			
+				
+				<%= form_tag excel_import_path, :url => me_update_path, :class => 'form-inline', :multipart => true  do  %>
+				
+					<div class="control-group">
+   					 <label class="control-label" for="inputEmail">Use this <a href="34pass-heretomeet.xlsx">template</a> to enter your employee or staff details</label>
+   					 <div class="controls">
+   					 <input type="text" id="filename" placeholder="">
+					 <a href='#' class="btn" id="browse-btn">Browse</a>
+					 <%= file_field_tag :excel_file, :class => "btn fileinput", :style => "position:absolute; top:-100px;" %> 
+					<button type="submit" class="btn">Upload</button>
+    					 </div>
+    				 	</div>
+
+			
+				<% end %>
+				
+				
+		
+				</div> <!-- end here to meet-->
+
+			<div class="tab-pane" id="adduser">
+				 <form class="form-inline">
+					<div class="control-group">
+
+					<div class="controls">
+					
+   					 <input type="text" id="inputEmail" placeholder="Email address">
+					 <button type="submit" class="btn"> Add user</button>
+					
+    					 </div>
+    				 	</div>
+				</form>
+				
+			</div>
+	
+	</div> <!--end tab content-->
+	
+	</div>
+	</div> <!-- end span 8-->
+
+</div> <!-- end row for tabbable-->
+
 <style type="text/css">
-	label {
-		height: 40px;
-		line-height: 40px;
+	input[type=text], form {
+		margin-bottom: 0px;
+	}
+
+	button[type=submit] {
+		margin-top: -5px;
 	}
 </style>
+
+<script type="text/javascript">
+	$('#browse-btn').click(function(e) {
+		e.preventDefault();
+		$('.fileinput').trigger('click');
+	});
+
+	$(".fileinput").change(function (){
+		//alert(this.val());
+		$('#filename').val($('.fileinput').val());
+	});
+</script>

@@ -61,6 +61,7 @@
 		$('.badge-search-btn').click(function(event) {
 			//event.preventDefault();
 			//$('.modal-body').append('a');
+			
 			value = $('#here_to_meet').val();
 			$('#heretomeet-table > tbody').html('<div class="alert alert-error">No results found</div>');
 			if(value) {
@@ -84,6 +85,7 @@
 		});
 
 		$(document).on('click', 'a.table-name', function(event) {
+
 			event.preventDefault();
 			//$('#visitor_visitor_name').val($(this).html());
 			$('#here_to_meet').val($(this).html());
@@ -96,94 +98,176 @@
 		
 	});
 </script>
-<%= form_for @visitor, :html => { :class => 'form-horizontal', :name => "checkinform" } do |f| %>
-	<div class="row-fluid">
-		<span class="span5">
-			<label>
-				<div class="required label label-info">required</div>
-				<%= f.text_field :visitor_mobile_number, :class => 'input-block-level', :placeholder => "Mobile number" %>
-			</label>
-			<label>
-              	<div class="required label label-info">required</div>
-                <%= f.text_field :visitor_name, {:class => "input-block-level", :placeholder => "Visitor name"} %>  
-                
-            </label>
-            <label>
-            	<%= f.text_field :visitor_company_name, {:class => "input-block-level", :placeholder => "Visitor company name"} %>
-                  
-            </label>
-            <label>
-              <div class="input-append">
-              	<%= f.text_field :here_to_meet, {:id => "here_to_meet", :class => "input-block-level", :placeholder => "Here to meet",
-              		:style => "width:300px"} %>
-              	<a href="#searchBadgeModal"
-              	 role="button" class="btn badge-search-btn" style="height:38px; line-height:38px;" data-toggle="modal">Search</a>
-              	</div>
-            </label>
+<div class="well">
+<div class="row">
+
+ <div class="form-inline offset4">
+<%= form_tag visitor_checkout_path, :name => "checkoutform" do %>
+     			<%= text_field_tag 'pass_id', '', :class => 'span3', :placeholder => "Enter 34pass ID" %>		
+				<label>  Or </label>
+    			<%= text_field_tag 'badge_number', '', :class => 'span3', :placeholder => "Enter badge/pass number" %>
+				<button type="submit" class="btn btn-medium btn-danger"><i class="icon-minus-sign icon-white"> </i> Checkout</button>
+ <% end %>
+</div>
+</div>
+</div>
+
+
+<!-- new visitor form goes here -->
+
+<div class="span12 offset3">
+	<div style="max-width:680px; margin-left:20px">
+		<%= render 'layouts/flash_messages'%>
+	</div>
+</div>
+
+
+<div class="row">
+	<div class="span6">		
+    	<div class="form-horizontal offset1">
+    	<%= form_for @visitor, :html => {:name => "checkinform" } do |f| %>
+	
+		<div class="control-group">
+		<div class="controls">
+			<div class="input-prepend">
+				<span class="add-on">*</span>
+				<%= f.text_field :visitor_mobile_number, :class => 'span4', :placeholder => "Mobile number" %>
+				</div>	
+		</div>
+	</div>
+
+
+		<div class="control-group">
+		<div class="controls">
+			<div class="input-prepend">
+				<span class="add-on">*</span>
+                <%= f.text_field :visitor_name, {:class => "span4", :placeholder => "Visitor name"} %>  
+         	</div>	
+		</div>
+	</div>
+
+
+		<div class="control-group">
+		<div class="controls">
+			<div class="input-prepend">
+				<span class="add-on">*</span>
+            	<%= f.text_field :visitor_company_name, {:class => "span4", :placeholder => "Visitor Organisation"} %>
+            </div>	
+		</div>
+	</div>
+
+
+	<div class="control-group">
+		<div class="controls input-append input-prepend" style="margin-left:180px;">
+    			<span class="add-on">*</span>
+              	<%= f.text_field :here_to_meet, {:id => "here_to_meet", :class => "span3", :placeholder => "Here to meet"} %>
+              	<button type="button" href="#searchBadgeModal" class="btn badge-search-btn" data-toggle="modal">Search</button>
+        </div>   
+    </div>
+
+
+
+		<div class="control-group">
+		<div class="controls">
+		<input type="text" id="inputEmail" placeholder="Visitor type" class="span4">
+    			
+		</div>
+		</div>
+		
+		<% if false %>
             <label>
             	<%= f.text_field :reason_to_visit, {:class => "input-block-level", :placeholder => "Purpose of visit"} %>
               
             </label>
-            <label>
-            	<%= f.text_field :location, {:class => "input-block-level", :placeholder => "Location to visit"} %>
-            </label>
-            <label>
+	<% end %>
+		
+		<div class="control-group">
+		<div class="controls">
+    		<div class="input-prepend input-append">
+            	<%= f.text_field :location, {:class => "span4", :placeholder => "Location to visit"} %>
+   			</div>
+        </div>
+    </div>
+
+	<div class="control-group">
+		<div class="controls">
+    		<div class="input-prepend input-append">
+		    	<%= f.text_field :storage_device_detail, {:class => "span4", :placeholder => "Storage device details"} %>
+			</div>
+        </div>
+    </div>
+		
+		
+ 		</div>
+	</div>
+
+  <div class="span6" style="max-width:360px; margin-left:200px; overflow:visible;">
+		 <div class="">
+		
+		
+		<div class="control-group">
+				<div class="controls">
             	<%= f.text_field :badge_number, {:id => "badge-number",
-            		:class => "input-block-level", :placeholder => "Unique number on your badge" } %>
-            </label>
-            
-		</span>
-		<span class="span1">
-			<div class="break"></div>
-		</span>
-		<span class="span6">
-			<label>
-	            <div class="avatarinput row-fluid capturebt">
-	            	<span class="span7">
-	            		<div id="curr_image"></div>
-		              	<div id="webcam"></div>
-		              	<!-- <img src="http://genk2.vcmedia.vn/N0WoyYblO3QdmZFKPMtKnadHAHTevz/Image/2012/Tran-Anh/1_original-(Copy)-58670.jpg" class="img-rounded"> -->
-	          		</span>
-	          		<span class="span4">
-			            <input type="button" value="Capture" class="capture btn btn-small btn-success" id="bt_capture"/>
-			            <input type="button" value="Re-capture" class="capture btn btn-small btn-success" id="bt_re_capture" style="display: none;" />
-	          		</span>
+            		:class => "span4", :placeholder => "Badge/Pass number" } %>
+            	</div>
+           	</div>
+
+		<div class="control-group">
+				<div class="controls">
+		    	<%= f.text_field :authorized_id, {:class => "span4", :placeholder => "Govt. provided Authorized identity number"} %>
+			</div>
+		</div>
+
+		<br/>
+	
+		<div class="control-group">
+				<div class="controls avatarinput capturebt">	  
+	            					<div id="curr_image"></div>
+		              				<div id="webcam"></div>
+		              	<div style="margin-top:5px;">	
+				            <button type="button" class="capture btn btn-medium btn-success pull-right" id="bt_capture" style="margin-top:-120px;
+				            margin-right:0px;">
+				            	<i class="icon-camera icon-white"></i>
+				            	Capture
+				            </button>
+
+				            <button type="button" class="capture btn btn-medium btn-success pull-right" id="bt_re_capture" style="display: none; margin-top:-120px;
+				            margin-right:0px;" />
+				            	<i class="icon-camera icon-white"></i>
+				            	Recapture
+				            </button>
+			            </div>	
+
+			           
           		</div>
-            </label>
-			<!-- <label>
-				<%= f.text_field :coming_from, {:class => "input-block-level", :placeholder => "Coming from"} %>
-		    </label> -->
-		    
-		    <!--<label>-->
-		    	<!--<%= f.text_field :visitor_vehicle_number, :class => 'input-block-level', :placeholder => "Visitor vehicle number" %>-->
-		    <!--</label>-->
-		    
-		    <label>
-		    	<%= f.text_field :authorized_id, {:class => "input-block-level", :placeholder => "Any authorized identity number"} %>
-		    </label>
-		    
-		    <label>
-		    	<%= f.text_field :storage_device_detail, {:class => "input-block-level", :placeholder => "Store device serial number"} %>
-		    </label>
-		    
-		    <!-- <label>
-		    	<%= f.text_area :comment, :class => 'input-block-level', :rows => 7, :cols => 60, :placeholder => "Comments" %>
-		      
-		    </label> -->
-		    
-		    <div style="padding-top:8.5px;">
-	            <%= f.submit "Save", :class => 'save btn btn-large btn-success', 
-	            	:id => 'btn-save'  %>
+          	</div>
+				
+          	<div class="control-group">
+				<div class="controls">
+					<%= f.submit "Check-in", :class => 'save btn btn-medium btn-success', :id => 'btn-save'  %>
 
-	            <!-- <button name="print" class="save btn btn-large btn-success">Print</button> -->
-	            <%= f.button "Save and print", :class => "save btn btn-large btn-success", :type => "button", :id => "bt-save-print" %>
+		            <%= f.button "Check-in + Print", :class => "btn btn-medium btn-success", :type => "button", :id => "bt-save-print" %>
 
-	            <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-	            new_visitor_path, :class => 'save btn btn-large btn-success' %>
-            </div>
-    </span>
+		            <%= link_to t('Reset', :default => t("Reset")),
+		            	new_visitor_path, :class => 'btn btn-medium btn-primary' %>
+	            </div>
+	        </div>
+		</div>
+
+		<% end %>
+	</div>
+
+<div class="span3 offset1" style="margin-left:15px;">
+		
+		<div class="well">
+		<label> Search current list of visitors inside your premises </label>
+		<a href="search" type="submit" class="btn btn-medium btn-success"> <i class="icon-search icon-white"> </i> Current visitor list </a>
+
+		</div>
+	</div>
+
 </div>
-<% end %>
+
 
 <div class="modal hide fade" id="searchBadgeModal">
   <div class="modal-header">
@@ -200,6 +284,7 @@
   	</table>
   </div>
 </div>
+
 
 <script type="text/javascript">	
 		$('#btn-save').click(function(e) {

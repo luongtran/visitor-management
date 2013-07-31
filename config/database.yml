@@ -14,7 +14,7 @@ development:
   reconnect: false
   database: visitor-management_development
   pool: 5
-  password: workatror83
+  password: qwerty
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
@@ -26,7 +26,7 @@ test:
   reconnect: false
   database: visitor-management_test
   pool: 5
-  password: workatror83
+  password: qwerty
   host: localhost
 
 production:

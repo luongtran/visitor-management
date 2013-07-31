@@ -1,10 +1,75 @@
-<h2>Forgot your password?</h2>
+<div class="row">
+<div class="well" style="background:#4174C0">
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+<div class="text-center">
+    	<h5 style="color:#ffffff">  Reset Your Password </h5>	
+    	<br>
+</div>
 
-  <div><%= f.label "Enter your registered email address: " %><br />
-  <%= f.email_field :email %></div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "form-horizontal offset4"}) do |f| %>
+  
+  	<div class="offset2" style="max-width:298px; overflow:hidden;">
+	  		<%= render 'layouts/flash_messages' %>
+	</div>
+
+	<div class="control-group">
+    		<div class="controls">
+    			<%= f.email_field :email, {:class => "span4", :placeholder => "Enter your email address"} %>
+    		</div>
+	</div>
+
+	<div class="control-group">
+    	<div class="controls">
+    		<%= f.submit "Send me reset password insructions", 
+    			:class => "btn btn-danger", :style => "margin-left:20px;" %>
+    	</div>
+    </div>
+
 <% end %>
+
+</div>
+</div>
+
+<div class="row">
+<div class="span4 offset1">
+
+	<div class="thumbnail">
+                    <div class="caption">
+                    <h4>Create instant visitor pass</h4>
+                    <p> Print visitor pass with speed. Application works without a printer too, just use your existing 			visitor pass numbers</p>
+                    
+                  </div>
+        </div>
+</div>
+
+<div class="span4 offset1">
+
+	<div class="thumbnail">
+                    <div class="caption">
+                    <h4>Know visitors inside your premises</h4>
+                    <p> Just a click and get the results of the visitors inside your premises immediately </p>
+                    
+                  </div>
+                </div>
+
+	</div>
+
+
+<div class="span4 offset1">
+
+	<div class="thumbnail">
+                    <div class="caption">
+                    <h4>Make use of advanced search feature</h4>
+                    <p> Enter any information of the visitor or the visit and get results immediately. </p>
+                    
+                  </div>
+         </div>
+
+	</div>
+</div>
+
+
+</div>
+</br></br>
+
