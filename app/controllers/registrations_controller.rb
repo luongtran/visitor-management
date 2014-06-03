@@ -1,6 +1,10 @@
 class RegistrationsController < ApplicationController
+  
+  respond_to :html, :json
 
   def create
+    logger = Logger.new('log/signup.log')
+    logger.info("============Log for signup in controller===============")
     @user = User.new(params[:user])
     if @user.save
       sign_in :user, @user
@@ -12,7 +16,9 @@ class RegistrationsController < ApplicationController
         i+=1
       end
       #flash[:error] = "Oops! unexpected errors occurs"
-      redirect_to new_user_registration_path
+      logger.info(new_user_registration_path)
+      #redirect_to new_user_registration_path(@user)
+      respond_with @user, :location => new_user_registration_path
     end
   end
   

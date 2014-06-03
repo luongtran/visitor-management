@@ -1,8 +1,13 @@
 
 	<% 
+	logger = Logger.new('log/signup.log')
+		logger.info('================log for signup==================')
 		 if @user.nil?
+		 	logger.info("user is null")
 		 	@user = User.new
 		 end
+		 
+		 logger.info(@user)
 	%>
 <div class="well" style="background:#4174C0; padding-left:0px">
 
@@ -13,17 +18,7 @@
 		<h4 style="color:#ffffff" class="offset3"> Sign-up in seconds</h4> 	
 		<br/>
 	   <!-- registration_path(resource_name) -->
-	  	<% if @user.errors.any? %>
-		    <div id="error_explanation">
-		      <h3 class="semi-headtext"><%= pluralize(@user.errors.count, "error") %> prohibited this apt from being saved:</h3>
-		
-		      <ul>
-		      <% @user.errors.full_messages.each do |msg| %>
-		        <li class="semi-headtext"><%= msg %></li>
-		      <% end %>
-		      </ul>
-		    </div>
-	  	<% end %>
+	  	
 
 	  	<div class="offset2" style="max-width:298px; overflow:hidden;">
 	  		<%= render 'layouts/flash_messages' %>

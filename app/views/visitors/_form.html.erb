@@ -1,5 +1,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
+		alert('test');
 		$('#bt-optional-field').click(function() {
 			//$(this).hide();
 			$('.optional-fields').show();
@@ -52,7 +53,10 @@
 			
 		
 		$('#bt-save-print').click(function() {
+			alert('test');
+			console.log("test print");
 			$('#new_visitor').attr("action", "<%= save_print_path %>");
+			console.log("<%= save_print_path %>");
 			//alert($('#new_visitor').attr("action"));
 			//$('#new_visitor').submit();
 			$('form#new_visitor').trigger('submit.rails');
@@ -123,18 +127,19 @@
 
 
 <div class="row">
+	<%= form_for @visitor, :html => {:name => "checkinform" } do |f| %>
 	<div class="span6">		
     	<div class="form-horizontal offset1">
-    	<%= form_for @visitor, :html => {:name => "checkinform" } do |f| %>
+    	
 	
 		<div class="control-group">
-		<div class="controls">
-			<div class="input-prepend">
-				<span class="add-on">*</span>
-				<%= f.text_field :visitor_mobile_number, :class => 'span4', :placeholder => "Mobile number" %>
-				</div>	
+			<div class="controls">
+				<div class="input-prepend">
+					<span class="add-on">*</span>
+					<%= f.text_field :visitor_mobile_number, :class => 'span4', :placeholder => "Mobile number" %>
+					</div>	
+			</div>
 		</div>
-	</div>
 
 
 		<div class="control-group">

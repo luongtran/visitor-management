@@ -23,6 +23,13 @@ ActiveRecord::Schema.define(:version => 20130627101122) do
     t.string   "badge_nubmer"
   end
 
+  create_table "list_team_members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "list_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "photos", :force => true do |t|
     t.string   "im_type"
     t.integer  "user_id"
